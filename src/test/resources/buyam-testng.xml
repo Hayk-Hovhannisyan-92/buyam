@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Practice Suite">
+	<test name="Test buy.am">
+		<parameter name="emailid" value="tester456@gmail.com" />
+		<parameter name="password" value="test@123" />
+		<classes>
+			<class name="am.itu.qa.generalTest.GeneralTest" >
+				<methods>
+				    <!-- include name="languageTest"/-->
+				    <!-- include name="registracionTest"/-->
+				    <!-- include name="loginTest"/-->
+				    <include name="forgotPasswordTest"/>
+				    <!-- include name="wishlistBtnTest"/-->
+				    <!-- include name="shoppingCartBtnTest"/-->
+				    <!-- include name="returnHomeBtnTest"/-->
+				    <!-- include name="searchTest"/-->
+				    <!-- include name="facebookTest"/-->
+				    <!-- include name="instagramTest"/-->
+				    <!-- include name="youtubeTest"/-->
+				    <!-- include name="changeAddressTest"/-->
+				    <!-- include name="changeEmailTest"/-->
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
