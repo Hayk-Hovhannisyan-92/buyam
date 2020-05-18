@@ -10,14 +10,14 @@
 				    <!-- include name="languageTest"/-->
 				    <!-- include name="registracionTest"/-->
 				    <!-- include name="loginTest"/-->
-				    <include name="forgotPasswordTest"/>
+				    <!-- include name="forgotPasswordTest"/-->
 				    <!-- include name="wishlistBtnTest"/-->
 				    <!-- include name="shoppingCartBtnTest"/-->
 				    <!-- include name="returnHomeBtnTest"/-->
 				    <!-- include name="searchTest"/-->
 				    <!-- include name="facebookTest"/-->
 				    <!-- include name="instagramTest"/-->
-				    <!-- include name="youtubeTest"/-->
+				    <include name="youtubeTest"/>
 				    <!-- include name="changeAddressTest"/-->
 				    <!-- include name="changeEmailTest"/-->
 				</methods>

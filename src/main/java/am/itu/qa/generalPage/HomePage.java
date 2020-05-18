@@ -1,6 +1,8 @@
 package am.itu.qa.generalPage;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -142,7 +144,7 @@ public class HomePage extends BasePage {
 	}
 
 ///// WAS USE IN #4-forgotPasswordTest/////
-	public final String ALLERT_CONTENT = "//div[@class='alert--content;]";
+	public final String ALLERT_CONTENT = "//div[@class='alert is--success is--rounded']";
 	
 	@FindBy(xpath = ALLERT_CONTENT)
 	WebElement allertContent;
@@ -157,9 +159,9 @@ public class HomePage extends BasePage {
 	public final String SEARCH_INPUT_FIELD = "//input[@class='main-search--field']";
 
 	// voronman ardyunqum nor eji headline - goyutyun unecox apranqi
-	public final String SEARCH_HEADLINE_TRUE = "//h1[@class='search--headline']";
+	public final String EXISTING_PRODUCT_HEADLINE = "//h1[@class='search--headline']";
 	// voronman ardyunqun nor eji headline - goyutyun chunecox apranqi
-	public final String SEARCH_HEADLINE_FALSE = "//div[@class='alert--content']";
+	public final String NON_EXISTING_PRODUCT_HEADLINE = "//div[@class='alert--content']";
 
 	@FindBy(xpath = SEARCH_ICON)
 	WebElement searchIcon;
@@ -187,25 +189,24 @@ public class HomePage extends BasePage {
 		searchInputField.sendKeys(name);
 	}
 
-	@FindBy(xpath = SEARCH_HEADLINE_TRUE)
-	WebElement searchHeadlineTrue;
+	@FindBy(xpath = EXISTING_PRODUCT_HEADLINE)
+	WebElement existingProductHeadline;
 
-	@FindBy(xpath = SEARCH_HEADLINE_FALSE)
-	WebElement searchHeadlineFalse;
+	@FindBy(xpath = NON_EXISTING_PRODUCT_HEADLINE)
+	WebElement nonExistingProductHeadline;
 
 	// ete erevum e 'Ձեր որոնման արդյունքում գտնվել են հետևյալ ապրանքները:'
 	// veradarcnum e true hakarak depqum eli petq e veradarcni true qani vor
 	// ete chi erevum 'Ձեր որոնման արդյունքում գտնվել են հետևյալ ապրանքները:'
 	// apa petq e ereva 'Ձեր որոնմանը համապատասխանող ապրանքներ չկան'
-	public boolean searchHeadlineIsDisplayed() {
-		if(searchHeadlineTrue.isDisplayed()) {
-			return searchHeadlineTrue.isDisplayed();
-		}else
-		if(searchHeadlineFalse.isDisplayed()) {
-			return searchHeadlineFalse.isDisplayed();
+	public boolean HeadlineIsDisplayed() {
+		try {
+			return nonExistingProductHeadline.isDisplayed();
+			}catch (NoSuchElementException e) {
+	            return nonExistingProductHeadline.isDisplayed();
+	        }
 		}
-		return false;
-	}
+   
 /////WAS USE IN #9-facebookTest/////
 	public final String FACEBOOK_BTN = "//div[@class='footer--columns block-group']//a[@class='facebook-link']";
 	

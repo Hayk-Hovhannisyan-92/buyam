@@ -12,15 +12,7 @@ public class LoginPage extends BasePage {
 	}
 
 ///// WAS USE IN #2-registracionTest()/////
-	public final String SALUTATION_FIELD = "//div[@class='panel--body is--wide']//select[@name='register[personal][salutation]']";
-	public final String MR_SUBFIELD = "//select[@name='register[personal][salutation]']//option[@value='Mr']";
-	public final String FIRST_NAME_FIELD = "//div[@class='register--firstname']//input[@class='register--field is--required has--error']";
-	public final String LAST_NAME_FIELD = "//div[@class='panel--body is--wide']//input[@name='register[personal][lastname]']";
-	public final String EMAIL_FIELD_REGISTER = "//div[@class='register--email']//input[@class='register--field email is--required has--error']";
-	public final String PASSWORD_FIELD_REGISTER = "//div[@class='register--password']//input[@class='register--field password is--required has--error']";
-	public final String PASSWORDCONFIRM_FIELD_REGISTER = "//div[@class='register--passwordconfirm']//input[@class='register--field passwordConfirmation is--required has--error']";
-	public final String PHONE_NUMBER_FIELD = "//div[@class='register--phone']//input[@class='register--field is--required has--error']";
-	public final String CONTINUE_BTN_REGISTER = "//button[@class='register--submit btn is--primary is--large is--icon-right has--error']";
+	public final String SALUTATION_FIELD = "//select[@name='register[personal][salutation]']";
 	
 	@FindBy(xpath = SALUTATION_FIELD)
 	WebElement salutationField;
@@ -33,6 +25,8 @@ public class LoginPage extends BasePage {
 		salutationField.click();
 	}
 	
+	public final String MR_SUBFIELD = "//select[@name='register[personal][salutation]']//option[@value='Mr']";
+	
 	@FindBy(xpath = MR_SUBFIELD)
 	WebElement mrSubfield;
 
@@ -43,6 +37,8 @@ public class LoginPage extends BasePage {
 	public void navigateToMrSubfield() {
 		mrSubfield.click();
 	}
+	
+	public final String FIRST_NAME_FIELD = "//input[@name='register[personal][firstname]']";
 	
 	@FindBy(xpath = FIRST_NAME_FIELD)
 	WebElement firstNameField;
@@ -55,6 +51,8 @@ public class LoginPage extends BasePage {
 		firstNameField.sendKeys(firstName);
 	}
 	
+	public final String LAST_NAME_FIELD = "//div[@class='panel--body is--wide']//input[@name='register[personal][lastname]']";
+	
 	@FindBy(xpath = LAST_NAME_FIELD)
 	WebElement lastNameField;
 
@@ -65,6 +63,8 @@ public class LoginPage extends BasePage {
 	public void navigateToLastNameField(String lastName) {
 		lastNameField.sendKeys(lastName);
 	}
+	
+	public final String EMAIL_FIELD_REGISTER = "//input[@name='register[personal][email]']";
 	
 	@FindBy(xpath = EMAIL_FIELD_REGISTER)
 	WebElement emailFieldRegister;
@@ -77,6 +77,8 @@ public class LoginPage extends BasePage {
 		emailFieldRegister.sendKeys(email);
 	}
 	
+	public final String PASSWORD_FIELD_REGISTER = "//input[@name='register[personal][password]']";
+	
 	@FindBy(xpath = PASSWORD_FIELD_REGISTER)
 	WebElement passwordFieldRegister;
 
@@ -87,6 +89,8 @@ public class LoginPage extends BasePage {
 	public void navigateToPasswordFieldRegister(String password) {
 		passwordFieldRegister.sendKeys(password);
 	}
+	
+	public final String PASSWORDCONFIRM_FIELD_REGISTER = "//input[@name='register[personal][passwordConfirmation]']";
 	
 	@FindBy(xpath = PASSWORDCONFIRM_FIELD_REGISTER)
 	WebElement passwordConfirmFieldRegister;
@@ -99,6 +103,8 @@ public class LoginPage extends BasePage {
 		passwordConfirmFieldRegister.sendKeys(password);
 	}
 	
+	public final String PHONE_NUMBER_FIELD = "//input[@name='register[personal][phone]']";
+	
 	@FindBy(xpath = PHONE_NUMBER_FIELD)
 	WebElement phoneNumberField;
 
@@ -109,6 +115,8 @@ public class LoginPage extends BasePage {
 	public void navigateToPhoneNumberField(String phoneNumber) {
 		phoneNumberField.sendKeys(phoneNumber);
 	}
+	
+	public final String CONTINUE_BTN_REGISTER = "//button[@class='register--submit btn is--primary is--large is--icon-right has--error']";
 	
 	@FindBy(xpath = CONTINUE_BTN_REGISTER)
 	WebElement continueBtnRegister;
@@ -179,7 +187,7 @@ public class LoginPage extends BasePage {
 	}
 	
 ///// WAS USE IN #4-forgotPasswordTest()/////
-	public final String FORGOT_PASSWORD = "//div[@class='register--login-lostpassword']";
+	public final String FORGOT_PASSWORD = "//a[contains(@href,'/account/password')]";
 	
 	@FindBy(xpath = FORGOT_PASSWORD)
 	WebElement forgotPassword;

@@ -19,7 +19,7 @@ public class ForgotPasswordPage extends BasePage{
 	@FindBy(xpath = FORGOT_PASSWORD_PANNEL)
 	WebElement forgotPasswordPannel;
 	
-	public boolean forgotPasswordPannelIsDisplayed() {
+	public boolean forgotPasswordPageIsDisplayed() {
 		return forgotPasswordPannel.isDisplayed();
 	}
 	

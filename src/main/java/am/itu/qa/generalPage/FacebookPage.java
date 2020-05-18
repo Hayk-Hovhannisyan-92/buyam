@@ -35,5 +35,11 @@ public class FacebookPage extends BasePage {
 	public void closeTab() {
 	driverNewTab.close();		
 	}
+
+	public boolean getWindowHandle() {
+		
+
+		return false;
+	}
 	
 }

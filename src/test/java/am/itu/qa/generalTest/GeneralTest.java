@@ -1,6 +1,9 @@
 package am.itu.qa.generalTest;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import am.itu.qa.baseTest.BaseTest;
 import am.itu.qa.generalPage.AddressPage;
@@ -72,24 +75,24 @@ public class GeneralTest extends BaseTest {
 		//Thread.sleep(1000);
 		//login.navigateToMrSubfield();
 		//Thread.sleep(1000);
-		//Assert.assertTrue(login.firstNameFieldIsDisplayed());
-		//login.navigateTofirstNameField("Hayk");
-		//Thread.sleep(1000);
+		Assert.assertTrue(login.firstNameFieldIsDisplayed());
+		login.navigateTofirstNameField("Hayk");
+		Thread.sleep(1000);
 		Assert.assertTrue(login.lastNameFieldIsDisplayed());
 		login.navigateToLastNameField("Hovhannisyan");
 		Thread.sleep(1000);
 		Assert.assertTrue(login.emailFieldRegisterIsDisplayed());
 		login.navigateToEmailFieldRegister("hovhanniysanhayk56@gmail.com");
-		//Thread.sleep(1000);
-		//login.navigateToPasswordFieldRegister();
-	    //Thread.sleep(1000);
-		//login.navigateToPasswordConfirmFieldRegister();
-		//Thread.sleep(1000);
-		//login.navigateToPhoneNumberField();
-		//Thread.sleep(1000);
-		//ProfilePage profile = new ProfilePage(this.driver);
-		//profile=login.navigateToContinueBtnRegister();
-		//Assert.assertTrue(profile.profilePageIsOpen());
+		Thread.sleep(1000);
+		login.navigateToPasswordFieldRegister("BuyamHayk");
+	    Thread.sleep(1000);
+		login.navigateToPasswordConfirmFieldRegister("BuyamHayk");
+		Thread.sleep(1000);
+		login.navigateToPhoneNumberField("098484056");
+		Thread.sleep(1000);
+		ProfilePage profile = new ProfilePage(this.driver);
+		profile=login.navigateToContinueBtnRegister();
+		Assert.assertTrue(profile.profilePageIsOpen());
 	}
 
 	///  #3-loginTest  ///
@@ -161,7 +164,7 @@ public class GeneralTest extends BaseTest {
 		// After step make sure that user in ProfilePage
 	}
 
-	///  #4-forgotPasswordTest  ///?????????????????????
+	///  #4-forgotPasswordTest  ///
 	@Test
 	public void forgotPasswordTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
@@ -174,12 +177,12 @@ public class GeneralTest extends BaseTest {
 		ForgotPasswordPage forgotPassword = new ForgotPasswordPage(this.driver);
 		forgotPassword	= login.navigateToForgotPassword();
 		Thread.sleep(4000);
-		Assert.assertTrue(forgotPassword.forgotPasswordPannelIsDisplayed());
+		Assert.assertTrue(forgotPassword.forgotPasswordPageIsDisplayed());
 		Assert.assertTrue(forgotPassword.passwordResetInputIsDisplayed());
 		forgotPassword.passwordResetInputType("hovhannisyanhayk56@gmail.com");
 		Thread.sleep(2000);
 		Assert.assertTrue(forgotPassword.sendEmailBtnIsDisplayed());
-		forgotPassword.navigateToSendEmailBtn();
+		home = forgotPassword.navigateToSendEmailBtn();
 		Thread.sleep(2000);
 		Assert.assertTrue(home.allertContentIsDisplayed());
 
@@ -230,13 +233,13 @@ public class GeneralTest extends BaseTest {
 		Assert.assertTrue(home.allertMessageIsDisplayed());
 		//erevum e allert message
 		Thread.sleep(2000);
-		home.typeInSearhField("termos");
+		home.typeInSearhField("prinv");
 		//grvum e voreve text search  dashtum
 		Thread.sleep(2000);
 		home.navigateToSearchIcon();
 		//click  search iconi vra
 		//nkaragrutyun@ HomePage-um
-		Assert.assertTrue(home.searchHeadlineIsDisplayed());
+		Assert.assertTrue(home.HeadlineIsDisplayed());
 		
 	}
 	
