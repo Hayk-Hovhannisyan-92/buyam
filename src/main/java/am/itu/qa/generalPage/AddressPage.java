@@ -30,7 +30,17 @@ public class AddressPage extends BasePage{
 		return changeBtn.isDisplayed();
 	}
 	
-	public void navigateToChangeBtn() {
+	public ChangeAddressPage navigateToChangeBtn() {
 		changeBtn.click();
+		return new ChangeAddressPage(this.driver);
+	}
+	
+	public final String ALLERT_CONTENT = "//div[@class='alert--content']";
+	
+	@FindBy(xpath = ALLERT_CONTENT)
+	WebElement allertContent;
+	
+	public boolean allertContentIsDisplayed() {
+		return  allertContent.isDisplayed();
 	}
 }

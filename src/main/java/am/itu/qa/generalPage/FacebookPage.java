@@ -24,22 +24,8 @@ public class FacebookPage extends BasePage {
 		return facebookBuyamPage.isDisplayed();
 	}
 	
-	protected WebDriver driverNewTab = null;
-	
-	public void openNewTab() {
-	ArrayList<String> tabs = new ArrayList<String>(driverNewTab.getWindowHandles());
-	driverNewTab.switchTo().window(tabs.get(1));
-	driverNewTab.get("https://www.facebook.com/BuyamOnlineMall/");
-	}
-	
 	public void closeTab() {
-	driverNewTab.close();		
+		HomePage home = new HomePage(this.driver);
+	home.driverNewTab.close();		
 	}
-
-	public boolean getWindowHandle() {
-		
-
-		return false;
-	}
-	
 }

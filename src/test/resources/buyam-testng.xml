@@ -17,9 +17,9 @@
 				    <!-- include name="searchTest"/-->
 				    <!-- include name="facebookTest"/-->
 				    <!-- include name="instagramTest"/-->
-				    <include name="youtubeTest"/>
+				    <!-- include name="youtubeTest"/-->
 				    <!-- include name="changeAddressTest"/-->
-				    <!-- include name="changeEmailTest"/-->
+				    <include name="changeEmailTest"/>
 				</methods>
 			</class>
 		</classes>

@@ -199,20 +199,28 @@ public class HomePage extends BasePage {
 	// veradarcnum e true hakarak depqum eli petq e veradarcni true qani vor
 	// ete chi erevum 'Ձեր որոնման արդյունքում գտնվել են հետևյալ ապրանքները:'
 	// apa petq e ereva 'Ձեր որոնմանը համապատասխանող ապրանքներ չկան'
-	public boolean HeadlineIsDisplayed() {
-		try {
-			return nonExistingProductHeadline.isDisplayed();
-			}catch (NoSuchElementException e) {
-	            return nonExistingProductHeadline.isDisplayed();
-	        }
-		}
+	public boolean existingProductHeadlineIsDisplayed() {
+		 try{
+				return nonExistingProductHeadline.isDisplayed();
+				}catch (NoSuchElementException e) {
+		            return nonExistingProductHeadline.isDisplayed();
+		        }
+	}
+	
+	//public boolean existingProductHeadlineIsDisplayed() {
+		//if(existingProductHeadline.isDisplayed()) {
+			//return existingProductHeadline.isDisplayed();
+	//	}
+		//return nonExistingProductHeadlineIsDisplayed();
+		//}
+	
    
 /////WAS USE IN #9-facebookTest/////
 	public final String FACEBOOK_BTN = "//div[@class='footer--columns block-group']//a[@class='facebook-link']";
 	
 	@FindBy(xpath = FACEBOOK_BTN)
 	WebElement facebookBtn;
-	protected WebDriver driverNewTab;
+	public WebDriver driverNewTab;
 	
 	public boolean facebookBtnIsDisplayed() {
 		return facebookBtn.isDisplayed();
@@ -220,7 +228,8 @@ public class HomePage extends BasePage {
 	
 	public FacebookPage navigateToFacebookBtn() {
 		facebookBtn.click();
-		return new FacebookPage(this.driver);
+		driverNewTab.get("https://www.facebook.com/BuyamOnlineMall/");
+		return new FacebookPage(this.driverNewTab);
 	}
 	
 /////WAS USE IN #10-instagramTest/////
@@ -254,7 +263,7 @@ public class HomePage extends BasePage {
 	}
 	
 /////WAS USE IN #12-changeAddressTest/////
-	public final String ADDRESS_BTN = "//div[@class='account--dropdown-navigation']//a[@title='Addresses']";
+	public final String ADDRESS_BTN = "//a[contains(@href,'/address/index/sidebar/')]";
 	public final String ACCOUNT_DROPDOWN = "//div[@class=\"account--dropdown-navigation\"]";
 	
 	@FindBy(xpath = ADDRESS_BTN)
@@ -277,7 +286,7 @@ public class HomePage extends BasePage {
 	}
 	
 /////WAS USE IN #13-changeEmailTest/////
-	public final String PROFILE_SETTINGS_BTN = "//div[@class='account--dropdown-navigation']//a[@title='Profile settings']";
+	public final String PROFILE_SETTINGS_BTN = "//div[@class='account--menu-container']//a[contains(@href,'/account/profile')]";
 	
 	@FindBy(xpath = PROFILE_SETTINGS_BTN)
 	WebElement profileSettingsBtn;

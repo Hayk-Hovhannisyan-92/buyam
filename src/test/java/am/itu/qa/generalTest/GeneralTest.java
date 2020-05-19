@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import am.itu.qa.baseTest.BaseTest;
 import am.itu.qa.generalPage.AddressPage;
+import am.itu.qa.generalPage.ChangeAddressPage;
 import am.itu.qa.generalPage.FacebookPage;
 import am.itu.qa.generalPage.ForgotPasswordPage;
 import am.itu.qa.generalPage.HomePage;
@@ -239,7 +240,7 @@ public class GeneralTest extends BaseTest {
 		home.navigateToSearchIcon();
 		//click  search iconi vra
 		//nkaragrutyun@ HomePage-um
-		Assert.assertTrue(home.HeadlineIsDisplayed());
+		Assert.assertTrue(home.existingProductHeadlineIsDisplayed());
 		
 	}
 	
@@ -288,36 +289,79 @@ public class GeneralTest extends BaseTest {
 			youtube.closeTab();
 		}
 		
-	///  #12-changeAddressTest  ///??????????????????????
+	///  #12-changeAddressTest  ///
 		@Test
 		public void changeAddressTest() throws InterruptedException {
 			HomePage home = new HomePage(this.driver);
+			LoginPage login = new LoginPage(this.driver);
+			ProfilePage profile = new ProfilePage(this.driver);
 			home.navigateToMyAccount();
 			Thread.sleep(2000);
+			login = home.navigateToLogin();
+			login.emailField("hovhannisyanhayk56@gmail.com");
+			login.passwordField("BuyamHayk");
+			profile = login.clickOnLoginBtn();
+			home = profile.returnHomePage();
+			home.navigateToMyAccount();
 			Assert.assertTrue(home.accountDropdownIsDisplayed());
 			Assert.assertTrue(home.addressBtnIsDisplayed());
-			//Thread.sleep(2000);
-			//AddressPage address = new AddressPage(this.driver);
-			//address = home.navigateToAddressBtn();
-			//Thread.sleep(2000);
-			//Assert.assertTrue(address.changeAddressPanelIsDisplayed());
-			//Assert.assertTrue(address.changeBtnIsDisplayed());
-			//Thread.sleep(2000);
-			//address.navigateToChangeBtn();
+			Thread.sleep(2000);
+			AddressPage address = new AddressPage(this.driver);
+			address = home.navigateToAddressBtn();
+			Thread.sleep(2000);
+			Assert.assertTrue(address.changeAddressPanelIsDisplayed());
+			Assert.assertTrue(address.changeBtnIsDisplayed());
+			Thread.sleep(2000);
+			ChangeAddressPage changeAddress = new ChangeAddressPage(this.driver);
+			changeAddress = address.navigateToChangeBtn();
+			Thread.sleep(2000);
+			Assert.assertTrue(changeAddress.changeAddressPannelIsDisplayed());
+			Thread.sleep(2000);
+			Assert.assertTrue(changeAddress.changeAddressFieldIsDisplayed());
+			changeAddress.navigateToChangeAddressField("Agatangexos");
+			Thread.sleep(2000);
+			changeAddress.navigateToSaveAddressBtn();
+			Thread.sleep(2000);
+			Assert.assertTrue(address.allertContentIsDisplayed());
+			
 		}
 		
-	///  #13-changeEmailTest  ///???????????????????????
+	///  #13-changeEmailTest  ///
 		@Test
 		public void changeEmailTest() throws InterruptedException {
 			HomePage home = new HomePage(this.driver);
+			LoginPage login = new LoginPage(this.driver);
+			ProfilePage profile = new ProfilePage(this.driver);
+			AddressPage address = new AddressPage(this.driver);
 			home.navigateToMyAccount();
 			Thread.sleep(2000);
+			login = home.navigateToLogin();
+			Thread.sleep(2000);
+			login.emailField("hovhannisyanhayk56@gmail.com");
+			login.passwordField("BuyamHayk");
+			profile = login.clickOnLoginBtn();
+			home = profile.returnHomePage();
+			home.navigateToMyAccount();
 			Assert.assertTrue(home.accountDropdownIsDisplayed());
 			Assert.assertTrue(home.profileSettingsBtnIsDisplayed());
-			//Thread.sleep(2000);
-			//ProfileSettingsPage profileSettings = new ProfileSettingsPage(this.driver);
-			//profileSettings = home.navigateToProfileSettingsBtn();
-			//Thread.sleep(2000);
-			//Assert.assertTrue(profileSettings.accountProfileIsDisplayed());	
+			Thread.sleep(2000);
+			ProfileSettingsPage profileSettings = new ProfileSettingsPage(this.driver);
+			profileSettings = home.navigateToProfileSettingsBtn();
+			Thread.sleep(2000);
+			Assert.assertTrue(profileSettings.accountProfileIsDisplayed());	
+			Assert.assertTrue(profileSettings.newEmailFieldIsDisplayed());
+			Thread.sleep(2000);
+			profileSettings.navigateToNewEmailField("gor95hovhannisyan22@mail.ru");
+			Thread.sleep(2000);
+			Assert.assertTrue(profileSettings.emailConfirmationFieldIsDisplayed());
+			profileSettings.navigateToEmailConfirmationField("gor95hovhannisyan22@mail.ru");
+			Thread.sleep(2000);
+			Assert.assertTrue(profileSettings.currentPasswordFieldIsDisplayed());
+			profileSettings.navigateToCurrentPasswordField("BuyamHayk");
+			Assert.assertTrue(profileSettings.emailSaveChangesBtnIsDisplayed());
+			profileSettings.navigateToEmailSaveChangesBtn();
+			Thread.sleep(2000);
+			Assert.assertTrue(address.allertContentIsDisplayed());
+			
 		}
 }
