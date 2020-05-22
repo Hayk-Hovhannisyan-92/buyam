@@ -1,5 +1,6 @@
 package am.itu.qa.generalPage;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.WebDriver;
@@ -18,23 +19,14 @@ public class YoutubePage extends BasePage{
 
 	@FindBy(xpath = YOUTUBE_BUYAM_PAGE)
 	WebElement youtubeBuyamPage;
-	
-	public void openNewTab(WebDriver newTab) {
-		
-		
-	}
-	
+
 	public boolean youtubeBuyamPageIsDisplayed() {
-		try {
-		return youtubeBuyamPage.isDisplayed();
-		}catch(NoSuchElementException e) {
-			return youtubeBuyamPage.isDisplayed();
+		return youtubeBuyamPage.isDisplayed();	
+	}
 	
+	public void closeNewTab() {
+		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+	    driver.switchTo().window(tabs.get(1));
+	    driver.close();
 		}
-		
-	}
-	
-	public void closeTab() {
-		driver.close();		
-	}
 }

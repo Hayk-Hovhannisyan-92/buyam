@@ -1,5 +1,7 @@
 package am.itu.qa.generalPage;
 
+import java.util.ArrayList;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,8 +23,11 @@ public class InstagramPage extends BasePage {
 		return instagramBuyamPage.isDisplayed();
 	}
 	
-	public void closeTab() {
-		driver.close();		
-	}
+	public void closeNewTab() {
+		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+	    driver.switchTo().window(tabs.get(1));
+	    driver.close();
+	   
+		}
 
 }

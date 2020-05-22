@@ -1,6 +1,5 @@
 package am.itu.qa.generalPage;
 
-
 import java.util.ArrayList;
 
 import org.openqa.selenium.WebDriver;
@@ -24,8 +23,10 @@ public class FacebookPage extends BasePage {
 		return facebookBuyamPage.isDisplayed();
 	}
 	
-	public void closeTab() {
-		HomePage home = new HomePage(this.driver);
-	home.driverNewTab.close();		
+	public void closeNewTab() {
+	ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+    driver.switchTo().window(tabs.get(1));
+    driver.close();
+   
 	}
 }

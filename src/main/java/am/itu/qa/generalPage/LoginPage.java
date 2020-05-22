@@ -25,19 +25,47 @@ public class LoginPage extends BasePage {
 		salutationField.click();
 	}
 	
-	public final String MR_SUBFIELD = "//select[@name='register[personal][salutation]']//option[@value='Mr']";
+///// Salutation field@ hayereni hamar/////
+	public final String MR_SUBFIELD_AM = "//select[@name='register[personal][salutation]']//option[@value='Պրն']";
 	
-	@FindBy(xpath = MR_SUBFIELD)
-	WebElement mrSubfield;
+	@FindBy(xpath = MR_SUBFIELD_AM)
+	WebElement mrSubfieldAM;
 
-	public boolean mrSubfieldIsDisplayed() {
-		return mrSubfield.isDisplayed();
+	public boolean mrSubfieldAMIsDisplayed() {
+		return mrSubfieldAM.isDisplayed();
 	}
 	
-	public void navigateToMrSubfield() {
-		mrSubfield.click();
+	public void navigateToMrSubfieldAM() {
+		mrSubfieldAM.click();
 	}
 	
+///// Salutation field@ anglereni  hamar/////
+    public final String MR_SUBFIELD_EN = "//select[@name='register[personal][salutation]']//option[@value='Mr']";
+	
+	@FindBy(xpath = MR_SUBFIELD_EN)
+	WebElement mrSubfieldEN;
+
+	public boolean mrSubfieldENIsDisplayed() {
+		return mrSubfieldEN.isDisplayed();
+	}
+	
+	public void navigateToMrSubfieldEN() {
+		mrSubfieldEN.click();
+	}
+	
+///// Salutation field@ rusereni  hamar/////
+    public final String MR_SUBFIELD_RU = "//select[@name='register[personal][salutation]']//option[@value='Мистер']";
+	
+	@FindBy(xpath = MR_SUBFIELD_RU)
+	WebElement mrSubfieldRU;
+
+	public boolean mrSubfieldRUIsDisplayed() {
+		return mrSubfieldRU.isDisplayed();
+	}
+	
+	public void navigateToMrSubfieldRU() {
+		mrSubfieldRU.click();
+	}
 	public final String FIRST_NAME_FIELD = "//input[@name='register[personal][firstname]']";
 	
 	@FindBy(xpath = FIRST_NAME_FIELD)
@@ -116,7 +144,57 @@ public class LoginPage extends BasePage {
 		phoneNumberField.sendKeys(phoneNumber);
 	}
 	
-	public final String CONTINUE_BTN_REGISTER = "//button[@class='register--submit btn is--primary is--large is--icon-right has--error']";
+    public final String CITY_FIELD = "//a[@class='chosen-single']";
+	
+	@FindBy(xpath = CITY_FIELD)
+	WebElement cityField;
+
+	public boolean cityFieldIsDisplayed() {
+		return cityField.isDisplayed();
+	}
+	
+	public void navigateToCityField() {
+		cityField.click();
+	}
+	
+    public final String CITY_LIST = "//ul[@class='chosen-results']";
+	
+	@FindBy(xpath = CITY_LIST)
+	WebElement cityList;
+
+	public boolean cityListIsDisplayed() {
+		return cityList.isDisplayed();
+	}
+
+    public final String CHOOSE_CITY_1 = "//li[@data-option-array-index='1']";
+	
+	@FindBy(xpath = CHOOSE_CITY_1)
+	WebElement chooseCity1;
+
+	public boolean chooseCity1IsDisplayed() {
+		return chooseCity1.isDisplayed();
+	}
+	
+	public void navigateToChooseCity1() {
+		chooseCity1.click();
+	}
+	
+	
+	
+public final String BILLING_STREET_FIELD = "//input[@name='register[billing][street]']";
+	
+	@FindBy(xpath = BILLING_STREET_FIELD)
+	WebElement billingStreetField;
+
+	public boolean billingStreetFieldIsDisplayed() {
+		return billingStreetField.isDisplayed();
+	}
+	
+	public void navigateToBillingStreetField(String billingStreet) {
+		billingStreetField.sendKeys(billingStreet);
+	}
+	
+	public final String CONTINUE_BTN_REGISTER = "//div[@class='register--action']//button[@type='submit']";
 	
 	@FindBy(xpath = CONTINUE_BTN_REGISTER)
 	WebElement continueBtnRegister;

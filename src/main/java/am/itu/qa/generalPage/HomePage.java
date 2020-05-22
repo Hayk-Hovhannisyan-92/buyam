@@ -3,6 +3,8 @@ package am.itu.qa.generalPage;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -124,6 +126,21 @@ public class HomePage extends BasePage {
 	public void navigateToSalutationField() {
 		salutationField.click();
 	}
+	
+	 public final String LOG_OUT_BTN = "//div[@class='account--dropdown-navigation']//span[@class='navigation--logout blocked--link']";
+		
+		@FindBy(xpath = LOG_OUT_BTN)
+		WebElement logOutBtn;
+
+		public boolean logOutBtnIsDisplayed() {
+			return logOutBtn.isDisplayed();
+		}
+		
+		public LogOutPage navigateToLogOutBtn() {
+			logOutBtn.click();
+			return new LogOutPage(this.driver);
+		}
+		
 ///// WAS USE IN #3-loginTest()/////
 	public final String LOGIN_BTN = "//a[contains(@class,'blocked--link navigation--link navigation--signin-btn')]";
 	public final String DROP_BOX_MYACCOUNT = "//div[@class='account--menu is--rounded is--personalized']";
@@ -191,15 +208,15 @@ public class HomePage extends BasePage {
 
 	@FindBy(xpath = EXISTING_PRODUCT_HEADLINE)
 	WebElement existingProductHeadline;
+	
+	public boolean existingProductHeadlineIsDisplayed() {
+		return existingProductHeadline.isDisplayed();
+	}
 
 	@FindBy(xpath = NON_EXISTING_PRODUCT_HEADLINE)
 	WebElement nonExistingProductHeadline;
 
-	// ete erevum e 'Ձեր որոնման արդյունքում գտնվել են հետևյալ ապրանքները:'
-	// veradarcnum e true hakarak depqum eli petq e veradarcni true qani vor
-	// ete chi erevum 'Ձեր որոնման արդյունքում գտնվել են հետևյալ ապրանքները:'
-	// apa petq e ereva 'Ձեր որոնմանը համապատասխանող ապրանքներ չկան'
-	public boolean existingProductHeadlineIsDisplayed() {
+	public boolean nonExistingProductHeadlineIsDisplayed() {
 		 try{
 				return nonExistingProductHeadline.isDisplayed();
 				}catch (NoSuchElementException e) {
@@ -207,14 +224,6 @@ public class HomePage extends BasePage {
 		        }
 	}
 	
-	//public boolean existingProductHeadlineIsDisplayed() {
-		//if(existingProductHeadline.isDisplayed()) {
-			//return existingProductHeadline.isDisplayed();
-	//	}
-		//return nonExistingProductHeadlineIsDisplayed();
-		//}
-	
-   
 /////WAS USE IN #9-facebookTest/////
 	public final String FACEBOOK_BTN = "//div[@class='footer--columns block-group']//a[@class='facebook-link']";
 	
@@ -228,8 +237,10 @@ public class HomePage extends BasePage {
 	
 	public FacebookPage navigateToFacebookBtn() {
 		facebookBtn.click();
-		driverNewTab.get("https://www.facebook.com/BuyamOnlineMall/");
-		return new FacebookPage(this.driverNewTab);
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
+		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
+		return new FacebookPage(this.driver);
 	}
 	
 /////WAS USE IN #10-instagramTest/////
@@ -244,6 +255,9 @@ public class HomePage extends BasePage {
 	
 	public InstagramPage navigateToInstagramBtn() {
 		instagramBtn.click();
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
+		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
 		return new InstagramPage(this.driver);
 	}
 	
@@ -259,6 +273,9 @@ public class HomePage extends BasePage {
 	
 	public YoutubePage navigateToYoutubeBtn() {
 		youtubeBtn.click();
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
+		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
 		return new YoutubePage(this.driver);
 	}
 	

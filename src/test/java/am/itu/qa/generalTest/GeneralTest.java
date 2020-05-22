@@ -1,9 +1,6 @@
 package am.itu.qa.generalTest;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import am.itu.qa.baseTest.BaseTest;
 import am.itu.qa.generalPage.AddressPage;
@@ -12,6 +9,7 @@ import am.itu.qa.generalPage.FacebookPage;
 import am.itu.qa.generalPage.ForgotPasswordPage;
 import am.itu.qa.generalPage.HomePage;
 import am.itu.qa.generalPage.InstagramPage;
+import am.itu.qa.generalPage.LogOutPage;
 import am.itu.qa.generalPage.LoginPage;
 import am.itu.qa.generalPage.ProfilePage;
 import am.itu.qa.generalPage.ProfileSettingsPage;
@@ -55,6 +53,23 @@ public class GeneralTest extends BaseTest {
 		Assert.assertTrue(home.langIsRussian());
 	}
 	
+	
+	public void changeLanguageEN(){
+		HomePage home = new HomePage(this.driver);
+		home.clickOnElementSettings();
+		home.clickOnElementLanguage();
+		home.clickOnElementLenguage_ENG();
+	}
+	
+	public void changeLanguageRU(){
+		HomePage home = new HomePage(this.driver);
+		home.clickOnElementSettings();
+		home.clickOnElementLanguage();
+		home.clickOnElementLenguage_RUS();
+	}
+	
+	
+	
 	///  #2-registracionTest  ///????????????????????????????
 	@Test
 	public void registracionTest() throws InterruptedException {
@@ -62,20 +77,22 @@ public class GeneralTest extends BaseTest {
 		Assert.assertTrue(home.myAccountElementIsDisplayed());
 		home.navigateToMyAccount();
 		Assert.assertTrue(home.dropBoxMyAccountIsDisplayed());
-		// After step must be openned small window when are few elements with Login btn
 		Thread.sleep(2000);
 		Assert.assertTrue(home.registracionElementIsDisplayed());
 		LoginPage login = new LoginPage(this.driver);
 		login = home.navigateToRegistracion();
 		Thread.sleep(1000);
 		Assert.assertTrue(login.loginPageIsOpen());
+		
+		///Test-1  with Armenian language(default)
 		Thread.sleep(3000);
-		//Assert.assertTrue(login.salutationFieldIsDisplayed());
-		//Thread.sleep(1000);
-		//login.navigateToSalutationField();
-		//Thread.sleep(1000);
-		//login.navigateToMrSubfield();
-		//Thread.sleep(1000);
+		Assert.assertTrue(login.salutationFieldIsDisplayed());
+		Thread.sleep(1000);
+		login.navigateToSalutationField();
+		Thread.sleep(1000);
+		Assert.assertTrue(login.mrSubfieldAMIsDisplayed());
+		login.navigateToMrSubfieldAM();
+		Thread.sleep(1000);
 		Assert.assertTrue(login.firstNameFieldIsDisplayed());
 		login.navigateTofirstNameField("Hayk");
 		Thread.sleep(1000);
@@ -91,10 +108,27 @@ public class GeneralTest extends BaseTest {
 		Thread.sleep(1000);
 		login.navigateToPhoneNumberField("098484056");
 		Thread.sleep(1000);
+		login.navigateToCityField();
+		Thread.sleep(1000);
+		Assert.assertTrue(login.cityListIsDisplayed());
+		Assert.assertTrue(login.chooseCity1IsDisplayed());
+		Thread.sleep(1000);
+		login.navigateToChooseCity1();
+		Thread.sleep(1000);
+		login.navigateToBillingStreetField("Hovsep Emini p. 29 tun");
+		Thread.sleep(1000);
 		ProfilePage profile = new ProfilePage(this.driver);
 		profile=login.navigateToContinueBtnRegister();
 		Assert.assertTrue(profile.profilePageIsOpen());
+		home.navigateToMyAccount();
+		Thread.sleep(1000);
+		Assert.assertTrue(home.logOutBtnIsDisplayed());
+		LogOutPage logOut = home.navigateToLogOutBtn();
+		Assert.assertTrue(logOut.logOutPannelIsDisplayed());
+		
 	}
+	
+	
 
 	///  #3-loginTest  ///
 	@Test
@@ -240,11 +274,11 @@ public class GeneralTest extends BaseTest {
 		home.navigateToSearchIcon();
 		//click  search iconi vra
 		//nkaragrutyun@ HomePage-um
-		Assert.assertTrue(home.existingProductHeadlineIsDisplayed());
+		Assert.assertTrue(home.nonExistingProductHeadlineIsDisplayed());
 		
 	}
 	
-	///  #9-facebookTest  ///????????????????????????
+	///  #9-facebookTest  ///
 	@Test
 	public void facebookTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
@@ -252,16 +286,13 @@ public class GeneralTest extends BaseTest {
 		Thread.sleep(2000);
 		Assert.assertTrue(home.facebookBtnIsDisplayed());
 		Thread.sleep(2000);
-		//facebook.openNewTab();
-		Thread.sleep(2000);
 		facebook=home.navigateToFacebookBtn();
 		Thread.sleep(2000);
 		Assert.assertTrue(facebook.facebookBuyamPageIsDisplayed());
-		Thread.sleep(2000);
-		facebook.closeTab();
+		facebook.closeNewTab();
 	}
 	
-	///  #10-instagramTest  ///??????????????????????
+	///  #10-instagramTest  ///
 		@Test
 		public void instagramTest() throws InterruptedException {
 			HomePage home = new HomePage(this.driver);
@@ -271,11 +302,10 @@ public class GeneralTest extends BaseTest {
 			instagram = home.navigateToInstagramBtn();
 			Thread.sleep(2000);
 			Assert.assertTrue(instagram.instagramBuyamPageIsDisplayed());
-			Thread.sleep(2000);
-			instagram.closeTab();
+			instagram.closeNewTab();
 		}
 		
-	///  #11-youtubeTest  ///??????????????????????????
+	///  #11-youtubeTest  ///
 		@Test
 		public void youtubeTest() throws InterruptedException {
 			HomePage home = new HomePage(this.driver);
@@ -285,8 +315,7 @@ public class GeneralTest extends BaseTest {
 			youtube = home.navigateToYoutubeBtn();
 			Thread.sleep(2000);
 			Assert.assertTrue(youtube.youtubeBuyamPageIsDisplayed());
-			Thread.sleep(2000);
-			youtube.closeTab();
+			youtube.closeNewTab();
 		}
 		
 	///  #12-changeAddressTest  ///
