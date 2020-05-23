@@ -24,9 +24,10 @@ public class FacebookPage extends BasePage {
 	}
 	
 	public void closeNewTab() {
+	WebDriver driverNewTab;
 	ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
-    driver.switchTo().window(tabs.get(1));
-    driver.close();
+	driverNewTab = driver.switchTo().window(tabs.get(1));
+    driverNewTab.close();
    
 	}
 }

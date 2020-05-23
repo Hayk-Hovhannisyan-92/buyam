@@ -17,6 +17,15 @@ public class HomePage extends BasePage {
 		super(driver);
 	}
 
+	public final String HOME_MAIN = "//nav[@class='navigation-main']";
+
+	@FindBy(xpath = HOME_MAIN)
+	WebElement homeMain;
+
+	public boolean homeMainIsDisplayed() {
+		return homeMain.isDisplayed();
+	}
+
 ////// WAS USE IN #1-languageTest()/////
 	public final String SETTINGS_BTN = "//i[@class='im-icon-settings']";
 	public final String LANGUAGE_BTN = "//nav[@class='shop-setings-navigation top-bar--navigation']//select[@class='language--select']";
@@ -67,19 +76,21 @@ public class HomePage extends BasePage {
 	public boolean dropBoxIsDisplayed() {
 		return dropBoxSettings.isDisplayed();
 	}
-	
+
 	@FindBy(xpath = LANG_RU)
 	WebElement langRU;
 
 	public boolean langIsRussian() {
 		return langRU.isDisplayed();
 	}
+
 	@FindBy(xpath = LANG_EN)
 	WebElement langEN;
 
 	public boolean langIsEnglish() {
 		return langEN.isDisplayed();
 	}
+
 	@FindBy(xpath = LANG_HY)
 	WebElement langHY;
 
@@ -91,56 +102,55 @@ public class HomePage extends BasePage {
 	public final String MY_ACCOUNT_BTN = "//a[@class='btn entry--link account--link']";
 	public final String REGISTRACION_BTN = "//a[@class='blocked--link navigation--link navigation--register-btn']";
 	public final String SALUTATION_FIELD = "//select[@class='is--required has--error]";
-	
+
 	@FindBy(xpath = MY_ACCOUNT_BTN)
 	WebElement myAccount;
 
 	public boolean myAccountElementIsDisplayed() {
 		return myAccount.isDisplayed();
 	}
-	
+
 	public void navigateToMyAccount() {
 		myAccount.click();
 	}
-	
 
 	@FindBy(xpath = REGISTRACION_BTN)
 	WebElement registracion;
-	
+
 	public boolean registracionElementIsDisplayed() {
 		return registracion.isDisplayed();
 	}
-	
+
 	public LoginPage navigateToRegistracion() {
 		registracion.click();
 		return new LoginPage(this.driver);
 	}
-	
+
 	@FindBy(xpath = SALUTATION_FIELD)
 	WebElement salutationField;
 
 	public boolean salutationFieldIsDisplayed() {
 		return salutationField.isDisplayed();
 	}
-	
+
 	public void navigateToSalutationField() {
 		salutationField.click();
 	}
-	
-	 public final String LOG_OUT_BTN = "//div[@class='account--dropdown-navigation']//span[@class='navigation--logout blocked--link']";
-		
-		@FindBy(xpath = LOG_OUT_BTN)
-		WebElement logOutBtn;
 
-		public boolean logOutBtnIsDisplayed() {
-			return logOutBtn.isDisplayed();
-		}
-		
-		public LogOutPage navigateToLogOutBtn() {
-			logOutBtn.click();
-			return new LogOutPage(this.driver);
-		}
-		
+	public final String LOG_OUT_BTN = "//div[@class='account--dropdown-navigation']//span[@class='navigation--logout blocked--link']";
+
+	@FindBy(xpath = LOG_OUT_BTN)
+	WebElement logOutBtn;
+
+	public boolean logOutBtnIsDisplayed() {
+		return logOutBtn.isDisplayed();
+	}
+
+	public LogOutPage navigateToLogOutBtn() {
+		logOutBtn.click();
+		return new LogOutPage(this.driver);
+	}
+
 ///// WAS USE IN #3-loginTest()/////
 	public final String LOGIN_BTN = "//a[contains(@class,'blocked--link navigation--link navigation--signin-btn')]";
 	public final String DROP_BOX_MYACCOUNT = "//div[@class='account--menu is--rounded is--personalized']";
@@ -162,14 +172,14 @@ public class HomePage extends BasePage {
 
 ///// WAS USE IN #4-forgotPasswordTest/////
 	public final String ALLERT_CONTENT = "//div[@class='alert is--success is--rounded']";
-	
+
 	@FindBy(xpath = ALLERT_CONTENT)
 	WebElement allertContent;
-	
+
 	public boolean allertContentIsDisplayed() {
 		return allertContent.isDisplayed();
 	}
-	
+
 ///// WAS USE IN #8-searchTest/////
 	public final String SEARCH_ICON = "//form[@class='main-search--form']//i[@class='im-icon-search']";
 	public final String ALLERT_MESSAGE = "//div[@class='alert--content']";
@@ -196,11 +206,10 @@ public class HomePage extends BasePage {
 
 	@FindBy(xpath = SEARCH_INPUT_FIELD)
 	WebElement searchInputField;
-	
+
 	public boolean searchInputFieldIsDisplayed() {
 		return searchInputField.isDisplayed();
 	}
-
 
 	public void typeInSearhField(String name) {
 		searchInputField.sendKeys(name);
@@ -208,7 +217,7 @@ public class HomePage extends BasePage {
 
 	@FindBy(xpath = EXISTING_PRODUCT_HEADLINE)
 	WebElement existingProductHeadline;
-	
+
 	public boolean existingProductHeadlineIsDisplayed() {
 		return existingProductHeadline.isDisplayed();
 	}
@@ -217,103 +226,133 @@ public class HomePage extends BasePage {
 	WebElement nonExistingProductHeadline;
 
 	public boolean nonExistingProductHeadlineIsDisplayed() {
-		 try{
-				return nonExistingProductHeadline.isDisplayed();
-				}catch (NoSuchElementException e) {
-		            return nonExistingProductHeadline.isDisplayed();
-		        }
+		try {
+			return nonExistingProductHeadline.isDisplayed();
+		} catch (NoSuchElementException e) {
+			return nonExistingProductHeadline.isDisplayed();
+		}
 	}
-	
+
 /////WAS USE IN #9-facebookTest/////
 	public final String FACEBOOK_BTN = "//div[@class='footer--columns block-group']//a[@class='facebook-link']";
-	
+
 	@FindBy(xpath = FACEBOOK_BTN)
 	WebElement facebookBtn;
 	public WebDriver driverNewTab;
-	
+
 	public boolean facebookBtnIsDisplayed() {
 		return facebookBtn.isDisplayed();
 	}
-	
+
 	public FacebookPage navigateToFacebookBtn() {
 		facebookBtn.click();
-		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
-		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
-		driver.switchTo().window(tabs.get(1));
-		return new FacebookPage(this.driver);
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		driverNewTab = driver.switchTo().window(tabs.get(1));
+		return new FacebookPage(this.driverNewTab);
 	}
-	
+
 /////WAS USE IN #10-instagramTest/////
 	public final String INSTAGRAM_BTN = "//a[@class='instagram-link']";
-	
+
 	@FindBy(xpath = INSTAGRAM_BTN)
 	WebElement instagramBtn;
-	
+
 	public boolean instagramBtnIsDisplayed() {
 		return instagramBtn.isDisplayed();
 	}
-	
+
 	public InstagramPage navigateToInstagramBtn() {
 		instagramBtn.click();
-		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
-		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
 		return new InstagramPage(this.driver);
 	}
-	
+
 /////WAS USE IN #11-youtubeTest/////
 	public final String YOUTUBE_BTN = "//footer[@class='footer-main']//a[@class='youtube-link']/i[@aria-hidden='true']";
-	
+
 	@FindBy(xpath = YOUTUBE_BTN)
 	WebElement youtubeBtn;
-	
+
 	public boolean youtubeBtnIsDisplayed() {
 		return youtubeBtn.isDisplayed();
 	}
-	
+
 	public YoutubePage navigateToYoutubeBtn() {
 		youtubeBtn.click();
-		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
-		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
 		return new YoutubePage(this.driver);
 	}
-	
+
 /////WAS USE IN #12-changeAddressTest/////
 	public final String ADDRESS_BTN = "//a[contains(@href,'/address/index/sidebar/')]";
 	public final String ACCOUNT_DROPDOWN = "//div[@class=\"account--dropdown-navigation\"]";
-	
+
 	@FindBy(xpath = ADDRESS_BTN)
 	WebElement addressBtn;
-	
+
 	public boolean addressBtnIsDisplayed() {
 		return addressBtn.isDisplayed();
 	}
-	
+
 	@FindBy(xpath = ACCOUNT_DROPDOWN)
 	WebElement accountDropdown;
-	
+
 	public boolean accountDropdownIsDisplayed() {
 		return accountDropdown.isDisplayed();
 	}
-	
+
 	public AddressPage navigateToAddressBtn() {
 		addressBtn.click();
 		return new AddressPage(this.driver);
 	}
-	
+
 /////WAS USE IN #13-changeEmailTest/////
 	public final String PROFILE_SETTINGS_BTN = "//div[@class='account--menu-container']//a[contains(@href,'/account/profile')]";
-	
+
 	@FindBy(xpath = PROFILE_SETTINGS_BTN)
 	WebElement profileSettingsBtn;
-	
+
 	public boolean profileSettingsBtnIsDisplayed() {
 		return profileSettingsBtn.isDisplayed();
 	}
-	
+
 	public ProfileSettingsPage navigateToProfileSettingsBtn() {
 		profileSettingsBtn.click();
 		return new ProfileSettingsPage(this.driver);
+	}
+
+/////WAS USE IN #14-ordersTest/////
+	public final String ORDERS_BTN = "//div[@class='account--menu-container']//a[contains(@href,'/account/orders') and @class='navigation--link']";
+
+	@FindBy(xpath = ORDERS_BTN)
+	WebElement ordersBtn;
+
+	public boolean ordersBtnIsDisplayed() {
+		return ordersBtn.isDisplayed();
+	}
+
+	public LoginPage navigateToOrdersBtnWithoutLogin() {
+		ordersBtn.click();
+		return new LoginPage(this.driver);
+	}
+	
+/////WAS USE IN #15-newsletterTest/////
+	public final String NEWWSLETTER_BTN = "//div[@class='account--menu-container']//a[@class='navigation--link' and contains(@href,'/newsletter')]";
+
+	@FindBy(xpath = NEWWSLETTER_BTN)
+	WebElement newsletterBtn;
+
+	public boolean newsletterBtnIsDisplayed() {
+		return newsletterBtn.isDisplayed();
+	}
+
+	public NewsletterPage navigateToNewsletterBtn() {
+		newsletterBtn.click();
+		return new NewsletterPage(this.driver);
 	}
 }

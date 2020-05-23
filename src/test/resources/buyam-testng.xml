@@ -8,7 +8,7 @@
 			<class name="am.itu.qa.generalTest.GeneralTest" >
 				<methods>
 				    <!-- include name="languageTest"/-->
-				    <!-- include name="registracionTest"/-->
+				    <include name="registracionTestAM"/>
 				    <!-- include name="loginTest"/-->
 				    <!-- include name="forgotPasswordTest"/-->
 				    <!-- include name="wishlistBtnTest"/-->
@@ -16,10 +16,12 @@
 				    <!-- include name="returnHomeBtnTest"/-->
 				    <!-- include name="searchTest"/-->
 				    <!-- include name="facebookTest"/-->
-				    <include name="instagramTest"/>
+				    <!-- include name="instagramTest"/-->
 				    <!-- include name="youtubeTest"/-->
 				    <!-- include name="changeAddressTest"/-->
 				    <!-- include name="changeEmailTest"/-->
+				    <!-- include name="ordersTest"/-->
+				    <!-- include name="newsletterTest"/-->
 				</methods>
 			</class>
 		</classes>
