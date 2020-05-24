@@ -8,7 +8,7 @@
 			<class name="am.itu.qa.generalTest.GeneralTest" >
 				<methods>
 				    <!-- include name="languageTest"/-->
-				    <include name="registracionTestAM"/>
+				    <!-- include name="registracionTestAM"/-->
 				    <!-- include name="loginTest"/-->
 				    <!-- include name="forgotPasswordTest"/-->
 				    <!-- include name="wishlistBtnTest"/-->
@@ -22,6 +22,11 @@
 				    <!-- include name="changeEmailTest"/-->
 				    <!-- include name="ordersTest"/-->
 				    <!-- include name="newsletterTest"/-->
+				    <!-- include name="contactUsTest"/-->
+				    <!-- include name="aboutUsTest"/-->
+				    <!-- include name="deliveryAndPaymentTest"/-->
+				    <!-- include name="googlePlayTest"/-->
+				    <include name="appStoreTest"/>
 				</methods>
 			</class>
 		</classes>

@@ -11,7 +11,7 @@ public class ProfilePage extends LoginPage {
 	}
 
 	public final String ACCOUNT_PANEL = "//div[@class='account--welcome panel']";
-		
+
 ///// WAS USE IN #5-wishlistBtnTest()/////
 	public final String WISHLIST_BTN = "//ul[@class=\"navigation--list block-group\"]//a[@class=\"btn\"]";
 	public final String WISHLIST_EMPTY_MSG = "//div[@class='empty-wishlist']";

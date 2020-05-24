@@ -1,16 +1,19 @@
 package am.itu.qa.generalTest;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import am.itu.qa.baseTest.BaseTest;
+import am.itu.qa.generalPage.AboutUsPage;
 import am.itu.qa.generalPage.AddressPage;
+import am.itu.qa.generalPage.AppStorePage;
 import am.itu.qa.generalPage.ChangeAddressPage;
+import am.itu.qa.generalPage.ContactUsPage;
+import am.itu.qa.generalPage.DeliveryAndPaymentPage;
 import am.itu.qa.generalPage.FacebookPage;
 import am.itu.qa.generalPage.ForgotPasswordPage;
+import am.itu.qa.generalPage.GooglePlayPage;
 import am.itu.qa.generalPage.HomePage;
 import am.itu.qa.generalPage.InstagramPage;
-import am.itu.qa.generalPage.LogOutPage;
 import am.itu.qa.generalPage.LoginPage;
 import am.itu.qa.generalPage.NewsletterPage;
 import am.itu.qa.generalPage.OrdersPage;
@@ -479,7 +482,7 @@ public class GeneralTest extends BaseTest {
 		Assert.assertTrue(orders.ordersPannelIsDisplayed());
 	}
 
-	/// #15-NewsletterTest ///
+	/// #15-newsletterTest ///
 	@Test
 	public void newsletterTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
@@ -491,4 +494,77 @@ public class GeneralTest extends BaseTest {
 		Thread.sleep(2000);
 		Assert.assertTrue(newsletter.newsletterPannelIsDisplayed());
 	}
+
+	/// #16-contactUsTest ///
+	@Test
+	public void contactUsTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		ContactUsPage contactUs = new ContactUsPage(this.driver);
+		Assert.assertTrue(home.contactUsIsDisplayed());
+		contactUs = home.navigateToContactUs();
+		Thread.sleep(2000);
+		Assert.assertTrue(contactUs.contactUsPageIsDisplayed());
+	}
+
+	/// #17-aboutUsTest ///
+	/// Armenian language
+	@Test
+	public void aboutUsTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		AboutUsPage aboutUsAM = new AboutUsPage(this.driver);
+		Assert.assertTrue(home.aboutUsAMIsDisplayed());
+		aboutUsAM = home.navigateToAboutUsAM();
+		Thread.sleep(2000);
+		Assert.assertTrue(aboutUsAM.aboutUsPageIsDisplayed());
+		/// English language
+		home.clickOnElementSettings();
+		home.clickOnElementLanguage();
+		home.clickOnElementLenguage_ENG();
+		AboutUsPage aboutUsEN = new AboutUsPage(this.driver);
+		Thread.sleep(2000);
+		Assert.assertTrue(aboutUsEN.aboutUsPageIsDisplayed());
+		/// Russian language
+		home.clickOnElementSettings();
+		home.clickOnElementLanguage();
+		home.clickOnElementLenguage_RUS();
+		AboutUsPage aboutUsRU = new AboutUsPage(this.driver);
+		Thread.sleep(2000);
+		Assert.assertTrue(aboutUsRU.aboutUsPageIsDisplayed());
+	}
+
+	/// #18-deliveryAndPaymentTest ///
+	@Test
+	public void deliveryAndPaymentTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		DeliveryAndPaymentPage deliveryAndPayment = new DeliveryAndPaymentPage(this.driver);
+		Assert.assertTrue(home.deliveryAndPaymentIsDisplayed());
+		deliveryAndPayment = home.navigateToDeliveryAndPayment();
+		Thread.sleep(2000);
+		Assert.assertTrue(deliveryAndPayment.deliveryAndPaymentPageIsDisplayed());
+	}
+
+	/// #19-googlePlayTest ///
+	@Test
+	public void googlePlayTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		GooglePlayPage googlePlay = new GooglePlayPage(this.driver);
+		Assert.assertTrue(home.googlePlayBtnIsDisplayed());
+		googlePlay = home.navigateToGooglePlayBtn();
+		Thread.sleep(2000);
+		Assert.assertTrue(googlePlay.googlePlayPageIsDisplayed());
+		googlePlay.closeNewTab();
+	}
+
+	/// #20-appStoreTest ///
+	@Test
+	public void appStoreTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		AppStorePage appstore = new AppStorePage(this.driver);
+		Assert.assertTrue(home.appStoreBtnIsDisplayed());
+		appstore = home.navigateToAppStoreBtn();
+		Thread.sleep(2000);
+		Assert.assertTrue(appstore.appStorePageIsDisplayed());
+		appstore.closeNewTab();
+	}
+
 }

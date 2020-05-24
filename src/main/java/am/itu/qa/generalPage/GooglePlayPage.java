@@ -8,26 +8,26 @@ import org.openqa.selenium.support.FindBy;
 
 import am.itu.qa.basePage.BasePage;
 
-public class FacebookPage extends BasePage {
+public class GooglePlayPage extends BasePage{
 
-	public FacebookPage(WebDriver driver) {
+	public GooglePlayPage(WebDriver driver) {
 		super(driver);
 	}
+	
+	public final String GOOGLE_PLAY_PAGE = "//div[@class='UTg3hd']";
 
-	public final String FACEBOOK_BUYAM_PAGE = "//div[@class='_li']//div[@class='_6tay']";
+	@FindBy(xpath = GOOGLE_PLAY_PAGE)
+	WebElement googlePlayPage;
 
-	@FindBy(xpath = FACEBOOK_BUYAM_PAGE)
-	WebElement facebookBuyamPage;
-
-	public boolean facebookBuyamPageIsDisplayed() {
-		return facebookBuyamPage.isDisplayed();
+	public boolean googlePlayPageIsDisplayed() {
+		return googlePlayPage.isDisplayed();
 	}
-
+	
 	public void closeNewTab() {
 		WebDriver driverNewTab;
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driverNewTab = driver.switchTo().window(tabs.get(1));
 		driverNewTab.close();
-
 	}
+
 }

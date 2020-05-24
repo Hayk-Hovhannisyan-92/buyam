@@ -340,7 +340,7 @@ public class HomePage extends BasePage {
 		ordersBtn.click();
 		return new LoginPage(this.driver);
 	}
-	
+
 /////WAS USE IN #15-newsletterTest/////
 	public final String NEWWSLETTER_BTN = "//div[@class='account--menu-container']//a[@class='navigation--link' and contains(@href,'/newsletter')]";
 
@@ -354,5 +354,119 @@ public class HomePage extends BasePage {
 	public NewsletterPage navigateToNewsletterBtn() {
 		newsletterBtn.click();
 		return new NewsletterPage(this.driver);
+	}
+/////WAS USE IN #16-contactUsTest /////
+
+	public final String CONTACT_US = "//div[@class='footer--column column--menu block']//a[@class='navigation--link' and contains(@href,'/contact')]";
+
+	@FindBy(xpath = CONTACT_US)
+	WebElement contactUs;
+
+	public boolean contactUsIsDisplayed() {
+		return contactUs.isDisplayed();
+	}
+
+	public ContactUsPage navigateToContactUs() {
+		contactUs.click();
+		return new ContactUsPage(this.driver);
+	}
+
+/////WAS USE IN #17-aboutUsTest /////
+	/// russian
+	public final String ABOUT_US_RU = "//div[@class='footer--column column--menu block']//li[@class='navigation--entry']/a[@href='https://buy.am/ru/mer-masin']";
+
+	@FindBy(xpath = ABOUT_US_RU)
+	WebElement aboutUsRU;
+
+	public boolean aboutUsRUIsDisplayed() {
+		return aboutUsRU.isDisplayed();
+	}
+
+	public AboutUsPage navigateToAboutUsRU() {
+		aboutUsRU.click();
+		return new AboutUsPage(this.driver);
+	}
+
+	/// english
+	public final String ABOUT_US_EN = "//div[@class='footer--column column--menu block']//li[@class='navigation--entry']/a[@href='https://buy.am/en/mer-masin']";
+
+	@FindBy(xpath = ABOUT_US_EN)
+	WebElement aboutUsEN;
+
+	public boolean aboutUsENIsDisplayed() {
+		return aboutUsEN.isDisplayed();
+	}
+
+	public AboutUsPage navigateToAboutUsEN() {
+		aboutUsEN.click();
+		return new AboutUsPage(this.driver);
+	}
+
+	/// ARMENIAN
+	public final String ABOUT_US_AM = "//div[@class='footer--column column--menu block']//li[@class='navigation--entry']/a[@href='https://buy.am/hy/custom/index/sCustom/50']";
+
+	@FindBy(xpath = ABOUT_US_AM)
+	WebElement aboutUsAM;
+
+	public boolean aboutUsAMIsDisplayed() {
+		return aboutUsAM.isDisplayed();
+	}
+
+	public AboutUsPage navigateToAboutUsAM() {
+		aboutUsAM.click();
+		return new AboutUsPage(this.driver);
+	}
+	///// WAS USE IN #18-deliveryAndPaymentTest /////
+
+	public final String DELIVERY_AND_PAYMENT = "//div[@class='footer--column column--menu block']//a[@class='navigation--link' and contains(@href,'/contact')]";
+
+	@FindBy(xpath = DELIVERY_AND_PAYMENT)
+	WebElement deliveryAndPayment;
+
+	public boolean deliveryAndPaymentIsDisplayed() {
+		return deliveryAndPayment.isDisplayed();
+	}
+
+	public DeliveryAndPaymentPage navigateToDeliveryAndPayment() {
+		deliveryAndPayment.click();
+		return new DeliveryAndPaymentPage(this.driver);
+	}
+
+	///// WAS USE IN #19-googlePlayTest /////
+
+	public final String GOOGLE_PLAY_BTN = "//footer[@class='footer-main']//div[@class='column--content']//a[@class='google-play-link']";
+
+	@FindBy(xpath = GOOGLE_PLAY_BTN)
+	WebElement googlePlayBtn;
+
+	public boolean googlePlayBtnIsDisplayed() {
+		return googlePlayBtn.isDisplayed();
+	}
+
+	public GooglePlayPage navigateToGooglePlayBtn() {
+		googlePlayBtn.click();
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
+		return new GooglePlayPage(this.driver);
+	}
+
+	///// WAS USE IN #20-appStoreTest /////
+
+	public final String APP_STORE_BTN = "//footer[@class='footer-main']//a[@href='https://itunes.apple.com/app/buy-am/id1224598831']";
+
+	@FindBy(xpath = APP_STORE_BTN)
+	WebElement appStoreBtn;
+
+	public boolean appStoreBtnIsDisplayed() {
+		return appStoreBtn.isDisplayed();
+	}
+
+	public AppStorePage navigateToAppStoreBtn() {
+		appStoreBtn.click();
+		driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "t");
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
+		return new AppStorePage(this.driver);
 	}
 }
