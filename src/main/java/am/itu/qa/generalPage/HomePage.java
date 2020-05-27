@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -180,7 +181,52 @@ public class HomePage extends BasePage {
 		return allertContent.isDisplayed();
 	}
 
-///// WAS USE IN #8-searchTest/////
+/////WAS USE IN #6-shoppingCartBtnTest()/////
+	public final String SHOPING_CART_BTN = "//a[@class='btn cart--link']";
+
+	@FindBy(xpath = SHOPING_CART_BTN)
+	WebElement shopingCartBtn;
+
+	public boolean shopingCartBtnIsDisplayed() {
+		return shopingCartBtn.isDisplayed();
+	}
+
+	public void shopingCartBtnClick() {
+		shopingCartBtn.click();
+	}
+
+	public final String SHOPING_CART_PANEL = "//div[@class='ajax--cart']";
+
+	@FindBy(xpath = SHOPING_CART_PANEL)
+	WebElement shopingCartPanel;
+
+	public boolean shopingCartPanelIsDisplayed() {
+		return shopingCartPanel.isDisplayed();
+	}
+
+	public final String SHOPING_CART_EMPTY_MSG = "//span[@class='cart--empty-text']";
+
+	@FindBy(xpath = SHOPING_CART_EMPTY_MSG)
+	WebElement shopingCartEmptyMsg;
+
+	public boolean emptyShopingCartIsDisplayed() {
+		return shopingCartEmptyMsg.isDisplayed();
+	}
+
+	public final String CROSS_ICON = "//i[@class='icon--cross']";
+
+	@FindBy(xpath = CROSS_ICON)
+	WebElement crossIcon;
+
+	public boolean crossIconIsDisplayed() {
+		return crossIcon.isDisplayed();
+	}
+
+	public void navigateToCrossIcon() {
+		crossIcon.click();
+	}
+
+///// WAS USE IN #8-searchTest/////?????
 	public final String SEARCH_ICON = "//form[@class='main-search--form']//i[@class='im-icon-search']";
 	public final String ALLERT_MESSAGE = "//div[@class='alert--content']";
 	public final String SEARCH_INPUT_FIELD = "//input[@class='main-search--field']";
@@ -218,19 +264,29 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = EXISTING_PRODUCT_HEADLINE)
 	WebElement existingProductHeadline;
 
-	public boolean existingProductHeadlineIsDisplayed() {
+/*	public boolean existingProductHeadlineIsDisplayed() {
 		return existingProductHeadline.isDisplayed();
 	}
-
+*/
 	@FindBy(xpath = NON_EXISTING_PRODUCT_HEADLINE)
 	WebElement nonExistingProductHeadline;
 
-	public boolean nonExistingProductHeadlineIsDisplayed() {
+/*	public boolean nonExistingProductHeadlineIsDisplayed() {
 		try {
 			return nonExistingProductHeadline.isDisplayed();
 		} catch (NoSuchElementException e) {
 			return nonExistingProductHeadline.isDisplayed();
 		}
+	*/	
+		public boolean existingProductHeadlineIsDisplayed() {
+			if(existingProductHeadline.isDisplayed()) {
+			return existingProductHeadline.isDisplayed();
+		}
+			try {
+				return nonExistingProductHeadline.isDisplayed();
+			} catch (NoSuchElementException e) {
+				return nonExistingProductHeadline.isDisplayed();
+			}
 	}
 
 /////WAS USE IN #9-facebookTest/////
@@ -469,4 +525,46 @@ public class HomePage extends BasePage {
 		driver.switchTo().window(tabs.get(1));
 		return new AppStorePage(this.driver);
 	}
-}
+
+///// WAS USE IN #21-returnToTopTest /////
+	// coment drac@ inchu chi ashxatum???
+	public final String RETURN_TO_TOP_BTN = "//a[@id='return-to-top']";
+
+	@FindBy(xpath = RETURN_TO_TOP_BTN)
+	WebElement returnToTopBtn;
+	
+	public void ByPixel() {
+		
+		// WebElement element = driver.findElement(By.xpath("//a[@id='return-to-top']"));
+		// ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("window.scrollBy(0,250)");
+	}
+
+	public void navigateToReturnToTopBtn() {
+		returnToTopBtn.click();
+	}
+
+///// WAS USE IN #22-buyWithoutLoginTest /////?????????????
+
+	public final String SHOPPING_CART_BTN_OF_PRODUCT = "//button[@class='buybox--button block btn is--primary is--icon-right is--center is--large']";
+
+	@FindBy(xpath = SHOPPING_CART_BTN_OF_PRODUCT)
+	WebElement shopCartBtn;
+
+	public boolean shopCartBtnIsDisplayed() {
+		return shopCartBtn.isDisplayed();
+	}
+
+	public void navigateToShopCartBtn() {
+		shopCartBtn.click();
+	}
+
+	/*public WebElement shoppingCartMassiv() {
+		WebElement[] a = new WebElement[140];
+		for (int i = 0; i < 140; i++) {
+			a[i] = shopCartBtn;
+		}
+*/
+	}

@@ -301,14 +301,17 @@ public class GeneralTest extends BaseTest {
 
 	/// #6-shoppingCartBtnTest ///
 	@Test
-	public void shoppingCartBtnTest() throws InterruptedException {
-		ProfilePage profile = new ProfilePage(this.driver);
+	public void shoppingCartTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);		
 		Thread.sleep(2000);
-		Assert.assertTrue(profile.shopingCartBtnIsDisplayed());
-		profile.shopingCartBtnClick();
-		Assert.assertTrue(profile.shopingCartPanelIsDisplayed());
+		Assert.assertTrue(home.shopingCartBtnIsDisplayed());
+		home.shopingCartBtnClick();
+		Assert.assertTrue(home.shopingCartPanelIsDisplayed());
 		Thread.sleep(2000);
-		Assert.assertTrue(profile.emptyShopingCartIsDisplayed());
+		Assert.assertTrue(home.emptyShopingCartIsDisplayed());
+		Assert.assertTrue(home.crossIconIsDisplayed());
+		home.navigateToCrossIcon();
+		Thread.sleep(2000);
 	}
 
 	/// #7-returnHomeBtnTest ///
@@ -339,7 +342,7 @@ public class GeneralTest extends BaseTest {
 		home.navigateToSearchIcon();
 		// click search iconi vra
 		// nkaragrutyun@ HomePage-um
-		Assert.assertTrue(home.nonExistingProductHeadlineIsDisplayed());
+		Assert.assertTrue(home.existingProductHeadlineIsDisplayed());
 
 	}
 
@@ -566,5 +569,33 @@ public class GeneralTest extends BaseTest {
 		Assert.assertTrue(appstore.appStorePageIsDisplayed());
 		appstore.closeNewTab();
 	}
+	
+	/// #21-returnToTopTest ///
+		@Test
+		public void returnToTopTest() throws InterruptedException {
+			HomePage home = new HomePage(this.driver);
+			Thread.sleep(2000);
+			home.ByPixel();
+			Thread.sleep(2000);
+			home.navigateToReturnToTopBtn();
+			Thread.sleep(2000);
+			Assert.assertTrue(home.homeMainIsDisplayed());
+		}
+		
+
+		/// #22-buyWithoutLoginTest ///????????????????
+			@Test
+			public void buyWithoutLoginTest() throws InterruptedException {
+				HomePage home = new HomePage(this.driver);
+				Assert.assertTrue(home.shopCartBtnIsDisplayed());
+				Thread.sleep(2000);
+				//home.shoppingCartMassiv();
+				Thread.sleep(2000);
+				//home.shoppingCartMassiv();
+				Thread.sleep(2000);
+				//home.shoppingCartMassiv();
+				Thread.sleep(2000);
+				//Assert.assertTrue(home.homeMainIsDisplayed());
+			}
 
 }

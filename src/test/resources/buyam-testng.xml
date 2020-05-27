@@ -12,9 +12,9 @@
 				    <!-- include name="loginTest"/-->
 				    <!-- include name="forgotPasswordTest"/-->
 				    <!-- include name="wishlistBtnTest"/-->
-				    <!-- include name="shoppingCartBtnTest"/-->
+				    <!-- include name="shoppingCartTest"/-->
 				    <!-- include name="returnHomeBtnTest"/-->
-				    <!-- include name="searchTest"/-->
+				    <include name="searchTest"/>
 				    <!-- include name="facebookTest"/-->
 				    <!-- include name="instagramTest"/-->
 				    <!-- include name="youtubeTest"/-->
@@ -26,7 +26,9 @@
 				    <!-- include name="aboutUsTest"/-->
 				    <!-- include name="deliveryAndPaymentTest"/-->
 				    <!-- include name="googlePlayTest"/-->
-				    <include name="appStoreTest"/>
+				    <!-- include name="appStoreTest"/-->
+				    <!-- include name="returnToTopTest"/-->
+				    <!-- include name="buyWithoutLoginTest"/-->
 				</methods>
 			</class>
 		</classes>

@@ -42,36 +42,6 @@ public class ProfilePage extends LoginPage {
 		return accountPanel.isDisplayed();
 	}
 
-/////WAS USE IN #6-shoppingCartBtnTest()/////
-	public final String SHOPING_CART_BTN = "//a[@class='btn cart--link']";
-	public final String SHOPING_CART_PANEL = "//div[@class='ajax--cart']";
-	public final String SHOPING_CART_EMPTY_MSG = "//span[@class='cart--empty-text']";
-
-	@FindBy(xpath = SHOPING_CART_BTN)
-	WebElement shopingCartBtn;
-
-	public boolean shopingCartBtnIsDisplayed() {
-		return shopingCartBtn.isDisplayed();
-	}
-
-	public void shopingCartBtnClick() {
-		shopingCartBtn.click();
-	}
-
-	@FindBy(xpath = SHOPING_CART_PANEL)
-	WebElement shopingCartPanel;
-
-	public boolean shopingCartPanelIsDisplayed() {
-		return shopingCartPanel.isDisplayed();
-	}
-
-	@FindBy(xpath = SHOPING_CART_EMPTY_MSG)
-	WebElement shopingCartEmptyMsg;
-
-	public boolean emptyShopingCartIsDisplayed() {
-		return shopingCartEmptyMsg.isDisplayed();
-	}
-
 /////WAS USE IN  #7-returnHomeBtnTest/////
 	public final String RETURN_HOME_PAGE_ICON = "//div[@class='logo-main block-group']//a[@class='logo--link']";
 	public final String HOME_PAGE = "//nav[@class='navigation-main']";
