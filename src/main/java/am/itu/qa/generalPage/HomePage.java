@@ -27,7 +27,7 @@ public class HomePage extends BasePage {
 		return homeMain.isDisplayed();
 	}
 
-////// WAS USE IN #1-languageTest()/////
+////// WAS USE IN languageTest()/////
 	public final String SETTINGS_BTN = "//i[@class='im-icon-settings']";
 	public final String LANGUAGE_BTN = "//nav[@class='shop-setings-navigation top-bar--navigation']//select[@class='language--select']";
 	public final String LANGUAGE_ENG = "//nav[@class='shop-setings-navigation top-bar--navigation']//select[@class='language--select']//option[@value='3']";
@@ -99,7 +99,7 @@ public class HomePage extends BasePage {
 		return langHY.isDisplayed();
 	}
 
-///// WAS USE IN #2-registracionTest()/////
+///// WAS USE IN registracionTest()/////
 	public final String MY_ACCOUNT_BTN = "//a[@class='btn entry--link account--link']";
 	public final String REGISTRACION_BTN = "//a[@class='blocked--link navigation--link navigation--register-btn']";
 	public final String SALUTATION_FIELD = "//select[@class='is--required has--error]";
@@ -152,7 +152,7 @@ public class HomePage extends BasePage {
 		return new LogOutPage(this.driver);
 	}
 
-///// WAS USE IN #3-loginTest()/////
+///// WAS USE IN loginTest()/////
 	public final String LOGIN_BTN = "//a[contains(@class,'blocked--link navigation--link navigation--signin-btn')]";
 	public final String DROP_BOX_MYACCOUNT = "//div[@class='account--menu is--rounded is--personalized']";
 
@@ -171,7 +171,7 @@ public class HomePage extends BasePage {
 		return new LoginPage(this.driver);
 	}
 
-///// WAS USE IN #4-forgotPasswordTest/////
+///// WAS USE IN forgotPasswordTest/////
 	public final String ALLERT_CONTENT = "//div[@class='alert is--success is--rounded']";
 
 	@FindBy(xpath = ALLERT_CONTENT)
@@ -181,7 +181,7 @@ public class HomePage extends BasePage {
 		return allertContent.isDisplayed();
 	}
 
-/////WAS USE IN #6-shoppingCartBtnTest()/////
+/////WAS USE IN shoppingCartBtnTest()/////
 	public final String SHOPING_CART_BTN = "//a[@class='btn cart--link']";
 
 	@FindBy(xpath = SHOPING_CART_BTN)
@@ -226,7 +226,7 @@ public class HomePage extends BasePage {
 		crossIcon.click();
 	}
 
-///// WAS USE IN #8-searchTest/////?????
+///// WAS USE IN searchTest/////?????
 	public final String SEARCH_ICON = "//form[@class='main-search--form']//i[@class='im-icon-search']";
 	public final String ALLERT_MESSAGE = "//div[@class='alert--content']";
 	public final String SEARCH_INPUT_FIELD = "//input[@class='main-search--field']";
@@ -289,7 +289,7 @@ public class HomePage extends BasePage {
 			}
 	}
 
-/////WAS USE IN #9-facebookTest/////
+/////WAS USE IN facebookTest/////
 	public final String FACEBOOK_BTN = "//div[@class='footer--columns block-group']//a[@class='facebook-link']";
 
 	@FindBy(xpath = FACEBOOK_BTN)
@@ -308,7 +308,7 @@ public class HomePage extends BasePage {
 		return new FacebookPage(this.driverNewTab);
 	}
 
-/////WAS USE IN #10-instagramTest/////
+/////WAS USE IN instagramTest/////
 	public final String INSTAGRAM_BTN = "//a[@class='instagram-link']";
 
 	@FindBy(xpath = INSTAGRAM_BTN)
@@ -326,7 +326,7 @@ public class HomePage extends BasePage {
 		return new InstagramPage(this.driver);
 	}
 
-/////WAS USE IN #11-youtubeTest/////
+/////WAS USE IN youtubeTest/////
 	public final String YOUTUBE_BTN = "//footer[@class='footer-main']//a[@class='youtube-link']/i[@aria-hidden='true']";
 
 	@FindBy(xpath = YOUTUBE_BTN)
@@ -344,7 +344,7 @@ public class HomePage extends BasePage {
 		return new YoutubePage(this.driver);
 	}
 
-/////WAS USE IN #12-changeAddressTest/////
+/////WAS USE IN changeAddressTest/////
 	public final String ADDRESS_BTN = "//a[contains(@href,'/address/index/sidebar/')]";
 	public final String ACCOUNT_DROPDOWN = "//div[@class=\"account--dropdown-navigation\"]";
 
@@ -367,7 +367,7 @@ public class HomePage extends BasePage {
 		return new AddressPage(this.driver);
 	}
 
-/////WAS USE IN #13-changeEmailTest/////
+/////WAS USE IN changeEmailTest/////
 	public final String PROFILE_SETTINGS_BTN = "//div[@class='account--menu-container']//a[contains(@href,'/account/profile')]";
 
 	@FindBy(xpath = PROFILE_SETTINGS_BTN)
@@ -382,7 +382,7 @@ public class HomePage extends BasePage {
 		return new ProfileSettingsPage(this.driver);
 	}
 
-/////WAS USE IN #14-ordersTest/////
+/////WAS USE IN ordersTest/////
 	public final String ORDERS_BTN = "//div[@class='account--menu-container']//a[contains(@href,'/account/orders') and @class='navigation--link']";
 
 	@FindBy(xpath = ORDERS_BTN)
@@ -397,7 +397,7 @@ public class HomePage extends BasePage {
 		return new LoginPage(this.driver);
 	}
 
-/////WAS USE IN #15-newsletterTest/////
+/////WAS USE IN newsletterTest/////
 	public final String NEWWSLETTER_BTN = "//div[@class='account--menu-container']//a[@class='navigation--link' and contains(@href,'/newsletter')]";
 
 	@FindBy(xpath = NEWWSLETTER_BTN)
@@ -411,7 +411,7 @@ public class HomePage extends BasePage {
 		newsletterBtn.click();
 		return new NewsletterPage(this.driver);
 	}
-/////WAS USE IN #16-contactUsTest /////
+/////WAS USE IN contactUsTest /////
 
 	public final String CONTACT_US = "//div[@class='footer--column column--menu block']//a[@class='navigation--link' and contains(@href,'/contact')]";
 
@@ -427,7 +427,7 @@ public class HomePage extends BasePage {
 		return new ContactUsPage(this.driver);
 	}
 
-/////WAS USE IN #17-aboutUsTest /////
+/////WAS USE IN aboutUsTest /////
 	/// russian
 	public final String ABOUT_US_RU = "//div[@class='footer--column column--menu block']//li[@class='navigation--entry']/a[@href='https://buy.am/ru/mer-masin']";
 
@@ -472,9 +472,9 @@ public class HomePage extends BasePage {
 		aboutUsAM.click();
 		return new AboutUsPage(this.driver);
 	}
-	///// WAS USE IN #18-deliveryAndPaymentTest /////
+	///// WAS USE IN deliveryAndPaymentTest /////
 
-	public final String DELIVERY_AND_PAYMENT = "//div[@class='footer--column column--menu block']//a[@class='navigation--link' and contains(@href,'/contact')]";
+	public final String DELIVERY_AND_PAYMENT = "//div[@class='footer--column column--menu block']//a[@class='navigation--link' and contains (@href,'/araqum-ev-vcharum')]";
 
 	@FindBy(xpath = DELIVERY_AND_PAYMENT)
 	WebElement deliveryAndPayment;
@@ -488,7 +488,7 @@ public class HomePage extends BasePage {
 		return new DeliveryAndPaymentPage(this.driver);
 	}
 
-	///// WAS USE IN #19-googlePlayTest /////
+	///// WAS USE IN googlePlayTest /////
 
 	public final String GOOGLE_PLAY_BTN = "//footer[@class='footer-main']//div[@class='column--content']//a[@class='google-play-link']";
 
@@ -507,7 +507,7 @@ public class HomePage extends BasePage {
 		return new GooglePlayPage(this.driver);
 	}
 
-	///// WAS USE IN #20-appStoreTest /////
+	///// WAS USE IN appStoreTest /////
 
 	public final String APP_STORE_BTN = "//footer[@class='footer-main']//a[@href='https://itunes.apple.com/app/buy-am/id1224598831']";
 
@@ -526,7 +526,7 @@ public class HomePage extends BasePage {
 		return new AppStorePage(this.driver);
 	}
 
-///// WAS USE IN #21-returnToTopTest /////
+///// WAS USE IN returnToTopTest /////
 	// coment drac@ inchu chi ashxatum???
 	public final String RETURN_TO_TOP_BTN = "//a[@id='return-to-top']";
 
@@ -546,7 +546,7 @@ public class HomePage extends BasePage {
 		returnToTopBtn.click();
 	}
 
-///// WAS USE IN #22-buyWithoutLoginTest /////?????????????
+///// WAS USE IN buyWithoutLoginTest /////?????????????
 
 	public final String SHOPPING_CART_BTN_OF_PRODUCT = "//button[@class='buybox--button block btn is--primary is--icon-right is--center is--large']";
 
@@ -567,4 +567,50 @@ public class HomePage extends BasePage {
 			a[i] = shopCartBtn;
 		}
 */
+
+/////WAS USE IN  returnHomeBtnTest/////
+	public final String RETURN_HOME_PAGE_ICON = "//div[@class='logo-main block-group']//a[@class='logo--link']";
+	public final String HOME_PAGE = "//nav[@class='navigation-main']";
+
+	@FindBy(xpath = RETURN_HOME_PAGE_ICON)
+	WebElement returnHomePageIcon;
+
+	public boolean returnHomePageIconIsDisplayed() {
+		return returnHomePageIcon.isDisplayed();
 	}
+
+	public HomePage navigateToReturnHomePage() {
+		returnHomePageIcon.click();
+		return new HomePage(this.driver);
+	}
+
+	@FindBy(xpath = HOME_PAGE)
+	WebElement homePage;
+
+	public boolean homePageIsDisplayed() {
+		return homePage.isDisplayed();
+	}
+///// WAS USE IN #5-wishlistBtnTest()/////
+	public final String WISHLIST_BTN = "//ul[@class=\"navigation--list block-group\"]//a[@class=\"btn\"]";
+	public final String WISHLIST_EMPTY_MSG = "//div[@class='empty-wishlist']";
+	public final String WISHLIST_COUNT = "//span[@class='badge notes--quantity']";
+
+	@FindBy(xpath = WISHLIST_BTN)
+	WebElement wishlistBtn;
+
+	public boolean wishlistBtnIsDisplayed() {
+		return wishlistBtn.isDisplayed();
+	}
+
+	public void navigateToWishlistBtn() {
+		wishlistBtn.click();
+	}
+
+	@FindBy(xpath = WISHLIST_EMPTY_MSG)
+	WebElement wishlistEmptyMsg;
+
+	public boolean emptyWishlistIsDisplayed() {
+		return wishlistEmptyMsg.isDisplayed();
+	}
+}
+

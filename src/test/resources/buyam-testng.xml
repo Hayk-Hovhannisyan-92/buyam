@@ -5,32 +5,19 @@
 		<parameter name="emailid" value="tester456@gmail.com" />
 		<parameter name="password" value="test@123" />
 		<classes>
-			<class name="am.itu.qa.generalTest.GeneralTest" >
-				<methods>
-				    <!-- include name="languageTest"/-->
-				    <!-- include name="registracionTestAM"/-->
-				    <!-- include name="loginTest"/-->
-				    <!-- include name="forgotPasswordTest"/-->
-				    <!-- include name="wishlistBtnTest"/-->
-				    <!-- include name="shoppingCartTest"/-->
-				    <!-- include name="returnHomeBtnTest"/-->
-				    <include name="searchTest"/>
-				    <!-- include name="facebookTest"/-->
-				    <!-- include name="instagramTest"/-->
-				    <!-- include name="youtubeTest"/-->
-				    <!-- include name="changeAddressTest"/-->
-				    <!-- include name="changeEmailTest"/-->
-				    <!-- include name="ordersTest"/-->
-				    <!-- include name="newsletterTest"/-->
-				    <!-- include name="contactUsTest"/-->
-				    <!-- include name="aboutUsTest"/-->
-				    <!-- include name="deliveryAndPaymentTest"/-->
-				    <!-- include name="googlePlayTest"/-->
-				    <!-- include name="appStoreTest"/-->
-				    <!-- include name="returnToTopTest"/-->
-				    <!-- include name="buyWithoutLoginTest"/-->
-				</methods>
-			</class>
+			<class name="am.itu.qa.generalTest.FooterFIYTest" />
+			<class name="am.itu.qa.generalTest.FooterButtonsTest" />
+			<class name="am.itu.qa.generalTest.GooglePlayAppStoreTest" />
+			<class name="am.itu.qa.generalTest.RegistracionLoginTest" />
+			<class name="am.itu.qa.generalTest.HeaderButtonsTest" />
+			<class name="am.itu.qa.generalTest.LanguageTest" />
+			<class name="am.itu.qa.generalTest.MyAccountSubsectionButtonsTest" />
+			<!--  class name="am.itu.qa.generalTest.GeneralTest"-->
+				<!--  methods-->
+					<!-- include name="returnToTopTest"/ -->
+					<!-- include name="buyWithoutLoginTest"/ -->
+				<!--  /methods-->
+			<!--  /class-->
 		</classes>
 	</test>
 </suite>

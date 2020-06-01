@@ -28,6 +28,7 @@ public class FacebookPage extends BasePage {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driverNewTab = driver.switchTo().window(tabs.get(1));
 		driverNewTab.close();
+		driver = driver.switchTo().window(tabs.get(0));
 
 	}
 }

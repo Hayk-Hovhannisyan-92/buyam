@@ -12,56 +12,10 @@ public class ProfilePage extends LoginPage {
 
 	public final String ACCOUNT_PANEL = "//div[@class='account--welcome panel']";
 
-///// WAS USE IN #5-wishlistBtnTest()/////
-	public final String WISHLIST_BTN = "//ul[@class=\"navigation--list block-group\"]//a[@class=\"btn\"]";
-	public final String WISHLIST_EMPTY_MSG = "//div[@class='empty-wishlist']";
-	public final String WISHLIST_COUNT = "//span[@class='badge notes--quantity']";
-
-	@FindBy(xpath = WISHLIST_BTN)
-	WebElement wishlistBtn;
-
-	public boolean wishlistBtnIsDisplayed() {
-		return wishlistBtn.isDisplayed();
-	}
-
-	public void wishlistBtnClick() {
-		wishlistBtn.click();
-	}
-
-	@FindBy(xpath = WISHLIST_EMPTY_MSG)
-	WebElement wishlistEmptyMsg;
-
-	public boolean emptyWishlistIsDisplayed() {
-		return wishlistEmptyMsg.isDisplayed();
-	}
-
 	@FindBy(xpath = ACCOUNT_PANEL)
 	WebElement accountPanel;
 
 	public boolean profilePageIsOpen() {
 		return accountPanel.isDisplayed();
-	}
-
-/////WAS USE IN  #7-returnHomeBtnTest/////
-	public final String RETURN_HOME_PAGE_ICON = "//div[@class='logo-main block-group']//a[@class='logo--link']";
-	public final String HOME_PAGE = "//nav[@class='navigation-main']";
-
-	@FindBy(xpath = RETURN_HOME_PAGE_ICON)
-	WebElement returnHomePageIcon;
-
-	public boolean returnHomePageIconIsDisplayed() {
-		return returnHomePageIcon.isDisplayed();
-	}
-
-	public HomePage returnHomePage() {
-		returnHomePageIcon.click();
-		return new HomePage(this.driver);
-	}
-
-	@FindBy(xpath = HOME_PAGE)
-	WebElement homePage;
-
-	public boolean homePageIsDisplayed() {
-		return homePage.isDisplayed();
 	}
 }

@@ -10,7 +10,7 @@ public class BaseTest {
 
 	@BeforeTest
 	public void openDriver() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\ChromeDriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\ChromeDriver version 83\\chromedriver.exe");
 		Thread.sleep(3000);
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
