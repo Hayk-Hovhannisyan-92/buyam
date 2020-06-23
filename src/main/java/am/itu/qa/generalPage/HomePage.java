@@ -551,23 +551,40 @@ public class HomePage extends BasePage {
 	public final String SHOPPING_CART_BTN_OF_PRODUCT = "//button[@class='buybox--button block btn is--primary is--icon-right is--center is--large']";
 
 	@FindBy(xpath = SHOPPING_CART_BTN_OF_PRODUCT)
-	WebElement shopCartBtn;
+	WebElement shopCartBtnOfProduct;
 
 	public boolean shopCartBtnIsDisplayed() {
-		return shopCartBtn.isDisplayed();
+		return shopCartBtnOfProduct.isDisplayed();
 	}
 
-	public void navigateToShopCartBtn() {
-		shopCartBtn.click();
+	public void navigateToShopCartBtnOfProduct() {
+		shopCartBtnOfProduct.click();
 	}
 
-	/*public WebElement shoppingCartMassiv() {
-		WebElement[] a = new WebElement[140];
-		for (int i = 0; i < 140; i++) {
-			a[i] = shopCartBtn;
-		}
-*/
+	public final String PRODUCT_IN_SHOPPING_CART = "//div[@class='is--rounded panel-supplier']";
 
+	@FindBy(xpath = PRODUCT_IN_SHOPPING_CART)
+	WebElement productInShoppingCart;
+
+	public boolean productInShoppingCartIsDisplayed() {
+		return productInShoppingCart.isDisplayed();
+	}
+	//a[@class="btn is--primary button--checkout is--icon-right"]
+	
+	public final String CHECKOUT_BTN = "//div[@class='button--container ']//a[@class='btn is--primary button--checkout is--icon-right']";
+
+	@FindBy(xpath = CHECKOUT_BTN)
+	WebElement checkoutBtn;
+
+	public boolean checkoutBtnIsDisplayed() {
+		return checkoutBtn.isDisplayed();
+	}
+	
+	public LoginPage navigateToCheckoutBtn() {
+		checkoutBtn.click();
+		return new LoginPage(this.driver);
+	}
+	
 /////WAS USE IN  returnHomeBtnTest/////
 	public final String RETURN_HOME_PAGE_ICON = "//div[@class='logo-main block-group']//a[@class='logo--link']";
 	public final String HOME_PAGE = "//nav[@class='navigation-main']";
@@ -590,7 +607,7 @@ public class HomePage extends BasePage {
 	public boolean homePageIsDisplayed() {
 		return homePage.isDisplayed();
 	}
-///// WAS USE IN #5-wishlistBtnTest()/////
+///// WAS USE IN wishlistBtnTest()/////
 	public final String WISHLIST_BTN = "//ul[@class=\"navigation--list block-group\"]//a[@class=\"btn\"]";
 	public final String WISHLIST_EMPTY_MSG = "//div[@class='empty-wishlist']";
 	public final String WISHLIST_COUNT = "//span[@class='badge notes--quantity']";
@@ -605,6 +622,11 @@ public class HomePage extends BasePage {
 	public void navigateToWishlistBtn() {
 		wishlistBtn.click();
 	}
+	
+	public LoginPage navigateToWishlistButton() {
+		wishlistBtn.click();
+		return new LoginPage(this.driver);
+	}
 
 	@FindBy(xpath = WISHLIST_EMPTY_MSG)
 	WebElement wishlistEmptyMsg;
@@ -612,5 +634,40 @@ public class HomePage extends BasePage {
 	public boolean emptyWishlistIsDisplayed() {
 		return wishlistEmptyMsg.isDisplayed();
 	}
-}
 
+///// WAS USE IN ordersTest()/////
+public final String SHOPING_CART_BUTTON = "//button[@class='buybox--button block btn is--primary is--icon-right is--center is--large']";
+	
+	@FindBy(xpath = SHOPING_CART_BUTTON )
+	WebElement shopingCartButton;
+	
+	public int navigateToShopingCartButton() {
+		 shopingCartButton.click();
+		 return Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText());
+	}
+	
+	public final String BADGE_CART_QUANTITY = "//span[contains(@class,'quantity')]/text()";
+	
+	@FindBy(xpath = BADGE_CART_QUANTITY )
+	WebElement badgeCartQuantity;
+	
+	
+///// WAS USE IN buyFewProductInSame() /////
+	
+	public final String PLUS_SIGN = "//div[@class='ajax--cart']//div[@class='cart--item']//a[@class='im-change-quantity-btn action-plus']//i[@class='icon--plus3']";
+	
+	@FindBy(xpath = PLUS_SIGN )
+	WebElement plusSign;
+	
+	public int navigateToPlusSign() {
+		plusSign.click();
+		return Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText());
+	}
+	
+	public WebElement checkProductQuantity(int n) {
+		Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText());
+		for (int i = 1 ; i < n ; i++) {
+		return i*navigateToPlusSign();
+	}
+}
+}

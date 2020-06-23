@@ -139,7 +139,7 @@ public class RegistracionLoginTest extends BaseTest {
 		login.navigateToBillingStreetField("Hovsep Emini p. 29 tun");
 
 	}
-
+	
 	/// loginTest ///
 	@Test
 	public void loginTest() throws InterruptedException {
@@ -210,33 +210,26 @@ public class RegistracionLoginTest extends BaseTest {
 	}
 	
 	/// forgotPasswordTest ///
-		@Test
-		public void forgotPasswordTest() throws InterruptedException {
-			HomePage home = new HomePage(this.driver);
-			LoginPage login = new LoginPage(this.driver);
-			home.navigateToMyAccount();
-			Thread.sleep(2000);
-			home.navigateToLogOutBtn();
-			Thread.sleep(2000);
-			home.navigateToReturnHomePage();
-			Thread.sleep(2000);
-			home.navigateToMyAccount();
-			Thread.sleep(2000);
-			home.navigateToLogin();
-			Thread.sleep(2000);
-			Assert.assertTrue(login.forgotPasswordIsDisplayed());
-			ForgotPasswordPage forgotPassword = new ForgotPasswordPage(this.driver);
-			forgotPassword = login.navigateToForgotPassword();
-			Thread.sleep(4000);
-			Assert.assertTrue(forgotPassword.forgotPasswordPageIsDisplayed());
-			Assert.assertTrue(forgotPassword.passwordResetInputIsDisplayed());
-			forgotPassword.passwordResetInputType("hovhannisyanhayk56@gmail.com");
-			Thread.sleep(2000);
-			Assert.assertTrue(forgotPassword.sendEmailBtnIsDisplayed());
-			home = forgotPassword.navigateToSendEmailBtn();
-			Thread.sleep(2000);
-			Assert.assertTrue(home.allertContentIsDisplayed());
+	@Test
+	public void forgotPasswordTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		LoginPage login = new LoginPage(this.driver);
+		home.navigateToMyAccount();
+		Thread.sleep(2000);
+		home.navigateToLogin();
+		Thread.sleep(2000);
+		Assert.assertTrue(login.forgotPasswordIsDisplayed());
+		ForgotPasswordPage forgotPassword = new ForgotPasswordPage(this.driver);
+		forgotPassword = login.navigateToForgotPassword();
+		Thread.sleep(4000);
+		Assert.assertTrue(forgotPassword.forgotPasswordPageIsDisplayed());
+		Assert.assertTrue(forgotPassword.passwordResetInputIsDisplayed());
+		forgotPassword.passwordResetInputType("hovhannisyanhayk56@gmail.com");
+		Thread.sleep(2000);
+		Assert.assertTrue(forgotPassword.sendEmailBtnIsDisplayed());
+		home = forgotPassword.navigateToSendEmailBtn();
+		Thread.sleep(2000);
+		Assert.assertTrue(home.allertContentIsDisplayed());
 
-		}
-
+	}
 }

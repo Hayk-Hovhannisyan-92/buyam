@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import am.itu.qa.baseTest.BaseTest;
 import am.itu.qa.generalPage.HomePage;
+import am.itu.qa.generalPage.LoginPage;
 
 public class HeaderButtonsTest extends BaseTest {
 
@@ -23,10 +24,16 @@ public class HeaderButtonsTest extends BaseTest {
 	@Test
 	public void wishlistBtnTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
+		LoginPage login = new LoginPage(this.driver);
 		Thread.sleep(2000);
 		Assert.assertTrue(home.wishlistBtnIsDisplayed());
-		home.navigateToWishlistBtn();
+		login = home.navigateToWishlistButton();
 		Thread.sleep(2000);
+		Assert.assertTrue(login.loginPageIsOpen());
+		login.emailField("hovhannisyanhayk56@gmail.com");
+		Thread.sleep(2000);
+		login.passwordField("BuyamHayk");
+		login.clickOnLoginBtn();
 		Assert.assertTrue(home.emptyWishlistIsDisplayed());
 		// After step make sure that user's wishlist is empty
 		Thread.sleep(2000);
@@ -45,7 +52,7 @@ public class HeaderButtonsTest extends BaseTest {
 		Assert.assertTrue(home.emptyShopingCartIsDisplayed());
 		Assert.assertTrue(home.crossIconIsDisplayed());
 		home.navigateToCrossIcon();
-		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
 	}
 
 	/// searchTest ///???????????????

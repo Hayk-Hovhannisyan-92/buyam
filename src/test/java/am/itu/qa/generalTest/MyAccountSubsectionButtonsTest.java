@@ -52,6 +52,7 @@ public class MyAccountSubsectionButtonsTest extends BaseTest {
 		Thread.sleep(2000);
 		home.navigateToReturnHomePage();
 		Assert.assertTrue(home.homeMainIsDisplayed());
+		home.navigateToReturnHomePage();
 	}
 
 	/// changeEmailTest ///

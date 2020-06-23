@@ -51,7 +51,6 @@ public class FooterButtonsTest extends BaseTest {
 		Assert.assertTrue(aboutUsRU.aboutUsPageIsDisplayed());
 		home.navigateToReturnHomePage();
 		Assert.assertTrue(home.homeMainIsDisplayed());
-		Thread.sleep(2000);
 	}
 
 	/// deliveryAndPaymentTest ///
