@@ -264,29 +264,27 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = EXISTING_PRODUCT_HEADLINE)
 	WebElement existingProductHeadline;
 
-/*	public boolean existingProductHeadlineIsDisplayed() {
-		return existingProductHeadline.isDisplayed();
-	}
-*/
+	/*
+	 * public boolean existingProductHeadlineIsDisplayed() { return
+	 * existingProductHeadline.isDisplayed(); }
+	 */
 	@FindBy(xpath = NON_EXISTING_PRODUCT_HEADLINE)
 	WebElement nonExistingProductHeadline;
 
-/*	public boolean nonExistingProductHeadlineIsDisplayed() {
+	/*
+	 * public boolean nonExistingProductHeadlineIsDisplayed() { try { return
+	 * nonExistingProductHeadline.isDisplayed(); } catch (NoSuchElementException e)
+	 * { return nonExistingProductHeadline.isDisplayed(); }
+	 */
+	public boolean existingProductHeadlineIsDisplayed() {
+		if (existingProductHeadline.isDisplayed()) {
+			return existingProductHeadline.isDisplayed();
+		}
 		try {
 			return nonExistingProductHeadline.isDisplayed();
 		} catch (NoSuchElementException e) {
 			return nonExistingProductHeadline.isDisplayed();
 		}
-	*/	
-		public boolean existingProductHeadlineIsDisplayed() {
-			if(existingProductHeadline.isDisplayed()) {
-			return existingProductHeadline.isDisplayed();
-		}
-			try {
-				return nonExistingProductHeadline.isDisplayed();
-			} catch (NoSuchElementException e) {
-				return nonExistingProductHeadline.isDisplayed();
-			}
 	}
 
 /////WAS USE IN facebookTest/////
@@ -532,11 +530,13 @@ public class HomePage extends BasePage {
 
 	@FindBy(xpath = RETURN_TO_TOP_BTN)
 	WebElement returnToTopBtn;
-	
+
 	public void ByPixel() {
-		
-		// WebElement element = driver.findElement(By.xpath("//a[@id='return-to-top']"));
-		// ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
+		// WebElement element =
+		// driver.findElement(By.xpath("//a[@id='return-to-top']"));
+		// ((JavascriptExecutor)
+		// driver).executeScript("arguments[0].scrollIntoView(true);", element);
 
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("window.scrollBy(0,250)");
@@ -569,8 +569,8 @@ public class HomePage extends BasePage {
 	public boolean productInShoppingCartIsDisplayed() {
 		return productInShoppingCart.isDisplayed();
 	}
-	//a[@class="btn is--primary button--checkout is--icon-right"]
-	
+	// a[@class="btn is--primary button--checkout is--icon-right"]
+
 	public final String CHECKOUT_BTN = "//div[@class='button--container ']//a[@class='btn is--primary button--checkout is--icon-right']";
 
 	@FindBy(xpath = CHECKOUT_BTN)
@@ -579,12 +579,12 @@ public class HomePage extends BasePage {
 	public boolean checkoutBtnIsDisplayed() {
 		return checkoutBtn.isDisplayed();
 	}
-	
+
 	public LoginPage navigateToCheckoutBtn() {
 		checkoutBtn.click();
 		return new LoginPage(this.driver);
 	}
-	
+
 /////WAS USE IN  returnHomeBtnTest/////
 	public final String RETURN_HOME_PAGE_ICON = "//div[@class='logo-main block-group']//a[@class='logo--link']";
 	public final String HOME_PAGE = "//nav[@class='navigation-main']";
@@ -607,6 +607,7 @@ public class HomePage extends BasePage {
 	public boolean homePageIsDisplayed() {
 		return homePage.isDisplayed();
 	}
+
 ///// WAS USE IN wishlistBtnTest()/////
 	public final String WISHLIST_BTN = "//ul[@class=\"navigation--list block-group\"]//a[@class=\"btn\"]";
 	public final String WISHLIST_EMPTY_MSG = "//div[@class='empty-wishlist']";
@@ -622,7 +623,7 @@ public class HomePage extends BasePage {
 	public void navigateToWishlistBtn() {
 		wishlistBtn.click();
 	}
-	
+
 	public LoginPage navigateToWishlistButton() {
 		wishlistBtn.click();
 		return new LoginPage(this.driver);
@@ -636,38 +637,49 @@ public class HomePage extends BasePage {
 	}
 
 ///// WAS USE IN ordersTest()/////
-public final String SHOPING_CART_BUTTON = "//button[@class='buybox--button block btn is--primary is--icon-right is--center is--large']";
-	
-	@FindBy(xpath = SHOPING_CART_BUTTON )
+	public final String SHOPING_CART_BUTTON = "//button[@class='buybox--button block btn is--primary is--icon-right is--center is--large']";
+
+	@FindBy(xpath = SHOPING_CART_BUTTON)
 	WebElement shopingCartButton;
-	
+
 	public int navigateToShopingCartButton() {
-		 shopingCartButton.click();
-		 return Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText());
-	}
-	
-	public final String BADGE_CART_QUANTITY = "//span[contains(@class,'quantity')]/text()";
-	
-	@FindBy(xpath = BADGE_CART_QUANTITY )
-	WebElement badgeCartQuantity;
-	
-	
-///// WAS USE IN buyFewProductInSame() /////
-	
-	public final String PLUS_SIGN = "//div[@class='ajax--cart']//div[@class='cart--item']//a[@class='im-change-quantity-btn action-plus']//i[@class='icon--plus3']";
-	
-	@FindBy(xpath = PLUS_SIGN )
-	WebElement plusSign;
-	
-	public int navigateToPlusSign() {
-		plusSign.click();
+		shopingCartButton.click();
 		return Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText());
 	}
-	
+
+	public final String BADGE_CART_QUANTITY = "//span[contains(@class,'quantity')]/text()";
+
+	@FindBy(xpath = BADGE_CART_QUANTITY)
+	WebElement badgeCartQuantity;
+
+///// WAS USE IN addProductQuantityTest() /////
+
+	public final  String PLUS_SIGN = "//div[@class='ajax--cart']//div[@class='cart--item']//a[@class='im-change-quantity-btn action-plus']//i[@class='icon--plus3']";
+
+	@FindBy(xpath = PLUS_SIGN)
+	WebElement plusSign;
+
+	public void navigateToPlusSign() {
+		plusSign.click();
+	}
+
+	public final String QUANTITY_OF_PRODUCT = "//div[@class='quantity-price-container']//input[@value='1']";
+
+	@FindBy(xpath = QUANTITY_OF_PRODUCT)
+	WebElement quantityOfNumber;
+
 	public void checkProductQuantity(int n) {
-	//	Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText()) x = 1;
-		for (int i = 1 ; i < n ; i++) {
-	
+		int k = Integer.parseInt(driver.findElement((By) quantityOfNumber).getText());
+		k = 1;
+		for (int i = 1; i < n; i++) {
+			plusSign.click();
+			k++;
+			
 		}
 	}
+
+	public boolean checkQuantityOfNumber(int n) {
+		return Integer.parseInt(driver.findElement((By) quantityOfNumber).getText()) == n;
+	}
+
 }

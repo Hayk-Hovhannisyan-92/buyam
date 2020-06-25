@@ -1,5 +1,6 @@
 package am.itu.qa.generalTest;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import am.itu.qa.baseTest.BaseTest;
@@ -38,9 +39,10 @@ public class BuyTest extends BaseTest {
 		Assert.assertTrue(login.loginPageIsOpen());
 	}
 
-	/// buyFewProductInSame() -- buy few product in same and saw price ///
+	/// addProductQuantityTest() -- click on plusSign and saw that how many are clicked on plusSign
+	//  so many are increment quantity of product ///  ?????????????????
 	//@Test
-	public void buyFewProductInSame() throws InterruptedException{
+	public void addProductQuantityTest() throws InterruptedException{
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.shopCartBtnIsDisplayed());
 		Thread.sleep(2000);
@@ -51,6 +53,23 @@ public class BuyTest extends BaseTest {
 		Assert.assertTrue(home.productInShoppingCartIsDisplayed());
 		home.checkProductQuantity(3);
 		Thread.sleep(2000);
+		//By badgeCartQuantity = null;
+		//Assert.assertTrue(Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText())==3);
+		//home.navigateToPlusSign();
+		Assert.assertTrue(home.checkQuantityOfNumber(3));
+	}
+	
+	/// priceProductTest() -- add product quantity  and saw price of added product
+	//@Test
+	public void priceProductTest() throws InterruptedException{
+		HomePage home = new HomePage(this.driver);
+		Assert.assertTrue(home.shopCartBtnIsDisplayed());
+		Thread.sleep(2000);
+		home.navigateToShopCartBtnOfProduct();
+		Thread.sleep(2000);
+		home.shopingCartBtnClick();
+		Thread.sleep(2000);
+		Assert.assertTrue(home.productInShoppingCartIsDisplayed());
 		
 	}
 }
