@@ -664,10 +664,10 @@ public final String SHOPING_CART_BUTTON = "//button[@class='buybox--button block
 		return Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText());
 	}
 	
-	public WebElement checkProductQuantity(int n) {
-		Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText());
+	public void checkProductQuantity(int n) {
+	//	Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText()) x = 1;
 		for (int i = 1 ; i < n ; i++) {
-		return i*navigateToPlusSign();
+	
+		}
 	}
-}
 }

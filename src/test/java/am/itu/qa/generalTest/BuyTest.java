@@ -21,7 +21,7 @@ public class BuyTest extends BaseTest {
 	}
 
 	/// buyWithoutLoginTest ///
-	//@Test
+	@Test
 	public void buyWithoutLoginTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		LoginPage login = new LoginPage(this.driver);
@@ -39,7 +39,7 @@ public class BuyTest extends BaseTest {
 	}
 
 	/// buyFewProductInSame() -- buy few product in same and saw price ///
-	@Test
+	//@Test
 	public void buyFewProductInSame() throws InterruptedException{
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.shopCartBtnIsDisplayed());
