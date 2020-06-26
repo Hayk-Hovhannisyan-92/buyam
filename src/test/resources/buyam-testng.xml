@@ -11,7 +11,7 @@
 			<!--  class name="am.itu.qa.generalTest.RegistracionLoginTest" /-->
 			<!--  class name="am.itu.qa.generalTest.HeaderButtonsTest" /???????????? -->
 			<!--  class name="am.itu.qa.generalTest.LanguageTest" /-->
-			<!--  class name="am.itu.qa.generalTest.MyAccountSubsectionButtonsTest" /-->
+			<!--  class name="am.itu.qa.generalTest.MyAccountSubsectionButtonsTest"/-->
 			<class name="am.itu.qa.generalTest.BuyTest"/>
 		</classes>
 	</test>

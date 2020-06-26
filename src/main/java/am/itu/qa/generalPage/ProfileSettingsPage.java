@@ -12,6 +12,7 @@ public class ProfileSettingsPage extends BasePage {
 		super(driver);
 	}
 
+	/// WAS USE IN changeEmailTest ///
 	public final String ACCOUNT_PROFILE = "//div[@class='account--profile']";
 
 	@FindBy(xpath = ACCOUNT_PROFILE)
@@ -47,17 +48,17 @@ public class ProfileSettingsPage extends BasePage {
 		emailConfirmationField.sendKeys(email);
 	}
 
-	public final String CURRENT_PASSWORD_FIELD = "//input[@name='email[currentPassword]']";
+	public final String CURRENT_PASSWORD_FIELDIN_CHANGEEMAIL = "//input[@name='email[currentPassword]']";
 
-	@FindBy(xpath = CURRENT_PASSWORD_FIELD)
-	WebElement currentPasswordField;
+	@FindBy(xpath = CURRENT_PASSWORD_FIELDIN_CHANGEEMAIL)
+	WebElement currentPasswordFieldInChangeEmail;
 
-	public boolean currentPasswordFieldIsDisplayed() {
-		return currentPasswordField.isDisplayed();
+	public boolean currentPasswordFieldInChangeEmailIsDisplayed() {
+		return currentPasswordFieldInChangeEmail.isDisplayed();
 	}
 
-	public void navigateToCurrentPasswordField(String password) {
-		currentPasswordField.sendKeys(password);
+	public void navigateToCurrentPasswordFieldInChangeEmail(String password) {
+		currentPasswordFieldInChangeEmail.sendKeys(password);
 	}
 
 	public final String EMAIL_SAVE_CHANGES_BTN = "//div[@class='profile-email--container']//button[@class='btn is--block is--primary']";
@@ -71,6 +72,69 @@ public class ProfileSettingsPage extends BasePage {
 
 	public void navigateToEmailSaveChangesBtn() {
 		emailSaveChangesBtn.click();
+	}
+
+	/// WAS USE IN changePasswordTest ///
+
+	public final String NEW_PASSWORD_FIELD = "//div[@class='profile--password']//input[@class='profile--field is--required ']";
+
+	@FindBy(xpath = NEW_PASSWORD_FIELD)
+	WebElement newPasswordField;
+
+	public boolean newPasswordFieldIsDisplayed() {
+		return newPasswordField.isDisplayed();
+	}
+
+	public void navigateToNewPasswordField(String password) {
+		newPasswordField.sendKeys(password);
+	}
+
+	public final String RE_ENTER_PASSWORD_FIELD = "//div[@class='profile--password-confirmation']//input[@name='password[passwordConfirmation]']";
+
+	@FindBy(xpath = RE_ENTER_PASSWORD_FIELD)
+	WebElement reEnterPasswordField;
+
+	public boolean reEnterPasswordFieldIsDisplayed() {
+		return reEnterPasswordField.isDisplayed();
+	}
+
+	public void navigateToReEnterPasswordField(String password) {
+		reEnterPasswordField.sendKeys(password);
+	}
+
+	public final String CURRENT_PASSWORD_FIELD_IN_CHANGEPASSWORD = "//div[@class='profile--current-password']//input[@name='password[currentPassword]']";
+
+	@FindBy(xpath = CURRENT_PASSWORD_FIELD_IN_CHANGEPASSWORD)
+	WebElement currentPasswordFieldInChangePassword;
+
+	public boolean currentPasswordFieldInChangePasswordIsDisplayed() {
+		return currentPasswordFieldInChangePassword.isDisplayed();
+	}
+
+	public void navigateToCurrentPasswordFieldInChangePassword(String password) {
+		currentPasswordFieldInChangePassword.sendKeys(password);
+	}
+	
+	public final String ALLERT_MESSAGE_IN_CHANGEPASSWORD = "//div[@class='alert--content']";
+
+	@FindBy(xpath = ALLERT_MESSAGE_IN_CHANGEPASSWORD)
+	WebElement allertMessageInChangePassword;
+
+	public boolean allertMessageInChangePasswordIsDisplayed() {
+		return allertMessageInChangePassword.isDisplayed();
+	}
+	
+	public final String PASSWORD_SAVE_CHANGES_BTN = "//div[@class='profile-password--container']//button[@class='btn is--block is--primary']";
+
+	@FindBy(xpath = PASSWORD_SAVE_CHANGES_BTN)
+	WebElement passwordSaveChangesBtn;
+
+	public boolean passwordSaveChangesBtnIsDisplayed() {
+		return passwordSaveChangesBtn.isDisplayed();
+	}
+
+	public void navigateToPasswordSaveChangesBtn() {
+		passwordSaveChangesBtn.click();
 	}
 
 }

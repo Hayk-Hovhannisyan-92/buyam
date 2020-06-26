@@ -16,7 +16,7 @@ import am.itu.qa.generalPage.ProfileSettingsPage;
 public class MyAccountSubsectionButtonsTest extends BaseTest {
 
 /// changeAddressTest ///
-	@Test
+	@Test (priority=1)
 	public void changeAddressTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		LoginPage login = new LoginPage(this.driver);
@@ -56,7 +56,7 @@ public class MyAccountSubsectionButtonsTest extends BaseTest {
 	}
 
 	/// changeEmailTest ///
-	@Test
+	@Test (priority=2)
 	public void changeEmailTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		AddressPage address = new AddressPage(this.driver);
@@ -75,8 +75,8 @@ public class MyAccountSubsectionButtonsTest extends BaseTest {
 		Assert.assertTrue(profileSettings.emailConfirmationFieldIsDisplayed());
 		profileSettings.navigateToEmailConfirmationField("gor95hovhannisyan22@mail.ru");
 		Thread.sleep(2000);
-		Assert.assertTrue(profileSettings.currentPasswordFieldIsDisplayed());
-		profileSettings.navigateToCurrentPasswordField("BuyamHayk");
+		Assert.assertTrue(profileSettings.currentPasswordFieldInChangeEmailIsDisplayed());
+		profileSettings.navigateToCurrentPasswordFieldInChangeEmail("BuyamHayk");
 		Assert.assertTrue(profileSettings.emailSaveChangesBtnIsDisplayed());
 		profileSettings.navigateToEmailSaveChangesBtn();
 		Thread.sleep(2000);
@@ -86,10 +86,39 @@ public class MyAccountSubsectionButtonsTest extends BaseTest {
 		Assert.assertTrue(home.homeMainIsDisplayed());
 	}
 
+	
+	/// changePasswordTest ///??????  this test is worked in  sometimes
+		@Test (priority=3)
+		public void changePasswordTest() throws InterruptedException {
+			HomePage home = new HomePage(this.driver);
+			AddressPage address = new AddressPage(this.driver);
+			Thread.sleep(2000);
+			home.navigateToMyAccount();
+			Assert.assertTrue(home.profileSettingsBtnIsDisplayed());
+			Thread.sleep(2000);
+			ProfileSettingsPage profileSettings = new ProfileSettingsPage(this.driver);
+			profileSettings = home.navigateToProfileSettingsBtn();
+			Thread.sleep(2000);
+			Assert.assertTrue(profileSettings.accountProfileIsDisplayed());
+			Assert.assertTrue(profileSettings.newPasswordFieldIsDisplayed());
+			profileSettings.navigateToNewPasswordField("buyamHayk");
+			Thread.sleep(2000);
+			Assert.assertTrue(profileSettings.reEnterPasswordFieldIsDisplayed());
+			profileSettings.navigateToReEnterPasswordField("buyamHayk");
+			Thread.sleep(2000);
+			Assert.assertTrue(profileSettings.currentPasswordFieldInChangePasswordIsDisplayed());
+			profileSettings.navigateToCurrentPasswordFieldInChangePassword("BuyamHayk");
+			Thread.sleep(2000);
+			profileSettings.navigateToPasswordSaveChangesBtn();
+			Thread.sleep(2000);
+			Assert.assertTrue(profileSettings.allertMessageInChangePasswordIsDisplayed());
+		}
+	
+	
 	/// ordersTest ///
 
 	//// Test-1 without login ////
-	@Test
+	//@Test
 	public void ordersTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		home.navigateToMyAccount();
@@ -118,7 +147,7 @@ public class MyAccountSubsectionButtonsTest extends BaseTest {
 	}
 
 	/// newsletterTest ///
-	@Test
+	//@Test
 	public void newsletterTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		home.navigateToMyAccount();

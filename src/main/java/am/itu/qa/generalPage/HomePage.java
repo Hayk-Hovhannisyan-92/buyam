@@ -666,20 +666,104 @@ public class HomePage extends BasePage {
 	public final String QUANTITY_OF_PRODUCT = "//div[@class='quantity-price-container']//input[@value='1']";
 
 	@FindBy(xpath = QUANTITY_OF_PRODUCT)
-	WebElement quantityOfNumber;
+	WebElement quantityOfProduct;
 
-	public void checkProductQuantity(int n) {
-		int k = Integer.parseInt(driver.findElement((By) quantityOfNumber).getText());
-		k = 1;
+	public void checkProductQuantityByAdd(int n) throws InterruptedException {
+		//int k = Integer.parseInt(driver.findElement((By) quantityOfNumber).getText());
+		int k = 1;
 		for (int i = 1; i < n; i++) {
-			plusSign.click();
+			navigateToPlusSign();
 			k++;
+			Thread.sleep(2000);
 			
 		}
+		k = Integer.parseInt(driver.findElement((By) quantityOfProduct).getText());
 	}
 
 	public boolean checkQuantityOfNumber(int n) {
-		return Integer.parseInt(driver.findElement((By) quantityOfNumber).getText()) == n;
+		return Integer.parseInt(driver.findElement((By) quantityOfProduct).getText()) == n;
+	}
+	
+///// WAS USE IN removeProductQuantityTest() /////
+
+	public final  String MINUS_SIGN = "//div[@class='quantity-price-container']//i[@class='icon--minus3']";
+
+	@FindBy(xpath = MINUS_SIGN)
+	WebElement minusSign;
+
+	public void navigateToMinusSign() {
+		minusSign.click();
 	}
 
+	public boolean checkProductQuantityByRemove() throws InterruptedException {
+		while(Integer.parseInt(driver.findElement((By) quantityOfProduct).getText())!=0) {
+			navigateToMinusSign();
+			Thread.sleep(2000);
+		}
+		return shopingCartEmptyMsg.isDisplayed();
+	}
+	
+///// WAS USE IN priceProductTest() /////
+
+	public final  String PRICE_OF_PRODUCT = "//div[@class='quantity-price-container']/span";
+
+	@FindBy(xpath = PRICE_OF_PRODUCT)
+	WebElement priceOfProduct;
+
+	public void priceOfProductIsDisplayed() {
+		priceOfProduct.isDisplayed();
+	}
+
+	public final  String PRODUCTS_PRICE = "//div[@class='products-price']/span[last()]";
+
+	@FindBy(xpath = PRODUCTS_PRICE)
+	WebElement productsPrice;
+
+	public void productsPriceIsDisplayed() {
+		productsPrice.isDisplayed();
+	}
+	
+	double price = Integer.parseInt(driver.findElement((By) priceOfProduct).getText());
+	double pricees = Integer.parseInt(driver.findElement((By) productsPrice).getText());
+	
+	public boolean checkEqualityInStart() {
+		return pricees==price;
+	}
+	
+	public boolean checkProductsPriceEquality(int n) {
+		for(int i = 0 ; i < n ; i++) {
+			navigateToPlusSign();
+			pricees = pricees + price;
+		}
+		return pricees==n*price;
+	}
+	
+///// WAS USE IN allPriceProductTest() /////
+	
+	public final  String ALL_PRODUCTS_PRICE = "//div[@class='all-price']/span[last()]";
+
+	@FindBy(xpath = ALL_PRODUCTS_PRICE)
+	WebElement allProductsPrice;
+
+	public void allProductsPriceIsDisplayed() {
+		allProductsPrice.isDisplayed();
+	}
+	
+	public final  String SHIPPING_PRICE = "//div[@class='cost-price']/span[last()]";
+
+	@FindBy(xpath = SHIPPING_PRICE)
+	WebElement shippingPrice;
+
+	public void shippingPriceIsDisplayed() {
+		shippingPrice.isDisplayed();
+	}
+	
+	double allPrice = Integer.parseInt(driver.findElement((By) allProductsPrice).getText());
+	double shipping = Integer.parseInt(driver.findElement((By) shippingPrice).getText());
+	
+	public boolean checkAllPrice() {
+		return allPrice==shipping+pricees;
+	}
+
+	
 }

@@ -39,8 +39,8 @@ public class BuyTest extends BaseTest {
 		Assert.assertTrue(login.loginPageIsOpen());
 	}
 
-	/// addProductQuantityTest() -- click on plusSign and saw that how many are clicked on plusSign
-	//  so many are increment quantity of product ///  ?????????????????
+	/// addProductQuantityTest() -- click on plusSign and saw that how many are clicked 
+	//  on plusSign so many are increment quantity of product ///  ?????????????????
 	//@Test
 	public void addProductQuantityTest() throws InterruptedException{
 		HomePage home = new HomePage(this.driver);
@@ -51,16 +51,16 @@ public class BuyTest extends BaseTest {
 		home.shopingCartBtnClick();
 		Thread.sleep(2000);
 		Assert.assertTrue(home.productInShoppingCartIsDisplayed());
-		home.checkProductQuantity(3);
+		home.checkProductQuantityByAdd(5);
 		Thread.sleep(2000);
 		//By badgeCartQuantity = null;
 		//Assert.assertTrue(Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText())==3);
 		//home.navigateToPlusSign();
-		Assert.assertTrue(home.checkQuantityOfNumber(3));
+		Assert.assertTrue(home.checkQuantityOfNumber(5));
 	}
 	
 	/// priceProductTest() -- add product quantity  and saw price of added product
-	//@Test
+	//@Test  
 	public void priceProductTest() throws InterruptedException{
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.shopCartBtnIsDisplayed());
@@ -70,6 +70,39 @@ public class BuyTest extends BaseTest {
 		home.shopingCartBtnClick();
 		Thread.sleep(2000);
 		Assert.assertTrue(home.productInShoppingCartIsDisplayed());
+		Assert.assertTrue(home.checkEqualityInStart());
+		Thread.sleep(2000);
+		Assert.assertTrue(home.checkProductsPriceEquality(3));
 		
+	}
+	
+	/// allPriceProductTest() -- saw that all price are equal sum of  product  and delivery payment
+	//@Test 
+	public void allPriceProduct() throws InterruptedException{
+		HomePage home = new HomePage(this.driver);
+		Assert.assertTrue(home.shopCartBtnIsDisplayed());
+		Thread.sleep(2000);
+		home.navigateToShopCartBtnOfProduct();
+		Thread.sleep(2000);
+		home.shopingCartBtnClick();
+		Thread.sleep(2000);
+		Assert.assertTrue(home.productInShoppingCartIsDisplayed());
+		Assert.assertTrue(home.checkAllPrice());
+		
+	}
+	
+	/// removeProductQuantity() -- click on minus sign and saw that product disappear in 
+	//shopping cart
+	//@Test
+	public void removeProductQuantity() throws InterruptedException{
+		HomePage home = new HomePage(this.driver);
+		//Assert.assertTrue(home.shopCartBtnIsDisplayed());
+		//Thread.sleep(2000);
+		//home.navigateToShopCartBtnOfProduct();
+		//Thread.sleep(2000);
+		//home.shopingCartBtnClick();
+		//Thread.sleep(2000);
+		//Assert.assertTrue(home.productInShoppingCartIsDisplayed());
+		Assert.assertTrue(home.checkProductQuantityByRemove());
 	}
 }
