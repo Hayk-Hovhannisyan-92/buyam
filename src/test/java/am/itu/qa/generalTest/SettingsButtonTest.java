@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import am.itu.qa.baseTest.BaseTest;
 import am.itu.qa.generalPage.HomePage;
 
-public class LanguageTest extends BaseTest {
+public class SettingsButtonTest extends BaseTest {
 
 	/// languageTest ///
 	@Test()
@@ -46,5 +46,28 @@ public class LanguageTest extends BaseTest {
 		Assert.assertTrue(home.dropBoxIsDisplayed());
 		Assert.assertTrue(home.langIsRussian());
 	}
+	
+	/// currencyTest ///
+		@Test()
+		public void currencyTest() throws InterruptedException {
+			HomePage home = new HomePage(this.driver);
+			Assert.assertTrue(home.settingsElementIsDisplayed());
+			Thread.sleep(2000);
+			home.clickOnElementSettings();
+			Thread.sleep(2000);
+			Assert.assertTrue(home.dropBoxIsDisplayed());
+			Assert.assertTrue(home.currencyBtnAMDIsDisplayed());
+			Thread.sleep(2000);
+			home.navigateToCurrencyBtnUSD();
+			Thread.sleep(2000);
+			home.clickOnElementSettings();
+			Thread.sleep(2000);
+			Assert.assertTrue(home.currencyBtnUSDIsDisplayed());
+			home.navigateToCurrencyBtnRUR();
+			Thread.sleep(2000);
+			home.clickOnElementSettings();
+			Thread.sleep(2000);
+			Assert.assertTrue(home.currencyBtnRURIsDisplayed());
+		}
 
 }

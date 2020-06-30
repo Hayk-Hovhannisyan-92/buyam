@@ -11,6 +11,16 @@ public class AddressPage extends BasePage {
 	public AddressPage(WebDriver driver) {
 		super(driver);
 	}
+	
+	//div[@class="account--welcome"]
+	public final String ADDRESS_PAGE = "div[@class='account--welcome']";
+	
+	@FindBy(xpath = ADDRESS_PAGE)
+	WebElement addressPage;
+
+	public boolean addressPagelIsDisplayed() {
+		return addressPage.isDisplayed();
+	}
 
 	public final String CHANGE_ADDRESS_PANNEL = "//div[@class='panel has--border is--rounded block']";
 	public final String CHANGE_BTN = "//a[@class='btn is--small']";

@@ -251,6 +251,11 @@ public class LoginPage extends BasePage {
 		loginBtn.click();
 		return new ProfilePage(this.driver);
 	}
+	
+	public OrdersPage clickOnLoginButton() {
+		loginBtn.click();
+		return new OrdersPage(this.driver);
+	}
 
 	public boolean loginPageIsOpen() {
 		return email_field.isDisplayed();

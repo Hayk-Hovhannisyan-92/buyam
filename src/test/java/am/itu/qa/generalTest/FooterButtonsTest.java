@@ -8,11 +8,12 @@ import am.itu.qa.generalPage.AboutUsPage;
 import am.itu.qa.generalPage.ContactUsPage;
 import am.itu.qa.generalPage.DeliveryAndPaymentPage;
 import am.itu.qa.generalPage.HomePage;
+import am.itu.qa.generalPage.PrivacyPolicyPage;
 
 public class FooterButtonsTest extends BaseTest {
 
 	/// contactUsTest ///
-	@Test
+	@Test(priority = 3)
 	public void contactUsTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		ContactUsPage contactUs = new ContactUsPage(this.driver);
@@ -27,7 +28,7 @@ public class FooterButtonsTest extends BaseTest {
 
 	/// aboutUsTest ///
 	/// Armenian language
-	@Test
+	@Test(priority = 4)
 	public void aboutUsTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		AboutUsPage aboutUsAM = new AboutUsPage(this.driver);
@@ -54,7 +55,7 @@ public class FooterButtonsTest extends BaseTest {
 	}
 
 	/// deliveryAndPaymentTest ///
-	@Test
+	@Test(priority = 1)
 	public void deliveryAndPaymentTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		DeliveryAndPaymentPage deliveryAndPayment = new DeliveryAndPaymentPage(this.driver);
@@ -62,6 +63,20 @@ public class FooterButtonsTest extends BaseTest {
 		deliveryAndPayment = home.navigateToDeliveryAndPayment();
 		Thread.sleep(2000);
 		Assert.assertTrue(deliveryAndPayment.deliveryAndPaymentPageIsDisplayed());
+	}
+
+	/// privacyPolicyTest///
+	@Test(priority = 2)
+	public void privacyPolicyTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		PrivacyPolicyPage policy = new PrivacyPolicyPage(this.driver);
+		Assert.assertTrue(home.privacyPolicyBtnIsDisplayed());
+		policy = home.navigateToPrivacyPolicyBtn();
+		Thread.sleep(2000);
+		Assert.assertTrue(policy.privacyPolicyPageIsDisplayed());
+		home.navigateToReturnHomePage();
+		Assert.assertTrue(home.homeMainIsDisplayed());
+		Thread.sleep(2000);
 	}
 
 }

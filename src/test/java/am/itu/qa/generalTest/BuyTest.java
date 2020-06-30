@@ -1,16 +1,26 @@
 package am.itu.qa.generalTest;
 
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import am.itu.qa.baseTest.BaseTest;
+import am.itu.qa.generalPage.CarrefourBreakfastCofeeTeaPage;
+import am.itu.qa.generalPage.CarrefourPage;
+import am.itu.qa.generalPage.CoffeeTeaFreshIceCreamPage;
+import am.itu.qa.generalPage.FoodCourtPage;
 import am.itu.qa.generalPage.HomePage;
 import am.itu.qa.generalPage.LoginPage;
+import am.itu.qa.generalPage.OrdersPage;
+import am.itu.qa.generalPage.ProfilePage;
+import am.itu.qa.generalPage.ShopsBooksPage;
+import am.itu.qa.generalPage.ShopsPage;
 
 public class BuyTest extends BaseTest {
 
-	/// returnToTopTest  EXPERIMENT///
-	//@Test
+	/// returnToTopTest EXPERIMENT///
+	// @Test
 	public void returnToTopTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Thread.sleep(2000);
@@ -22,7 +32,7 @@ public class BuyTest extends BaseTest {
 	}
 
 	/// buyWithoutLoginTest ///
-	@Test
+	@Test(priority = 1)
 	public void buyWithoutLoginTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		LoginPage login = new LoginPage(this.driver);
@@ -37,12 +47,14 @@ public class BuyTest extends BaseTest {
 		login = home.navigateToCheckoutBtn();
 		Thread.sleep(2000);
 		Assert.assertTrue(login.loginPageIsOpen());
+		home.navigateToReturnHomePage();
 	}
 
-	/// addProductQuantityTest() -- click on plusSign and saw that how many are clicked 
-	//  on plusSign so many are increment quantity of product ///  ?????????????????
-	//@Test
-	public void addProductQuantityTest() throws InterruptedException{
+	/// addProductQuantityTest() -- click on plusSign and saw that how many are
+	/// clicked on plusSign so many are increment quantity of product ///
+	/// ?????????????????
+	@Test(priority = 2)
+	public void addProductQuantityTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.shopCartBtnIsDisplayed());
 		Thread.sleep(2000);
@@ -53,15 +65,24 @@ public class BuyTest extends BaseTest {
 		Assert.assertTrue(home.productInShoppingCartIsDisplayed());
 		home.checkProductQuantityByAdd(5);
 		Thread.sleep(2000);
-		//By badgeCartQuantity = null;
-		//Assert.assertTrue(Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText())==3);
-		//home.navigateToPlusSign();
 		Assert.assertTrue(home.checkQuantityOfNumber(5));
+		Thread.sleep(2000);
 	}
-	
-	/// priceProductTest() -- add product quantity  and saw price of added product
-	//@Test  
-	public void priceProductTest() throws InterruptedException{
+
+	/// removeProductQuantity() -- click on minus sign and saw that how many are
+	/// clicked on minusSign so many are decrement quantity of product
+	@Test(priority = 3)
+	public void removeProductQuantity() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		Assert.assertTrue(home.checkProductQuantityByRemove());
+		home.navigateToCrossIcon();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
+	}
+
+	/// priceProductTest() -- add product quantity and saw price of added product
+	@Test(priority = 4)
+	public void priceProductTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.shopCartBtnIsDisplayed());
 		Thread.sleep(2000);
@@ -73,12 +94,37 @@ public class BuyTest extends BaseTest {
 		Assert.assertTrue(home.checkEqualityInStart());
 		Thread.sleep(2000);
 		Assert.assertTrue(home.checkProductsPriceEquality(3));
-		
+		Assert.assertTrue(home.checkProductQuantityByRemove());
+		home.navigateToCrossIcon();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
+
 	}
-	
-	/// allPriceProductTest() -- saw that all price are equal sum of  product  and delivery payment
-	//@Test 
-	public void allPriceProduct() throws InterruptedException{
+
+	/// priceDifferentProductTest() -- add different products and saw price of added
+	/// product
+	@Test(priority = 5)
+	public void priceDifferentProductTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		Assert.assertTrue(home.shopCartBtnIsDisplayed());
+		Thread.sleep(2000);
+		home.addProductsInShoppingCart(2);
+		Thread.sleep(2000);
+		home.shopingCartBtnClick();
+		Thread.sleep(2000);
+		Assert.assertTrue(home.productInShoppingCartIsDisplayed());
+		Assert.assertTrue(home.sumOfProductsInContainer());
+		Thread.sleep(2000);
+		Assert.assertTrue(home.checkProductQuantityByRemove());
+		home.navigateToCrossIcon();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
+	}
+
+	/// allPriceProductTest() -- saw that all price are equal sum of product and
+	/// delivery payment
+	@Test(priority = 6)
+	public void allPriceProduct() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.shopCartBtnIsDisplayed());
 		Thread.sleep(2000);
@@ -88,21 +134,127 @@ public class BuyTest extends BaseTest {
 		Thread.sleep(2000);
 		Assert.assertTrue(home.productInShoppingCartIsDisplayed());
 		Assert.assertTrue(home.checkAllPrice());
-		
+		Thread.sleep(2000);
+		Assert.assertTrue(home.checkProductQuantityByRemove());
+		home.navigateToCrossIcon();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
+
+	}
+
+	/// productsInDifferentSection() -- saw that all price are equal sum of products
+	/// pricees and delivery payment
+	@Test(priority = 7)
+	public void productsInSameSection() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		CarrefourPage carrefour = new CarrefourPage(this.driver);
+		CarrefourBreakfastCofeeTeaPage cofeeTea = new CarrefourBreakfastCofeeTeaPage(this.driver);
+		FoodCourtPage foodCourt = new FoodCourtPage(this.driver);
+		CoffeeTeaFreshIceCreamPage freshIceCream = new CoffeeTeaFreshIceCreamPage(this.driver);
+		ShopsPage shops = new ShopsPage(this.driver);
+		ShopsBooksPage shopsBook = new ShopsBooksPage(this.driver);
+		carrefour = home.navigateToCarrefourBtn();
+		Thread.sleep(2000);
+		Assert.assertTrue(carrefour.carrefourPageIsDisplayed());
+		Assert.assertTrue(carrefour.breakfastCofeeTeaIsDisplayed());
+		Thread.sleep(2000);
+		cofeeTea = carrefour.navigateToBreaakfastCofeeTea();
+		Thread.sleep(2000);
+		Assert.assertTrue(cofeeTea.breakfastCofeeTeaPageIsDisplayed());
+		Assert.assertTrue(cofeeTea.productIsDisplayed());
+		cofeeTea.navigateToProduct();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
+		Thread.sleep(2000);
+		Assert.assertTrue(home.foodCourtBtnIsDisplayed());
+		foodCourt = home.navigateToFoodCourtBtn();
+		Assert.assertTrue(foodCourt.foodCourtPageIsDisplayed());
+		Thread.sleep(2000);
+		freshIceCream = foodCourt.navigateToCoffeeTeaFreshIceCream();
+		Assert.assertTrue(freshIceCream.cofeeTeaFreshIceCreamPageIsDisplayed());
+		freshIceCream.navigateToProduct();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
+		Thread.sleep(2000);
+		Assert.assertTrue(home.shopsBtnIsDisplayed());
+		shops = home.navigateToShopsBtn();
+		Assert.assertTrue(shops.shopsPageIsDisplayed());
+		Thread.sleep(2000);
+		shopsBook = shops.navigateToProduct();
+		Assert.assertTrue(shopsBook.shopsBooksPageIsDisplayed());
+		Assert.assertTrue(shopsBook.productIsDisplayed());
+		Thread.sleep(2000);
+		shopsBook.navigateToProduct();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
+		Thread.sleep(2000);
+		home.navigateToShopingCartButton();
+		Assert.assertTrue(home.shippingPriceIsDisplayed());
+		Assert.assertTrue(home.checkShippingPrice());
+		home.checkProductQuantityByRemove();
+		Thread.sleep(2000);
+		home.navigateToCrossIcon();
+		home.navigateToReturnHomePage();
+	}
+
+	/// changeOrdersDeliveryTest() -- check can user buy product at last day
+	// @Test(priority = 6) ?????????????????????????
+	public void changeOrdersDeliveryTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		LoginPage login = new LoginPage(this.driver);
+		OrdersPage orders = new OrdersPage(this.driver);
+		Date currentDate = new Date();
+		Assert.assertTrue(home.shopCartBtnIsDisplayed());
+		Thread.sleep(2000);
+		home.navigateToShopCartBtnOfProduct();
+		Thread.sleep(2000);
+		home.shopingCartBtnClick();
+		Thread.sleep(2000);
+		login = home.navigateToCheckoutBtn();
+		Assert.assertTrue(login.loginPageIsOpen());
+		login.emailField("hovhannisyanhayk56@gmail.com");
+		login.passwordField("BuyamHayk");
+		orders = login.clickOnLoginButton();
+		Assert.assertTrue(orders.dateDeliverylIsDisplayed());
+
+		home.navigateToReturnHomePage();
+	}
+
+	/// maxQuantityPurchasedProductTest -- check how many product can buy
+	@Test(priority = 7)
+	public void maxQuantityPurchasedProductTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		Assert.assertTrue(home.shopCartBtnIsDisplayed());
+		Thread.sleep(2000);
+		home.navigateToShopCartBtnOfProduct();
+		Thread.sleep(2000);
+		home.shopingCartBtnClick();
+		Thread.sleep(2000);
+		home.typeQuantity("100001");
+		Thread.sleep(2000);
+		home.navigateToCheckoutBtn();
+		Thread.sleep(2000);
+		Assert.assertTrue(home.restoreMaxQuntity("100001"));
+		home.navigateToCrossIcon();
+		home.navigateToReturnHomePage();
 	}
 	
-	/// removeProductQuantity() -- click on minus sign and saw that product disappear in 
-	//shopping cart
-	//@Test
-	public void removeProductQuantity() throws InterruptedException{
-		HomePage home = new HomePage(this.driver);
-		//Assert.assertTrue(home.shopCartBtnIsDisplayed());
-		//Thread.sleep(2000);
-		//home.navigateToShopCartBtnOfProduct();
-		//Thread.sleep(2000);
-		//home.shopingCartBtnClick();
-		//Thread.sleep(2000);
-		//Assert.assertTrue(home.productInShoppingCartIsDisplayed());
-		Assert.assertTrue(home.checkProductQuantityByRemove());
-	}
+	/// maxKGPurchasedProductTest -- check how many product can buy
+		@Test(priority = 8)
+		public void maxKGPurchasedProductTest() throws InterruptedException {
+			HomePage home = new HomePage(this.driver);
+			Assert.assertTrue(home.shopCartBtnIsDisplayed());
+			Thread.sleep(2000);
+			home.navigateToShopCartBtnOfProduct();
+			Thread.sleep(2000);
+			home.shopingCartBtnClick();
+			Thread.sleep(2000);
+			home.typeQuantity("101");
+			Thread.sleep(2000);
+			home.navigateToCheckoutBtn();
+			Thread.sleep(2000);
+			Assert.assertTrue(home.restoreMaxQuntity("101"));
+			home.navigateToCrossIcon();
+			home.navigateToReturnHomePage();
+		}
 }

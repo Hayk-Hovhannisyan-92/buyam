@@ -18,4 +18,13 @@ public class ProfilePage extends LoginPage {
 	public boolean profilePageIsOpen() {
 		return accountPanel.isDisplayed();
 	}
+	
+	public final String ALLERT_CONTENT = "//div[@class='alert--content']";
+
+	@FindBy(xpath = ALLERT_CONTENT)
+	WebElement allertContent;
+
+	public boolean allertContentIsDisplayed() {
+		return allertContent.isDisplayed();
+	}
 }

@@ -99,6 +99,62 @@ public class HomePage extends BasePage {
 		return langHY.isDisplayed();
 	}
 
+//////WAS USE IN currencyTest()/////
+
+	public final String CURRENCY_BTN = "//nav[@class='shop-setings-navigation top-bar--navigation']//select[@class='currency--select']";
+
+	@FindBy(xpath = CURRENCY_BTN)
+	WebElement currencyBtn;
+
+	public void navigateToCurrencyBtn() {
+		currencyBtn.click();
+	}
+
+	public final String CURRENCY_BTN_AMD = "nav[@class='shop-setings-navigation top-bar--navigation']//select[@class='currency--select']/option[@value='1']";
+
+	@FindBy(xpath = CURRENCY_BTN_AMD)
+	WebElement currencyBtnAMD;
+
+	public boolean currencyBtnAMDIsDisplayed() {
+		currencyBtnAMD.isDisplayed();
+		return currencyBtnAMD.isDisplayed();
+	}
+
+	public HomePage navigateToCurrencyBtnAMD() {
+		currencyBtnAMD.click();
+		return new HomePage(this.driver);
+	}
+
+	public final String CURRENCY_BTN_USD = "nav[@class='shop-setings-navigation top-bar--navigation']//select[@class='currency--select']/option[@value='1']";
+
+	@FindBy(xpath = CURRENCY_BTN_USD)
+	WebElement currencyBtnUSD;
+
+	public boolean currencyBtnUSDIsDisplayed() {
+		currencyBtnUSD.isDisplayed();
+		return currencyBtnUSD.isDisplayed();
+	}
+
+	public HomePage navigateToCurrencyBtnUSD() {
+		currencyBtnUSD.click();
+		return new HomePage(this.driver);
+	}
+
+	public final String CURRENCY_BTN_RUR = "nav[@class='shop-setings-navigation top-bar--navigation']//select[@class='currency--select']/option[@value='1']";
+
+	@FindBy(xpath = CURRENCY_BTN_RUR)
+	WebElement currencyBtnRUR;
+
+	public boolean currencyBtnRURIsDisplayed() {
+		currencyBtnRUR.isDisplayed();
+		return currencyBtnRUR.isDisplayed();
+	}
+
+	public HomePage navigateToCurrencyBtnRUR() {
+		currencyBtnRUR.click();
+		return new HomePage(this.driver);
+	}
+
 ///// WAS USE IN registracionTest()/////
 	public final String MY_ACCOUNT_BTN = "//a[@class='btn entry--link account--link']";
 	public final String REGISTRACION_BTN = "//a[@class='blocked--link navigation--link navigation--register-btn']";
@@ -365,6 +421,45 @@ public class HomePage extends BasePage {
 		return new AddressPage(this.driver);
 	}
 
+	public LoginPage navigateToAddresBtn() {
+		addressBtn.click();
+		return new LoginPage(this.driver);
+	}
+
+///// WAS USE IN paymentMethodTest /////
+
+	public final String PAYMENT_METHOD_BTN = "//div[@class='account--dropdown-navigation']//div[@class='account--menu-container']//a[@class='navigation--link' and contains(@href,'/account/payment')]";
+
+	@FindBy(xpath = PAYMENT_METHOD_BTN)
+	WebElement paymentMethodBtn;
+
+	public LoginPage navigateToPaymentMethodBtn() {
+		paymentMethodBtn.click();
+		return new LoginPage(this.driver);
+	}
+
+	public PaymentMethodPage navigateToPaymentMetodBtn() {
+		paymentMethodBtn.click();
+		return new PaymentMethodPage(this.driver);
+	}
+
+///// WAS USE IN myProfileTest /////
+
+	public final String MY_PROFILE_BTN = "//div[@class='account--dropdown-navigation']//div[@class='account--menu-container']//a[@class='navigation--link' and contains(@href,'/account/payment')]";
+
+	@FindBy(xpath = MY_PROFILE_BTN)
+	WebElement myProfileBtn;
+
+	public LoginPage navigateToMyProfileBtn() {
+		myProfileBtn.click();
+		return new LoginPage(this.driver);
+	}
+
+	public ProfilePage navigateToMyProfilBtn() {
+		paymentMethodBtn.click();
+		return new ProfilePage(this.driver);
+	}
+
 /////WAS USE IN changeEmailTest/////
 	public final String PROFILE_SETTINGS_BTN = "//div[@class='account--menu-container']//a[contains(@href,'/account/profile')]";
 
@@ -375,9 +470,14 @@ public class HomePage extends BasePage {
 		return profileSettingsBtn.isDisplayed();
 	}
 
-	public ProfileSettingsPage navigateToProfileSettingsBtn() {
+	public ProfileSettingsPage navigateToProfileSettingBtn() {
 		profileSettingsBtn.click();
 		return new ProfileSettingsPage(this.driver);
+	}
+
+	public LoginPage navigateToProfileSettingsBtn() {
+		profileSettingsBtn.click();
+		return new LoginPage(this.driver);
 	}
 
 /////WAS USE IN ordersTest/////
@@ -423,6 +523,22 @@ public class HomePage extends BasePage {
 	public ContactUsPage navigateToContactUs() {
 		contactUs.click();
 		return new ContactUsPage(this.driver);
+	}
+
+/////WAS USE IN privaciPolicyTest /////
+
+	public final String PRIVACY_POLICY_BTN = "//div[@class='footer--column column--menu block']//a[@class='navigation--link' and contains(@href,'/contact')]";
+
+	@FindBy(xpath = PRIVACY_POLICY_BTN)
+	WebElement privacyPolicyBtn;
+
+	public boolean privacyPolicyBtnIsDisplayed() {
+		return privacyPolicyBtn.isDisplayed();
+	}
+
+	public PrivacyPolicyPage navigateToPrivacyPolicyBtn() {
+		privacyPolicyBtn.click();
+		return new PrivacyPolicyPage(this.driver);
 	}
 
 /////WAS USE IN aboutUsTest /////
@@ -652,9 +768,11 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = BADGE_CART_QUANTITY)
 	WebElement badgeCartQuantity;
 
+	int quantity = Integer.parseInt(driver.findElement((By) badgeCartQuantity).getText());
+
 ///// WAS USE IN addProductQuantityTest() /////
 
-	public final  String PLUS_SIGN = "//div[@class='ajax--cart']//div[@class='cart--item']//a[@class='im-change-quantity-btn action-plus']//i[@class='icon--plus3']";
+	public final String PLUS_SIGN = "//div[@class='ajax--cart']//div[@class='cart--item']//a[@class='im-change-quantity-btn action-plus']//i[@class='icon--plus3']";
 
 	@FindBy(xpath = PLUS_SIGN)
 	WebElement plusSign;
@@ -669,13 +787,14 @@ public class HomePage extends BasePage {
 	WebElement quantityOfProduct;
 
 	public void checkProductQuantityByAdd(int n) throws InterruptedException {
-		//int k = Integer.parseInt(driver.findElement((By) quantityOfNumber).getText());
+		// int k = Integer.parseInt(driver.findElement((By)
+		// quantityOfNumber).getText());
 		int k = 1;
 		for (int i = 1; i < n; i++) {
 			navigateToPlusSign();
 			k++;
 			Thread.sleep(2000);
-			
+
 		}
 		k = Integer.parseInt(driver.findElement((By) quantityOfProduct).getText());
 	}
@@ -683,10 +802,10 @@ public class HomePage extends BasePage {
 	public boolean checkQuantityOfNumber(int n) {
 		return Integer.parseInt(driver.findElement((By) quantityOfProduct).getText()) == n;
 	}
-	
+
 ///// WAS USE IN removeProductQuantityTest() /////
 
-	public final  String MINUS_SIGN = "//div[@class='quantity-price-container']//i[@class='icon--minus3']";
+	public final String MINUS_SIGN = "//div[@class='quantity-price-container']//i[@class='icon--minus3']";
 
 	@FindBy(xpath = MINUS_SIGN)
 	WebElement minusSign;
@@ -696,16 +815,16 @@ public class HomePage extends BasePage {
 	}
 
 	public boolean checkProductQuantityByRemove() throws InterruptedException {
-		while(Integer.parseInt(driver.findElement((By) quantityOfProduct).getText())!=0) {
+		while (Integer.parseInt(driver.findElement((By) quantityOfProduct).getText()) != 0) {
 			navigateToMinusSign();
 			Thread.sleep(2000);
 		}
 		return shopingCartEmptyMsg.isDisplayed();
 	}
-	
+
 ///// WAS USE IN priceProductTest() /////
 
-	public final  String PRICE_OF_PRODUCT = "//div[@class='quantity-price-container']/span";
+	public final String PRICE_OF_PRODUCT = "//div[@class='quantity-price-container']/span";
 
 	@FindBy(xpath = PRICE_OF_PRODUCT)
 	WebElement priceOfProduct;
@@ -714,7 +833,7 @@ public class HomePage extends BasePage {
 		priceOfProduct.isDisplayed();
 	}
 
-	public final  String PRODUCTS_PRICE = "//div[@class='products-price']/span[last()]";
+	public final String PRODUCTS_PRICE = "//div[@class='products-price']/span[last()]";
 
 	@FindBy(xpath = PRODUCTS_PRICE)
 	WebElement productsPrice;
@@ -722,25 +841,54 @@ public class HomePage extends BasePage {
 	public void productsPriceIsDisplayed() {
 		productsPrice.isDisplayed();
 	}
-	
+
+	// convert type WebElement to int
 	double price = Integer.parseInt(driver.findElement((By) priceOfProduct).getText());
 	double pricees = Integer.parseInt(driver.findElement((By) productsPrice).getText());
-	
+
 	public boolean checkEqualityInStart() {
-		return pricees==price;
+		return pricees == price;
 	}
-	
+
 	public boolean checkProductsPriceEquality(int n) {
-		for(int i = 0 ; i < n ; i++) {
+		for (int i = 0; i < n; i++) {
 			navigateToPlusSign();
 			pricees = pricees + price;
 		}
-		return pricees==n*price;
+		return pricees == n * price;
 	}
-	
+
+///// WAS USE IN priceDifferentProduct() /////
+
+	public void addProductsInShoppingCart(int n) {
+		for (int i = 0; i < n; i++) {
+			navigateToShopCartBtnOfProduct();
+		}
+	}
+
+	public final String PRODUCT_OF_CONTAINER = "//div[@class='cart--item']";
+
+	@FindBy(xpath = PRODUCT_OF_CONTAINER)
+	WebElement productOfContainer;
+
+	public void productOfContainerIsDisplayed() {
+		productOfContainer.isDisplayed();
+	}
+
+	// convert type WebElement to int
+	int numberOfProductInConteiner = Integer.parseInt(driver.findElement((By) productOfContainer).getText());
+
+	public boolean sumOfProductsInContainer() {
+		double sum = 0;
+		for (int i = 0; i < numberOfProductInConteiner; i++) {
+			sum = sum + price;
+		}
+		return sum == pricees;
+	}
+
 ///// WAS USE IN allPriceProductTest() /////
-	
-	public final  String ALL_PRODUCTS_PRICE = "//div[@class='all-price']/span[last()]";
+
+	public final String ALL_PRODUCTS_PRICE = "//div[@class='all-price']/span[last()]";
 
 	@FindBy(xpath = ALL_PRODUCTS_PRICE)
 	WebElement allProductsPrice;
@@ -748,22 +896,125 @@ public class HomePage extends BasePage {
 	public void allProductsPriceIsDisplayed() {
 		allProductsPrice.isDisplayed();
 	}
-	
-	public final  String SHIPPING_PRICE = "//div[@class='cost-price']/span[last()]";
+
+	public final String SHIPPING_PRICE = "//div[@class='cost-price']/span[last()]";
 
 	@FindBy(xpath = SHIPPING_PRICE)
 	WebElement shippingPrice;
 
-	public void shippingPriceIsDisplayed() {
-		shippingPrice.isDisplayed();
-	}
-	
-	double allPrice = Integer.parseInt(driver.findElement((By) allProductsPrice).getText());
-	double shipping = Integer.parseInt(driver.findElement((By) shippingPrice).getText());
-	
-	public boolean checkAllPrice() {
-		return allPrice==shipping+pricees;
+	public boolean shippingPriceIsDisplayed() {
+		return shippingPrice.isDisplayed();
 	}
 
+	double allPrice = Integer.parseInt(driver.findElement((By) allProductsPrice).getText());
+	double shipping = Integer.parseInt(driver.findElement((By) shippingPrice).getText());
+
+	public boolean checkAllPrice() {
+		return allPrice == shipping + pricees;
+	}
+
+///// WAS USE IN allPriceProductTest() /////
+
+	public void sumOfPrices() {
+		shippingPrice.isDisplayed();
+	}
+
+////WAS USE IN productsInDifferentSection() /////
+
+	public final String CARREFOUR_BTN = "//div[@class='mobile-nav-bg']//a[@class='navigation--link' and contains(@href,'/carrefour')]";
+
+	@FindBy(xpath = CARREFOUR_BTN)
+	WebElement carrefourBtn;
+
+	public void carrefourBtnIsDisplayed() {
+		carrefourBtn.isDisplayed();
+	}
+
+	public CarrefourPage navigateToCarrefourBtn() {
+		carrefourBtn.click();
+		return new CarrefourPage(this.driver);
+	}
+
+	public final String FOOD_COURT_BTN = "//div[@class='mobile-nav-bg']//a[@class='navigation--link'and contains(@href,'/food-court/')]";
+
+	@FindBy(xpath = FOOD_COURT_BTN)
+	WebElement foodCourtBtn;
+
+	public boolean foodCourtBtnIsDisplayed() {
+		return foodCourtBtn.isDisplayed();
+	}
+
+	public FoodCourtPage navigateToFoodCourtBtn() {
+		foodCourtBtn.click();
+		return new FoodCourtPage(this.driver);
+	}
+
+	public final String SHOPS_BTN = "//div[@class='mobile-nav-bg']//a[@class='navigation--link' and contains(@href,'/shops')]";
+
+	@FindBy(xpath = SHOPS_BTN)
+	WebElement shopsBtn;
+
+	public boolean shopsBtnIsDisplayed() {
+		return shopsBtn.isDisplayed();
+	}
+
+	public ShopsPage navigateToShopsBtn() {
+		shopsBtn.click();
+		return new ShopsPage(this.driver);
+	}
+
+	public boolean checkShippingPrice() {
+		if (numberOfProductInConteiner == 3) {
+			return shipping == 3 * 500;
+		}
+		return false;
+	}
 	
+////WAS USE IN maxQuantityPurchasedProductTest() /////
+
+	public final String QUANTITY_FIELD = "//input[@class='quantity']";
+
+	@FindBy(xpath = QUANTITY_FIELD)
+	WebElement quantityField;
+
+	public void quantityFieldIsDisplayed() {
+		quantityField.isDisplayed();
+	}
+	
+	public void typeQuantity(String quantity) {
+		quantityField.sendKeys(quantity);
+	}
+	
+	public boolean restoreMaxQuntity(String quantity) {
+		if(Integer.parseInt(quantity)>100000) {
+			quantity = "100000";
+			return quantity == "100000";
+		}
+		quantityField.sendKeys(quantity);
+		return quantity == quantity;
+	}
+	
+////WAS USE IN maxKGPurchasedProductTest() /////
+
+	public final String QUANTITY_FIELD = "//input[@class='quantity']";
+
+	@FindBy(xpath = QUANTITY_FIELD)
+	WebElement quantityField;
+
+	public void quantityFieldIsDisplayed() {
+		quantityField.isDisplayed();
+	}
+	
+	public void typeQuantity(String quantity) {
+		quantityField.sendKeys(quantity);
+	}
+	
+	public boolean restoreMaxQuntity(String quantity) {
+		if(Integer.parseInt(quantity)>100000) {
+			quantity = "100000";
+			return quantity == "100000";
+		}
+		quantityField.sendKeys(quantity);
+		return quantity == quantity;
+	}
 }

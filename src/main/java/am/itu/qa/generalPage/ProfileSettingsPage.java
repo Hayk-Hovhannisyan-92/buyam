@@ -12,6 +12,15 @@ public class ProfileSettingsPage extends BasePage {
 		super(driver);
 	}
 
+	public final String PROFILE_SETTINGS_PAGE = "div[@class='account--profile']";
+
+	@FindBy(xpath = PROFILE_SETTINGS_PAGE)
+	WebElement profileSettingsPage;
+
+	public boolean profileSettingsPageDisplayed() {
+		return profileSettingsPage.isDisplayed();
+	}
+	
 	/// WAS USE IN changeEmailTest ///
 	public final String ACCOUNT_PROFILE = "//div[@class='account--profile']";
 
