@@ -10,16 +10,23 @@ public class ProfilePage extends LoginPage {
 		super(driver);
 	}
 
-	public final String ACCOUNT_PANEL = "//div[@class='account--welcome panel']";
+	public final String PROFILE_PAGE = "//div[@class='account--welcome panel']";
+	public final String ALLERT_CONTENT = "//div[@class='alert--content']";
+	public final String WELCOME_PANEL = "//div[@class='content account--content']";
+	
+	@FindBy(xpath = PROFILE_PAGE)
+	WebElement profilePage;
 
-	@FindBy(xpath = ACCOUNT_PANEL)
-	WebElement accountPanel;
-
-	public boolean profilePageIsOpen() {
-		return accountPanel.isDisplayed();
+	public boolean profilePageIsDisplayed() {
+		return profilePage.isDisplayed();
 	}
 	
-	public final String ALLERT_CONTENT = "//div[@class='alert--content']";
+	@FindBy(xpath = WELCOME_PANEL)
+	WebElement welcomePanel;
+
+	public boolean welcomePanelIsDisplayed() {
+		return welcomePanel.isDisplayed();
+	}
 
 	@FindBy(xpath = ALLERT_CONTENT)
 	WebElement allertContent;

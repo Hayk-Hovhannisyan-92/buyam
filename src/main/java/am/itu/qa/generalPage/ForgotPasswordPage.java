@@ -15,6 +15,14 @@ public class ForgotPasswordPage extends BasePage {
 	public final String FORGOT_PASSWORD_PANNEL = "//div[@class='password-reset--content panel has--border is--rounded']";
 	public final String PASSWORD_RESET_INPUT = "//input[@class='password-reset--input']";
 	public final String SEND_EMAIL_BTN = "//button[@class='password-reset--link btn is--primary is--icon-right is--center']";
+	public final String ALLERT_CONTENT = "//div[@class='alert is--success is--rounded']";
+
+	@FindBy(xpath = ALLERT_CONTENT)
+	WebElement allertContent;
+
+	public boolean allertContentIsDisplayed() {
+		return allertContent.isDisplayed();
+	}
 
 	@FindBy(xpath = FORGOT_PASSWORD_PANNEL)
 	WebElement forgotPasswordPannel;

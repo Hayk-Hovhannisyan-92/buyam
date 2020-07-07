@@ -11,9 +11,33 @@ public class LoginPage extends BasePage {
 		super(driver);
 	}
 
-///// WAS USE IN #2-registracionTest()/////
+	//// LoginPage xpaths
 	public final String SALUTATION_FIELD = "//select[@name='register[personal][salutation]']";
+	public final String MR_SUBFIELD_AM = "//select[@name='register[personal][salutation]']//option[@value='Պրն']";
+	public final String MR_SUBFIELD_EN = "//select[@name='register[personal][salutation]']//option[@value='Mr']";
+	public final String MR_SUBFIELD_RU = "//select[@name='register[personal][salutation]']//option[@value='Мистер']";
+	public final String FIRST_NAME_FIELD = "//input[@name='register[personal][firstname]']";
+	public final String LAST_NAME_FIELD = "//div[@class='panel--body is--wide']//input[@name='register[personal][lastname]']";
+	public final String EMAIL_FIELD_REGISTER = "//input[@name='register[personal][email]']";
+	public final String PASSWORD_FIELD_REGISTER = "//input[@name='register[personal][password]']";
+	public final String REGISTER_ERR_MSG = "//div[@class='register--error-msg']";
+	public final String PASSWORDCONFIRM_FIELD_REGISTER = "//input[@name='register[personal][passwordConfirmation]']";
+	public final String PHONE_NUMBER_FIELD = "//input[@name='register[personal][phone]']";
+	public final String CITY_FIELD = "//a[@class='chosen-single']";
+	public final String CITY_LIST = "//ul[@class='chosen-results']";
+	public final String CHOOSE_CITY_1 = "//li[@data-option-array-index='1']";
+	public final String BILLING_STREET_FIELD = "//input[@name='register[billing][street]']";
+	public final String CONTINUE_BTN_REGISTER = "//div[@class='register--action']//button[@type='submit']";
+	public final String EMAIL_FIELD = "//input[@name='email']";
+	public final String PASSWORD_FIELD = "//input[@name='password']";
+	public final String LOGIN_BTN = "//button[@class='register--login-btn btn is--primary is--large']";
+	public final String ERROR_MSG = "//div[@class='alert--content']";
+	public final String FORGOT_PASSWORD = "//a[contains(@href,'/account/password')]";
+	public final String ALLERT_CONTENT = "//div[@class='alert--content']";
+	public final String LOGIN_FACEBOOK_BTN = "//div[@class='panel--body is--wide']//a[@class='facebook-link']";
 
+	
+	
 	@FindBy(xpath = SALUTATION_FIELD)
 	WebElement salutationField;
 
@@ -24,9 +48,6 @@ public class LoginPage extends BasePage {
 	public void navigateToSalutationField() {
 		salutationField.click();
 	}
-
-///// Salutation field@ hayereni hamar/////
-	public final String MR_SUBFIELD_AM = "//select[@name='register[personal][salutation]']//option[@value='Պրն']";
 
 	@FindBy(xpath = MR_SUBFIELD_AM)
 	WebElement mrSubfieldAM;
@@ -39,9 +60,6 @@ public class LoginPage extends BasePage {
 		mrSubfieldAM.click();
 	}
 
-///// Salutation field@ anglereni  hamar/////
-	public final String MR_SUBFIELD_EN = "//select[@name='register[personal][salutation]']//option[@value='Mr']";
-
 	@FindBy(xpath = MR_SUBFIELD_EN)
 	WebElement mrSubfieldEN;
 
@@ -52,9 +70,6 @@ public class LoginPage extends BasePage {
 	public void navigateToMrSubfieldEN() {
 		mrSubfieldEN.click();
 	}
-
-///// Salutation field@ rusereni  hamar/////
-	public final String MR_SUBFIELD_RU = "//select[@name='register[personal][salutation]']//option[@value='Мистер']";
 
 	@FindBy(xpath = MR_SUBFIELD_RU)
 	WebElement mrSubfieldRU;
@@ -67,8 +82,6 @@ public class LoginPage extends BasePage {
 		mrSubfieldRU.click();
 	}
 
-	public final String FIRST_NAME_FIELD = "//input[@name='register[personal][firstname]']";
-
 	@FindBy(xpath = FIRST_NAME_FIELD)
 	WebElement firstNameField;
 
@@ -79,8 +92,6 @@ public class LoginPage extends BasePage {
 	public void navigateTofirstNameField(String firstName) {
 		firstNameField.sendKeys(firstName);
 	}
-
-	public final String LAST_NAME_FIELD = "//div[@class='panel--body is--wide']//input[@name='register[personal][lastname]']";
 
 	@FindBy(xpath = LAST_NAME_FIELD)
 	WebElement lastNameField;
@@ -93,8 +104,6 @@ public class LoginPage extends BasePage {
 		lastNameField.sendKeys(lastName);
 	}
 
-	public final String EMAIL_FIELD_REGISTER = "//input[@name='register[personal][email]']";
-
 	@FindBy(xpath = EMAIL_FIELD_REGISTER)
 	WebElement emailFieldRegister;
 
@@ -106,8 +115,6 @@ public class LoginPage extends BasePage {
 		emailFieldRegister.sendKeys(email);
 	}
 
-	public final String PASSWORD_FIELD_REGISTER = "//input[@name='register[personal][password]']";
-
 	@FindBy(xpath = PASSWORD_FIELD_REGISTER)
 	WebElement passwordFieldRegister;
 
@@ -118,7 +125,6 @@ public class LoginPage extends BasePage {
 	public void navigateToPasswordFieldRegister(String password) {
 		passwordFieldRegister.sendKeys(password);
 	}
-	public final String REGISTER_ERR_MSG = "//div[@class='register--error-msg']";
 
 	@FindBy(xpath = REGISTER_ERR_MSG)
 	WebElement registerErrMsg;
@@ -126,12 +132,10 @@ public class LoginPage extends BasePage {
 	public boolean registerErrMsgIsDisplayed() {
 		return registerErrMsg.isDisplayed();
 	}
-	
+
 	public void clearEmailField() {
 		emailFieldRegister.clear();
 	}
-
-	public final String PASSWORDCONFIRM_FIELD_REGISTER = "//input[@name='register[personal][passwordConfirmation]']";
 
 	@FindBy(xpath = PASSWORDCONFIRM_FIELD_REGISTER)
 	WebElement passwordConfirmFieldRegister;
@@ -144,8 +148,6 @@ public class LoginPage extends BasePage {
 		passwordConfirmFieldRegister.sendKeys(password);
 	}
 
-	public final String PHONE_NUMBER_FIELD = "//input[@name='register[personal][phone]']";
-
 	@FindBy(xpath = PHONE_NUMBER_FIELD)
 	WebElement phoneNumberField;
 
@@ -156,8 +158,6 @@ public class LoginPage extends BasePage {
 	public void navigateToPhoneNumberField(String phoneNumber) {
 		phoneNumberField.sendKeys(phoneNumber);
 	}
-
-	public final String CITY_FIELD = "//a[@class='chosen-single']";
 
 	@FindBy(xpath = CITY_FIELD)
 	WebElement cityField;
@@ -170,16 +170,12 @@ public class LoginPage extends BasePage {
 		cityField.click();
 	}
 
-	public final String CITY_LIST = "//ul[@class='chosen-results']";
-
 	@FindBy(xpath = CITY_LIST)
 	WebElement cityList;
 
 	public boolean cityListIsDisplayed() {
 		return cityList.isDisplayed();
 	}
-
-	public final String CHOOSE_CITY_1 = "//li[@data-option-array-index='1']";
 
 	@FindBy(xpath = CHOOSE_CITY_1)
 	WebElement chooseCity1;
@@ -192,8 +188,6 @@ public class LoginPage extends BasePage {
 		chooseCity1.click();
 	}
 
-	public final String BILLING_STREET_FIELD = "//input[@name='register[billing][street]']";
-
 	@FindBy(xpath = BILLING_STREET_FIELD)
 	WebElement billingStreetField;
 
@@ -204,8 +198,6 @@ public class LoginPage extends BasePage {
 	public void navigateToBillingStreetField(String billingStreet) {
 		billingStreetField.sendKeys(billingStreet);
 	}
-
-	public final String CONTINUE_BTN_REGISTER = "//div[@class='register--action']//button[@type='submit']";
 
 	@FindBy(xpath = CONTINUE_BTN_REGISTER)
 	WebElement continueBtnRegister;
@@ -219,42 +211,26 @@ public class LoginPage extends BasePage {
 		return new ProfilePage(this.driver);
 	}
 
-///// WAS USE IN #3-loginTest()/////
-	public final String EMAIL_FIELD = "//input[@name='email']";
-	public final String PASSWORD_FIELD = "//input[@name='password']";
-	public final String LOGIN_BTN = "//button[@class='register--login-btn btn is--primary is--large']";
-	// Every time write incorrect login or password must be showen errorMsg whose
-	// xpath is below
-	public final String ERROR_MSG = "//div[@class='alert--content']";
-	// when written correct email and login must be openned ProfilPage
-	// when showen user's name and surename whose xpath is below
-	public final String WELCOME = "//div[@class='account--welcome panel']";
-
 	@FindBy(xpath = EMAIL_FIELD)
 	WebElement email_field;
 
-	public void emailField(String email) {
+	public void navigateToEmailField(String email) {
 		email_field.sendKeys(email);
 	}
 
 	@FindBy(xpath = PASSWORD_FIELD)
 	WebElement password_field;
 
-	public void passwordField(String password) {
+	public void navigateToPasswordField(String password) {
 		password_field.sendKeys(password);
 	}
 
 	@FindBy(xpath = LOGIN_BTN)
 	WebElement loginBtn;
 
-	public ProfilePage clickOnLoginBtn() {
+	public ProfilePage navigateToLoginBtn() {
 		loginBtn.click();
 		return new ProfilePage(this.driver);
-	}
-	
-	public OrdersPage clickOnLoginButton() {
-		loginBtn.click();
-		return new OrdersPage(this.driver);
 	}
 
 	public boolean loginPageIsOpen() {
@@ -268,20 +244,10 @@ public class LoginPage extends BasePage {
 		return errorMsg.isDisplayed();
 	}
 
-	@FindBy(xpath = WELCOME)
-	WebElement welcome;
-
-	public boolean welcomeDisplayed() {
-		return welcome.isDisplayed();
-	}
-
 	public void clearField() {
 		email_field.clear();
 		password_field.clear();
 	}
-
-///// WAS USE IN #4-forgotPasswordTest()/////
-	public final String FORGOT_PASSWORD = "//a[contains(@href,'/account/password')]";
 
 	@FindBy(xpath = FORGOT_PASSWORD)
 	WebElement forgotPassword;
@@ -295,15 +261,30 @@ public class LoginPage extends BasePage {
 		return new ForgotPasswordPage(this.driver);
 	}
 
-///// WAS USE IN #14-orderstest()  /////
-
-	public final String ORDERS_BTN = "//div[@class='account--menu-container']//a[contains(@href,'/account/orders') and @class='navigation--link']";
-
-	@FindBy(xpath = ORDERS_BTN)
-	WebElement ordersBtn;
-
 	public OrdersPage navigateToLoginForOrders() {
 		loginBtn.click();
 		return new OrdersPage(this.driver);
 	}
+	
+	@FindBy(xpath = ALLERT_CONTENT)
+	WebElement allertContent;
+
+	public boolean allertContentldIsDisplayed() {
+		return allertContent.isDisplayed();
+	}
+	
+	@FindBy(xpath = LOGIN_FACEBOOK_BTN)
+	WebElement loginWithFacebookBtn;
+
+	public boolean loginWithFacebookBtnIsDisplayed() {
+		return loginWithFacebookBtn.isDisplayed();
+	}
+	
+	public FacebookLoginPage navigateToLoginWithFacebookBtn() {
+		loginWithFacebookBtn.click();
+		return new FacebookLoginPage(this.driver);
+	}
+
+	
+
 }

@@ -18,6 +18,8 @@ public class OrdersPage extends BasePage {
 	}
 
 	public final String ORDERS_PANNEL = "//div[@class='account--welcome panel']";
+	public final String DATE_DELIVERY = "//div[@class='date-picker__container']";
+	public final String CURRENT_DATE = "//div[@class='datepicker--cell datepicker--cell-day -current- -selected-']";
 
 	@FindBy(xpath = ORDERS_PANNEL)
 	WebElement ordersPannel;
@@ -26,8 +28,6 @@ public class OrdersPage extends BasePage {
 		return ordersPannel.isDisplayed();
 	}
 	
-	public final String DATE_DELIVERY = "//div[@class='date-picker__container']";
-
 	@FindBy(xpath = DATE_DELIVERY)
 	WebElement dateDelivery;
 
@@ -35,8 +35,6 @@ public class OrdersPage extends BasePage {
 		return dateDelivery.isDisplayed();
 	}
 	
-	
-	public final String CURRENT_DATE = "//div[@class='datepicker--cell datepicker--cell-day -current- -selected-']";
 
 	@FindBy(xpath = CURRENT_DATE)
 	WebElement currentDate;

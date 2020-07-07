@@ -13,6 +13,9 @@ public class ChangeAddressPage extends BasePage {
 	}
 
 	public final String CHANGE_ADDRESS_PANNEL = "//div[@class='panel--body is--wide']";
+	public final String CHANGE_ADDRESS_FIELD = "//input[@name='address[street]']";
+	public final String SAVE_ADDRESS_BTN = "//input[@class='btn is--primary address--form-submit']";
+
 
 	@FindBy(xpath = CHANGE_ADDRESS_PANNEL)
 	WebElement changeAddressPannel;
@@ -20,8 +23,6 @@ public class ChangeAddressPage extends BasePage {
 	public boolean changeAddressPannelIsDisplayed() {
 		return changeAddressPannel.isDisplayed();
 	}
-
-	public final String CHANGE_ADDRESS_FIELD = "//input[@name='address[street]']";
 
 	@FindBy(xpath = CHANGE_ADDRESS_FIELD)
 	WebElement changeAddressField;
@@ -34,8 +35,6 @@ public class ChangeAddressPage extends BasePage {
 		changeAddressField.clear();
 		changeAddressField.sendKeys(address);
 	}
-
-	public final String SAVE_ADDRESS_BTN = "//input[@class='btn is--primary address--form-submit']";
 
 	@FindBy(xpath = SAVE_ADDRESS_BTN)
 	WebElement saveAddressBtn;

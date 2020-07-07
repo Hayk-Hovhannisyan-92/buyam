@@ -13,6 +13,7 @@ public class ShopsBooksPage extends BasePage {
 	}
 
 	public final String SHOPS_BOOKS_PAGE = "//nav[@class='content--breadcrumb block']";
+	public final String PRODUCT = "//button[@class='buybox--button block btn is--primary is--icon-right is--center is--large']";
 
 	@FindBy(xpath = SHOPS_BOOKS_PAGE)
 	WebElement shopsBooksPage;
@@ -20,8 +21,6 @@ public class ShopsBooksPage extends BasePage {
 	public boolean shopsBooksPageIsDisplayed() {
 		return shopsBooksPage.isDisplayed();
 	}
-
-	public final String PRODUCT = "//button[@class='buybox--button block btn is--primary is--icon-right is--center is--large']";
 
 	@FindBy(xpath = PRODUCT)
 	WebElement product;

@@ -23,7 +23,7 @@ public class FooterFIYTest extends BaseTest {
 		Thread.sleep(2000);
 		Assert.assertTrue(facebook.facebookBuyamPageIsDisplayed());
 		facebook.closeNewTab();
-		Assert.assertTrue(home.homeMainIsDisplayed());
+		Assert.assertTrue(home.homePageIsDisplayed());
 	}
 
 	/// instagramTest ///
@@ -37,6 +37,8 @@ public class FooterFIYTest extends BaseTest {
 		Thread.sleep(2000);
 		Assert.assertTrue(instagram.instagramBuyamPageIsDisplayed());
 		instagram.closeNewTab();
+		Assert.assertTrue(home.homePageIsDisplayed());
+
 	}
 
 	/// youtubeTest ///
@@ -50,6 +52,8 @@ public class FooterFIYTest extends BaseTest {
 		Thread.sleep(2000);
 		Assert.assertTrue(youtube.youtubeBuyamPageIsDisplayed());
 		youtube.closeNewTab();
+		Assert.assertTrue(home.homePageIsDisplayed());
+
 	}
 
 }

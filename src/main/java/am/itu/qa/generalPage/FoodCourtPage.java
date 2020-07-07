@@ -13,6 +13,7 @@ public class FoodCourtPage extends BasePage {
 	}
 
 	public final String FOOD_COURT_PAGE = "nav[@class='navigation-main']";
+	public final String COFFEE_TEA_FRESH_ICE_CREAM = "//a[@class='navigation--link' and contains(@href,'/food-court/fresh-coffee-tea-ice-cream/')]";
 
 	@FindBy(xpath = FOOD_COURT_PAGE)
 	WebElement foodCourtPage;
@@ -20,8 +21,6 @@ public class FoodCourtPage extends BasePage {
 	public boolean foodCourtPageIsDisplayed() {
 		return foodCourtPage.isDisplayed();
 	}
-
-	public final String COFFEE_TEA_FRESH_ICE_CREAM = "//a[@class='navigation--link' and contains(@href,'/food-court/fresh-coffee-tea-ice-cream/')]";
 
 	@FindBy(xpath = COFFEE_TEA_FRESH_ICE_CREAM)
 	WebElement coffeeTeaFreshIceCream;

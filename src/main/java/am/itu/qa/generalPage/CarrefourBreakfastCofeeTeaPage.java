@@ -13,6 +13,10 @@ public class CarrefourBreakfastCofeeTeaPage extends BasePage {
 	}
 
 	public final String BREAKFAST_COFEE_TEA_PAGE = "//nav[@class='content--breadcrumb block']";
+	public final String BREAKFAST_COFEE_TEA = "//a[@class='navigation--link' and contains(@href,'/carrefour/breakfast-coffee-tea/')]";
+	public final String PRODUCT = "//button[@class='buybox--button block btn is--primary is--icon-right is--center is--large']";
+
+
 
 	@FindBy(xpath = BREAKFAST_COFEE_TEA_PAGE)
 	WebElement breakfastCofeeTeaPage;
@@ -20,8 +24,6 @@ public class CarrefourBreakfastCofeeTeaPage extends BasePage {
 	public boolean breakfastCofeeTeaPageIsDisplayed() {
 		return breakfastCofeeTeaPage.isDisplayed();
 	}
-
-	public final String BREAKFAST_COFEE_TEA = "//a[@class='navigation--link' and contains(@href,'/carrefour/breakfast-coffee-tea/')]";
 
 	@FindBy(xpath = BREAKFAST_COFEE_TEA)
 	WebElement breakfastCofeeTea;
@@ -33,8 +35,6 @@ public class CarrefourBreakfastCofeeTeaPage extends BasePage {
 	public void navigateToBreaakfastCofeeTea() {
 		breakfastCofeeTea.click();
 	}
-
-	public final String PRODUCT = "//button[@class='buybox--button block btn is--primary is--icon-right is--center is--large']";
 
 	@FindBy(xpath = PRODUCT)
 	WebElement product;

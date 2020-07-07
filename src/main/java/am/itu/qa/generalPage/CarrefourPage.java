@@ -13,6 +13,7 @@ public class CarrefourPage extends BasePage {
 	}
 
 	public final String CARREFOUR_PAGE = "//nav[@class='navigation-main']";
+	public final String BREAKFAST_COFEE_TEA = "//a[@class='navigation--link' and contains(@href,'/carrefour/breakfast-coffee-tea/')]";
 
 	@FindBy(xpath = CARREFOUR_PAGE)
 	WebElement carrefourPage;
@@ -20,8 +21,6 @@ public class CarrefourPage extends BasePage {
 	public boolean carrefourPageIsDisplayed() {
 		return carrefourPage.isDisplayed();
 	}
-
-	public final String BREAKFAST_COFEE_TEA = "//a[@class='navigation--link' and contains(@href,'/carrefour/breakfast-coffee-tea/')]";
 
 	@FindBy(xpath = BREAKFAST_COFEE_TEA)
 	WebElement breakfastCofeeTea;

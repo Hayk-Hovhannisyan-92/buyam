@@ -22,7 +22,7 @@ public class GooglePlayAppStoreTest extends BaseTest {
 		Thread.sleep(2000);
 		googlePlay.closeNewTab();
 		Thread.sleep(2000);
-		Assert.assertTrue(home.homeMainIsDisplayed());
+		Assert.assertTrue(home.homePageIsDisplayed());
 		Thread.sleep(2000);
 	}
 
@@ -39,7 +39,7 @@ public class GooglePlayAppStoreTest extends BaseTest {
 		Thread.sleep(2000);
 		appstore.closeNewTab();
 		Thread.sleep(2000);
-		Assert.assertTrue(home.homeMainIsDisplayed());
+		Assert.assertTrue(home.homePageIsDisplayed());
 	}
 
 }

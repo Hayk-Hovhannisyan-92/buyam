@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import am.itu.qa.baseTest.BaseTest;
 import am.itu.qa.generalPage.HomePage;
 import am.itu.qa.generalPage.LoginPage;
+import am.itu.qa.generalPage.SearchResultPage;
 
 public class HeaderButtonsTest extends BaseTest {
 
@@ -30,10 +31,10 @@ public class HeaderButtonsTest extends BaseTest {
 		login = home.navigateToWishlistButton();
 		Thread.sleep(2000);
 		Assert.assertTrue(login.loginPageIsOpen());
-		login.emailField("hovhannisyanhayk56@gmail.com");
+		login.navigateToEmailField("hovhannisyanhayk56@gmail.com");
 		Thread.sleep(2000);
-		login.passwordField("BuyamHayk");
-		login.clickOnLoginBtn();
+		login.navigateToPasswordField("BuyamHayk");
+		login.navigateToLoginBtn();
 		Assert.assertTrue(home.emptyWishlistIsDisplayed());
 		// After step make sure that user's wishlist is empty
 		Thread.sleep(2000);
@@ -46,33 +47,31 @@ public class HeaderButtonsTest extends BaseTest {
 		HomePage home = new HomePage(this.driver);
 		Thread.sleep(2000);
 		Assert.assertTrue(home.shopingCartBtnIsDisplayed());
-		home.shopingCartBtnClick();
+		home.navigateToShopingCartBtn();
 		Assert.assertTrue(home.shopingCartPanelIsDisplayed());
 		Thread.sleep(2000);
 		Assert.assertTrue(home.emptyShopingCartIsDisplayed());
-		Assert.assertTrue(home.crossIconIsDisplayed());
-		home.navigateToCrossIcon();
+		Assert.assertTrue(home.crossIconContainerIsDisplayed());
+		home.navigateToCrossIconContainer();
 		home.navigateToReturnHomePage();
 	}
 
 	/// searchTest ///???????????????
-	//@Test
+	@Test
 	public void searchTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
+		SearchResultPage search = new SearchResultPage(this.driver);
 		Assert.assertTrue(home.searchInputFieldIsDisplayed());
-		home.navigateToSearchIcon();
+		search = home.navigateToSearchIcon();
 		// click search iconi vra aranc text mutqagrelu dashtum
 		Thread.sleep(2000);
-		Assert.assertTrue(home.allertMessageIsDisplayed());
-		// erevum e allert message
+		Assert.assertTrue(search.allertMessageIsDisplayed());
 		Thread.sleep(2000);
 		home.typeInSearhField("prinv");
-		// grvum e voreve text search dashtum
 		Thread.sleep(2000);
-		home.navigateToSearchIcon();
-		// click search iconi vra
-		// nkaragrutyun@ HomePage-um
-		Assert.assertTrue(home.existingProductHeadlineIsDisplayed());
-
+		search = home.navigateToSearchIcon();
+		Assert.assertTrue(search.nonExistingProductHeadlineIsDisplayed());
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();	
 	}
 }

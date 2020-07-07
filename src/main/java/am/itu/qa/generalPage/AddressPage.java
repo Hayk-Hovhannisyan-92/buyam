@@ -12,8 +12,11 @@ public class AddressPage extends BasePage {
 		super(driver);
 	}
 	
-	//div[@class="account--welcome"]
-	public final String ADDRESS_PAGE = "div[@class='account--welcome']";
+	public final String ADDRESS_PAGE = "//div[@class='account--welcome']";
+	public final String CHANGE_ADDRESS_PANNEL = "//div[@class='panel has--border is--rounded block']";
+	public final String CHANGE_BTN = "//a[@class='btn is--small']";
+	public final String ALLERT_CONTENT = "//div[@class='alert--content']";
+
 	
 	@FindBy(xpath = ADDRESS_PAGE)
 	WebElement addressPage;
@@ -21,9 +24,6 @@ public class AddressPage extends BasePage {
 	public boolean addressPagelIsDisplayed() {
 		return addressPage.isDisplayed();
 	}
-
-	public final String CHANGE_ADDRESS_PANNEL = "//div[@class='panel has--border is--rounded block']";
-	public final String CHANGE_BTN = "//a[@class='btn is--small']";
 
 	@FindBy(xpath = CHANGE_ADDRESS_PANNEL)
 	WebElement changeAddressPannel;
@@ -43,9 +43,7 @@ public class AddressPage extends BasePage {
 		changeBtn.click();
 		return new ChangeAddressPage(this.driver);
 	}
-
-	public final String ALLERT_CONTENT = "//div[@class='alert--content']";
-
+	
 	@FindBy(xpath = ALLERT_CONTENT)
 	WebElement allertContent;
 

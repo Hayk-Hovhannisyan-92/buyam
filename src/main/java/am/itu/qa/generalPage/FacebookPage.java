@@ -29,6 +29,5 @@ public class FacebookPage extends BasePage {
 		driverNewTab = driver.switchTo().window(tabs.get(1));
 		driverNewTab.close();
 		driver = driver.switchTo().window(tabs.get(0));
-
 	}
 }

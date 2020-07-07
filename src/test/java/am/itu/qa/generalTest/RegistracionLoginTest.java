@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import am.itu.qa.baseTest.BaseTest;
+import am.itu.qa.generalPage.FacebookLoginPage;
 import am.itu.qa.generalPage.ForgotPasswordPage;
 import am.itu.qa.generalPage.HomePage;
 import am.itu.qa.generalPage.LoginPage;
@@ -11,101 +12,141 @@ import am.itu.qa.generalPage.ProfilePage;
 
 public class RegistracionLoginTest extends BaseTest {
 
-	/// registracionTest ///
-	@Test
-	public void registracionTestAM() throws InterruptedException {
+/// registracionTest ///
+	/// Armenian language(default)
+	@Test(priority = 1)
+	public void registracionTest1() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
+		LoginPage login = new LoginPage(this.driver);
+		ProfilePage profile = new ProfilePage(this.driver);
 		Assert.assertTrue(home.myAccountElementIsDisplayed());
 		home.navigateToMyAccount();
 		Assert.assertTrue(home.dropBoxMyAccountIsDisplayed());
 		Thread.sleep(2000);
-		Assert.assertTrue(home.registracionElementIsDisplayed());
-		LoginPage login = new LoginPage(this.driver);
+		Assert.assertTrue(home.registracionBtnIsDisplayed());
 		login = home.navigateToRegistracion();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.loginPageIsOpen());
-
-		/// Armenian language(default)
 		/// test with incorrect msg
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.salutationFieldIsDisplayed());
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToSalutationField();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.mrSubfieldAMIsDisplayed());
 		login.navigateToMrSubfieldAM();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.firstNameFieldIsDisplayed());
 		login.navigateTofirstNameField("Hayk");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.lastNameFieldIsDisplayed());
 		login.navigateToLastNameField("Hovhannisyan");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.emailFieldRegisterIsDisplayed());
 		login.navigateToEmailFieldRegister("hayk.com");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToPasswordFieldRegister("BuyamHayk");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.registerErrMsgIsDisplayed());
-
 		//// continue with correct email
 		login.clearEmailField();
-		login.navigateToEmailFieldRegister("hovhannisyanhayk56@gmail.com");
-		Thread.sleep(1000);
+		login.navigateToEmailFieldRegister("okqokaokaqoka@gmail.com");
+		Thread.sleep(2000);
 		login.navigateToPasswordConfirmFieldRegister("BuyamHayk");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToPhoneNumberField("098484056");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToCityField();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.cityListIsDisplayed());
 		Assert.assertTrue(login.chooseCity1IsDisplayed());
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToChooseCity1();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToBillingStreetField("Hovsep Emini p. 29 tun");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
+		profile = login.navigateToContinueBtnRegister();
+		Assert.assertTrue(profile.profilePageIsDisplayed());
+		Thread.sleep(2000);
+		home.navigateToMyAccount();
+		Thread.sleep(2000);
+		home.navigateToLogOutBtn();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
+	}
 
-		//// English language
-
-		home.clickOnElementSettings();
+	//// English language
+	@Test(priority = 2)
+	public void registracionTest2() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		LoginPage login = new LoginPage(this.driver);
+		ProfilePage profile = new ProfilePage(this.driver);
+		Thread.sleep(2000);
+		home.navigateToSettingsBtn();
+		Thread.sleep(2000);
 		home.clickOnElementLanguage();
+		Thread.sleep(2000);
 		home.clickOnElementLenguage_ENG();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
+		Assert.assertTrue(home.myAccountElementIsDisplayed());
+		home.navigateToMyAccount();
+		Assert.assertTrue(home.dropBoxMyAccountIsDisplayed());
+		Thread.sleep(2000);
+		Assert.assertTrue(home.registracionBtnIsDisplayed());
+		login = home.navigateToRegistracion();
+		Thread.sleep(2000);
+		Assert.assertTrue(login.loginPageIsOpen());
 		Assert.assertTrue(login.salutationFieldIsDisplayed());
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToSalutationField();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.mrSubfieldENIsDisplayed());
 		login.navigateToMrSubfieldEN();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.firstNameFieldIsDisplayed());
 		login.navigateTofirstNameField("Hayk");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.lastNameFieldIsDisplayed());
 		login.navigateToLastNameField("Hovhannisyan");
-		Thread.sleep(1000);
-		login.navigateToEmailFieldRegister("hovhannisyanhayk56@gmail.com");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
+		login.navigateToEmailFieldRegister("vcydvcysab@gmail.com");
+		Thread.sleep(2000);
 		login.navigateToPasswordFieldRegister("BuyamHayk");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToPasswordConfirmFieldRegister("BuyamHayk");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToPhoneNumberField("098484056");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToCityField();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Assert.assertTrue(login.cityListIsDisplayed());
 		Assert.assertTrue(login.chooseCity1IsDisplayed());
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToChooseCity1();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		login.navigateToBillingStreetField("Hovsep Emini p. 29 tun");
+		Thread.sleep(2000);
+		profile = login.navigateToContinueBtnRegister();
+		Assert.assertTrue(profile.profilePageIsDisplayed());
+		Thread.sleep(2000);
+		home.navigateToMyAccount();
+		Thread.sleep(2000);
+		home.navigateToLogOutBtn();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
 
-		//// Russian language
+	}
 
-		home.clickOnElementSettings();
+	//// Russian language
+	@Test(priority = 3)
+	public void registracionTest3() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		LoginPage login = new LoginPage(this.driver);
+		ProfilePage profile = new ProfilePage(this.driver);
+		home.navigateToSettingsBtn();
+		Thread.sleep(2000);
 		home.clickOnElementLanguage();
+		Thread.sleep(2000);
 		home.clickOnElementLenguage_RUS();
 		Thread.sleep(3000);
 		Assert.assertTrue(login.salutationFieldIsDisplayed());
@@ -121,7 +162,7 @@ public class RegistracionLoginTest extends BaseTest {
 		Assert.assertTrue(login.lastNameFieldIsDisplayed());
 		login.navigateToLastNameField("Hovhannisyan");
 		Thread.sleep(1000);
-		login.navigateToEmailFieldRegister("hovhannisyanhayk56@gmail.com");
+		login.navigateToEmailFieldRegister("fuidhgjerhiu@gmail.com");
 		Thread.sleep(1000);
 		login.navigateToPasswordFieldRegister("BuyamHayk");
 		Thread.sleep(1000);
@@ -137,12 +178,23 @@ public class RegistracionLoginTest extends BaseTest {
 		login.navigateToChooseCity1();
 		Thread.sleep(1000);
 		login.navigateToBillingStreetField("Hovsep Emini p. 29 tun");
+		Thread.sleep(1000);
+		Thread.sleep(1000);
+		profile = login.navigateToContinueBtnRegister();
+		Assert.assertTrue(profile.profilePageIsDisplayed());
+		Thread.sleep(2000);
+		home.navigateToMyAccount();
+		Thread.sleep(2000);
+		home.navigateToLogOutBtn();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
 
 	}
-	
-	/// loginTest ///
-	@Test
-	public void loginTest() throws InterruptedException {
+
+/// loginTest ///
+	// test-1 without email and password
+	@Test(priority = 4)
+	public void loginTest1() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.myAccountElementIsDisplayed());
 		home.navigateToMyAccount();
@@ -153,64 +205,145 @@ public class RegistracionLoginTest extends BaseTest {
 		Assert.assertTrue(login.loginPageIsOpen());
 		// After step by clicking login must be openned new ProfilePage
 		// when user can write email and password and log in
-
-		// test-1 without email and password
 		Thread.sleep(2000);
-		login.emailField("");
-		login.passwordField("");
-		login.clickOnLoginBtn();
+		login.navigateToEmailField("");
+		Thread.sleep(2000);
+		login.navigateToPasswordField("");
+		Thread.sleep(2000);
+		login.navigateToLoginBtn();
+		Thread.sleep(2000);
 		Assert.assertTrue(login.errorDisplayed());
-
-		// test-2 with incorrect email and without password
-		Thread.sleep(2000);
-		login.clearField();
-		Thread.sleep(2000);
-		login.emailField("asasas");
-		login.passwordField("");
-		login.clickOnLoginBtn();
-		Assert.assertTrue(login.errorDisplayed());
-
-		// test-3 with incorrect email and withowt password
-		Thread.sleep(2000);
-		login.clearField();
-		Thread.sleep(2000);
-		login.emailField("anun@gmail.com");
-		login.passwordField("");
-		login.clickOnLoginBtn();
-		Assert.assertTrue(login.errorDisplayed());
-
-		// test-4 with correct email and without password
-		Thread.sleep(2000);
-		login.clearField();
-		Thread.sleep(2000);
-		login.emailField("hovhannisyanhayk56@gmail.com");
-		login.passwordField("");
-		login.clickOnLoginBtn();
-		Assert.assertTrue(login.errorDisplayed());
-
-		// test-5 with correct email and incorrect password
-		Thread.sleep(2000);
-		login.clearField();
-		Thread.sleep(2000);
-		login.emailField("hovhannisyanhayk56@gmail.com");
-		login.passwordField("12345");
-		login.clickOnLoginBtn();
-		Assert.assertTrue(login.errorDisplayed());
-
-		// test-6 with correct email and correct password
-		Thread.sleep(2000);
-		login.clearField();
-		Thread.sleep(2000);
-		login.emailField("hovhannisyanhayk56@gmail.com");
-		login.passwordField("BuyamHayk");
-		ProfilePage profile = new ProfilePage(this.driver);
-		profile = login.clickOnLoginBtn();
-		Assert.assertTrue(profile.welcomeDisplayed());
-		// After step make sure that user in ProfilePage
+		home.navigateToReturnHomePage();
 	}
-	
+
+	// test-2 with incorrect email and without password
+	// @Test
+	public void loginTest2() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		Assert.assertTrue(home.myAccountElementIsDisplayed());
+		home.navigateToMyAccount();
+		Assert.assertTrue(home.dropBoxMyAccountIsDisplayed());
+		LoginPage login = new LoginPage(this.driver);
+		login = home.navigateToLogin();
+		Assert.assertTrue(login.loginPageIsOpen());
+		Thread.sleep(2000);
+		login.clearField();
+		Thread.sleep(2000);
+		login.navigateToEmailField("asasas");
+		Thread.sleep(2000);
+		login.navigateToPasswordField("");
+		Thread.sleep(2000);
+		login.navigateToLoginBtn();
+		Thread.sleep(2000);
+		Assert.assertTrue(login.errorDisplayed());
+		home.navigateToReturnHomePage();
+	}
+
+	// test-3 with incorrect email and withowt password
+	@Test(priority = 5)
+	public void loginTest3() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		Assert.assertTrue(home.myAccountElementIsDisplayed());
+		home.navigateToMyAccount();
+		Assert.assertTrue(home.dropBoxMyAccountIsDisplayed());
+		LoginPage login = new LoginPage(this.driver);
+		login = home.navigateToLogin();
+		Assert.assertTrue(login.loginPageIsOpen());
+		Thread.sleep(2000);
+		login.clearField();
+		Thread.sleep(2000);
+		login.navigateToEmailField("anun@gmail.com");
+		login.navigateToPasswordField("");
+		login.navigateToLoginBtn();
+		Assert.assertTrue(login.errorDisplayed());
+		home.navigateToReturnHomePage();
+	}
+
+	// test-4 with correct email and without password
+	@Test(priority = 6)
+	public void loginTest4() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		Assert.assertTrue(home.myAccountElementIsDisplayed());
+		home.navigateToMyAccount();
+		Assert.assertTrue(home.dropBoxMyAccountIsDisplayed());
+		LoginPage login = new LoginPage(this.driver);
+		login = home.navigateToLogin();
+		Assert.assertTrue(login.loginPageIsOpen());
+		Thread.sleep(2000);
+		login.clearField();
+		Thread.sleep(2000);
+		login.navigateToEmailField("hovhannisyanhayk56@gmail.com");
+		login.navigateToPasswordField("");
+		login.navigateToLoginBtn();
+		Assert.assertTrue(login.errorDisplayed());
+		home.navigateToReturnHomePage();
+	}
+
+	// test-5 with correct email and incorrect password
+	@Test(priority = 7)
+	public void loginTest5() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		Assert.assertTrue(home.myAccountElementIsDisplayed());
+		home.navigateToMyAccount();
+		Assert.assertTrue(home.dropBoxMyAccountIsDisplayed());
+		LoginPage login = new LoginPage(this.driver);
+		login = home.navigateToLogin();
+		Assert.assertTrue(login.loginPageIsOpen());
+		Thread.sleep(2000);
+		login.clearField();
+		Thread.sleep(2000);
+		login.navigateToEmailField("hovhannisyanhayk56@gmail.com");
+		login.navigateToPasswordField("12345");
+		login.navigateToLoginBtn();
+		Assert.assertTrue(login.errorDisplayed());
+		home.navigateToReturnHomePage();
+	}
+
+	// test-6 with correct email and correct password
+	@Test(priority = 8)
+	public void loginTest6() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		Assert.assertTrue(home.myAccountElementIsDisplayed());
+		home.navigateToMyAccount();
+		Assert.assertTrue(home.dropBoxMyAccountIsDisplayed());
+		LoginPage login = new LoginPage(this.driver);
+		login = home.navigateToLogin();
+		Assert.assertTrue(login.loginPageIsOpen());
+		Thread.sleep(2000);
+		login.clearField();
+		Thread.sleep(2000);
+		login.navigateToEmailField("hovhannisyanhayk56@gmail.com");
+		login.navigateToPasswordField("BuyamHayk");
+		ProfilePage profile = new ProfilePage(this.driver);
+		profile = login.navigateToLoginBtn();
+		Assert.assertTrue(profile.profilePageIsDisplayed());
+		home.navigateToMyAccount();
+		Thread.sleep(2000);
+		home.navigateToLogOutBtn();
+		Thread.sleep(2000);
+		home.navigateToReturnHomePage();
+		Thread.sleep(2000);
+	}
+
+	/// loginTest with facebook ///
+	@Test(priority = 10)
+	public void loginWithFacebookTest() throws InterruptedException {
+		HomePage home = new HomePage(this.driver);
+		LoginPage login = new LoginPage(this.driver);
+		FacebookLoginPage facebook = new FacebookLoginPage(this.driver);
+		Assert.assertTrue(home.myAccountElementIsDisplayed());
+		home.navigateToMyAccount();
+		Thread.sleep(2000);
+		login = home.navigateToLogin();
+		Thread.sleep(2000);
+		Assert.assertTrue(login.loginWithFacebookBtnIsDisplayed());
+		facebook = login.navigateToLoginWithFacebookBtn();
+		Thread.sleep(2000);
+		Assert.assertTrue(facebook.facebookLoginPageIsDisplayed());
+	}
+
 	/// forgotPasswordTest ///
-	@Test
+	@Test(priority = 9)
 	public void forgotPasswordTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		LoginPage login = new LoginPage(this.driver);
@@ -229,7 +362,7 @@ public class RegistracionLoginTest extends BaseTest {
 		Assert.assertTrue(forgotPassword.sendEmailBtnIsDisplayed());
 		home = forgotPassword.navigateToSendEmailBtn();
 		Thread.sleep(2000);
-		Assert.assertTrue(home.allertContentIsDisplayed());
+		// Assert.assertTrue(home.allertContentIsDisplayed());
 
 	}
 }
