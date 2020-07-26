@@ -11,7 +11,7 @@ import am.itu.qa.generalPage.SearchResultPage;
 public class HeaderButtonsTest extends BaseTest {
 
 	/// returnHomeBtnTest ///
-	@Test
+	@Test (priority = 1)
 	public void returnHomeBtnTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.returnHomePageIconIsDisplayed());
@@ -22,7 +22,7 @@ public class HeaderButtonsTest extends BaseTest {
 	}
 
 	/// wishlistBtnTest ///
-	@Test
+	@Test (priority = 2)
 	public void wishlistBtnTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		LoginPage login = new LoginPage(this.driver);
@@ -42,7 +42,7 @@ public class HeaderButtonsTest extends BaseTest {
 	}
 
 	/// shoppingCartBtnTest ///
-	@Test
+	@Test (priority = 3)
 	public void shoppingCartTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Thread.sleep(2000);
@@ -57,7 +57,7 @@ public class HeaderButtonsTest extends BaseTest {
 	}
 
 	/// searchTest ///???????????????
-	@Test
+	@Test (priority = 4)
 	public void searchTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		SearchResultPage search = new SearchResultPage(this.driver);
@@ -71,6 +71,11 @@ public class HeaderButtonsTest extends BaseTest {
 		Thread.sleep(2000);
 		search = home.navigateToSearchIcon();
 		Assert.assertTrue(search.nonExistingProductHeadlineIsDisplayed());
+		Thread.sleep(2000);
+		home.typeInSearhField("termos");
+		Thread.sleep(2000);
+		search = home.navigateToSearchIcon();
+		Assert.assertTrue(search.existingProductHeadlineIsDisplayed());
 		Thread.sleep(2000);
 		home.navigateToReturnHomePage();	
 	}

@@ -9,11 +9,11 @@
 			<!--  class name="am.itu.qa.generalTest.FooterButtonsTest" /-->
 			<!--  class name="am.itu.qa.generalTest.GooglePlayAppStoreTest" /-->
 			<!--  class name="am.itu.qa.generalTest.RegistracionLoginTest" /-->
-			<!--  class name="am.itu.qa.generalTest.HeaderButtonsTest" /-->
+			<class name="am.itu.qa.generalTest.HeaderButtonsTest" />
 			<!--  class name="am.itu.qa.generalTest.SettingsButtonTest" /-->
 			<!--  class name="am.itu.qa.generalTest.ChangeDatasTest" /-->
 			<!--  class name="am.itu.qa.generalTest.MyAccountSubsectionButtonsTest"/-->
-			<class name="am.itu.qa.generalTest.BuyTest"/>
+			<!--  class name="am.itu.qa.generalTest.BuyTest"/-->
 		</classes>
 	</test>
 </suite>

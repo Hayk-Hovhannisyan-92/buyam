@@ -50,7 +50,7 @@ public class RegistracionLoginTest extends BaseTest {
 		Assert.assertTrue(login.registerErrMsgIsDisplayed());
 		//// continue with correct email
 		login.clearEmailField();
-		login.navigateToEmailFieldRegister("okqokaokaqoka@gmail.com");
+		login.navigateToEmailFieldRegister("bnbhvg@gmail.com");
 		Thread.sleep(2000);
 		login.navigateToPasswordConfirmFieldRegister("BuyamHayk");
 		Thread.sleep(2000);
@@ -66,6 +66,7 @@ public class RegistracionLoginTest extends BaseTest {
 		login.navigateToBillingStreetField("Hovsep Emini p. 29 tun");
 		Thread.sleep(2000);
 		profile = login.navigateToContinueBtnRegister();
+		Thread.sleep(2000);
 		Assert.assertTrue(profile.profilePageIsDisplayed());
 		Thread.sleep(2000);
 		home.navigateToMyAccount();
@@ -89,6 +90,7 @@ public class RegistracionLoginTest extends BaseTest {
 		home.clickOnElementLenguage_ENG();
 		Thread.sleep(2000);
 		Assert.assertTrue(home.myAccountElementIsDisplayed());
+		Thread.sleep(2000);
 		home.navigateToMyAccount();
 		Assert.assertTrue(home.dropBoxMyAccountIsDisplayed());
 		Thread.sleep(2000);
@@ -109,7 +111,7 @@ public class RegistracionLoginTest extends BaseTest {
 		Assert.assertTrue(login.lastNameFieldIsDisplayed());
 		login.navigateToLastNameField("Hovhannisyan");
 		Thread.sleep(2000);
-		login.navigateToEmailFieldRegister("vcydvcysab@gmail.com");
+		login.navigateToEmailFieldRegister("mkoko@gmail.com");
 		Thread.sleep(2000);
 		login.navigateToPasswordFieldRegister("BuyamHayk");
 		Thread.sleep(2000);
@@ -149,6 +151,10 @@ public class RegistracionLoginTest extends BaseTest {
 		Thread.sleep(2000);
 		home.clickOnElementLenguage_RUS();
 		Thread.sleep(3000);
+		home.navigateToMyAccount();
+		Thread.sleep(3000);
+		login = home.navigateToRegistracion();
+		Thread.sleep(3000);
 		Assert.assertTrue(login.salutationFieldIsDisplayed());
 		Thread.sleep(1000);
 		login.navigateToSalutationField();
@@ -162,7 +168,7 @@ public class RegistracionLoginTest extends BaseTest {
 		Assert.assertTrue(login.lastNameFieldIsDisplayed());
 		login.navigateToLastNameField("Hovhannisyan");
 		Thread.sleep(1000);
-		login.navigateToEmailFieldRegister("fuidhgjerhiu@gmail.com");
+		login.navigateToEmailFieldRegister("plplpl@gmail.com");
 		Thread.sleep(1000);
 		login.navigateToPasswordFieldRegister("BuyamHayk");
 		Thread.sleep(1000);
@@ -178,8 +184,7 @@ public class RegistracionLoginTest extends BaseTest {
 		login.navigateToChooseCity1();
 		Thread.sleep(1000);
 		login.navigateToBillingStreetField("Hovsep Emini p. 29 tun");
-		Thread.sleep(1000);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		profile = login.navigateToContinueBtnRegister();
 		Assert.assertTrue(profile.profilePageIsDisplayed());
 		Thread.sleep(2000);
@@ -217,7 +222,7 @@ public class RegistracionLoginTest extends BaseTest {
 	}
 
 	// test-2 with incorrect email and without password
-	// @Test
+	 @Test (priority = 5)
 	public void loginTest2() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.myAccountElementIsDisplayed());
@@ -239,8 +244,8 @@ public class RegistracionLoginTest extends BaseTest {
 		home.navigateToReturnHomePage();
 	}
 
-	// test-3 with incorrect email and withowt password
-	@Test(priority = 5)
+	// test-3 with not registered email and withowt password
+	@Test(priority = 6)
 	public void loginTest3() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.myAccountElementIsDisplayed());
@@ -260,7 +265,7 @@ public class RegistracionLoginTest extends BaseTest {
 	}
 
 	// test-4 with correct email and without password
-	@Test(priority = 6)
+	@Test(priority = 7)
 	public void loginTest4() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.myAccountElementIsDisplayed());
@@ -280,7 +285,7 @@ public class RegistracionLoginTest extends BaseTest {
 	}
 
 	// test-5 with correct email and incorrect password
-	@Test(priority = 7)
+	@Test(priority = 8)
 	public void loginTest5() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.myAccountElementIsDisplayed());
@@ -300,7 +305,7 @@ public class RegistracionLoginTest extends BaseTest {
 	}
 
 	// test-6 with correct email and correct password
-	@Test(priority = 8)
+	@Test(priority = 9)
 	public void loginTest6() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		Assert.assertTrue(home.myAccountElementIsDisplayed());
@@ -326,10 +331,11 @@ public class RegistracionLoginTest extends BaseTest {
 	}
 
 	/// loginTest with facebook ///
-	@Test(priority = 10)
+	@Test(priority = 11)
 	public void loginWithFacebookTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		LoginPage login = new LoginPage(this.driver);
+		ProfilePage profile = new ProfilePage(this.driver);
 		FacebookLoginPage facebook = new FacebookLoginPage(this.driver);
 		Assert.assertTrue(home.myAccountElementIsDisplayed());
 		home.navigateToMyAccount();
@@ -340,10 +346,20 @@ public class RegistracionLoginTest extends BaseTest {
 		facebook = login.navigateToLoginWithFacebookBtn();
 		Thread.sleep(2000);
 		Assert.assertTrue(facebook.facebookLoginPageIsDisplayed());
+		Assert.assertTrue(facebook.facebookEmailBtnIsDisplayed());
+		facebook.typeEmail("gor95hovhannisyan22@mail.ru");
+		Thread.sleep(2000);
+		Assert.assertTrue(facebook.facebookPasswordBtnIsDisplayed());
+		Thread.sleep(2000);
+		facebook.typePassword("norparol1992");
+		Thread.sleep(2000);
+		profile = facebook.navigateToFacebookLoginBtn();
+		Thread.sleep(2000);
+		Assert.assertTrue(profile.welcomePanelIsDisplayed());
 	}
 
 	/// forgotPasswordTest ///
-	@Test(priority = 9)
+	@Test(priority = 10)
 	public void forgotPasswordTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		LoginPage login = new LoginPage(this.driver);

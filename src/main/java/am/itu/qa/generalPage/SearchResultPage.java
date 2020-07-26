@@ -41,26 +41,5 @@ public class SearchResultPage extends BasePage {
 	public boolean nonExistingProductHeadlineIsDisplayed() {
 		return nonExistingProductHeadline.isDisplayed();
 	}
-	
-	/*
-	 * public boolean existingProductHeadlineIsDisplayed() { return
-	 * existingProductHeadline.isDisplayed(); }
-	 */
 
-	/*
-	 * public boolean nonExistingProductHeadlineIsDisplayed() { try { return
-	 * nonExistingProductHeadline.isDisplayed(); } catch (NoSuchElementException e)
-	 * { return nonExistingProductHeadline.isDisplayed(); }
-	 */
-	/*public boolean existingProductHeadlineIsDisplayed() {
-		if (existingProductHeadline.isDisplayed()) {
-			return existingProductHeadline.isDisplayed();
-		}
-		try {
-			return nonExistingProductHeadline.isDisplayed();
-		} catch (NoSuchElementException e) {
-			return nonExistingProductHeadline.isDisplayed();
-		}
-	}
-*/
 }

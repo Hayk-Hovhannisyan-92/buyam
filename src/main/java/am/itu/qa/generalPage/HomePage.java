@@ -59,7 +59,7 @@ public class HomePage extends BasePage {
 	public final String YOUTUBE_BTN = "//footer[@class='footer-main']//a[@class='youtube-link']/i[@aria-hidden='true']";
 	public final String INSTAGRAM_BTN = "//a[@class='instagram-link']";
 	public final String CONTACT_US = "//div[@class='footer--column column--menu block']//a[@class='navigation--link' and contains(@href,'/contact')]";
-	public final String PRIVACY_POLICY_BTN = "//div[@class='footer--column column--menu block']//a[@class='navigation--link' and contains(@href,'/contact')]";
+	public final String PRIVACY_POLICY_BTN = "//footer[@class='footer-main']//ul[@class='navigation--list']//a[@class='navigation--link' and contains (@href,'/custom/index/sCustom/51')]";
 		public final String ABOUT_US_AM = "//div[@class='footer--column column--menu block']//li[@class='navigation--entry']/a[@href='https://buy.am/hy/custom/index/sCustom/50']";
 		public final String ABOUT_US_EN = "//div[@class='footer--column column--menu block']//li[@class='navigation--entry']/a[@href='https://buy.am/en/mer-masin']";
 		public final String ABOUT_US_RU = "//div[@class='footer--column column--menu block']//li[@class='navigation--entry']/a[@href='https://buy.am/ru/mer-masin']";
@@ -764,7 +764,7 @@ public class HomePage extends BasePage {
 	//	double sum = 0;
 	//	for (int i = 0; i < numberOfProductInConteiner; i++) {
 	//		sum = sum + price;
-		}
+	}
 	//	return sum == pricees;
 	//}
 

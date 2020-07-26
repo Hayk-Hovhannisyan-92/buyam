@@ -116,7 +116,7 @@ public class ChangeDatasTest extends BaseTest {
 	}
 
 	/// changePaymentMethodTest ///
-	@Test(priority = 4)
+	//@Test(priority = 4)
 	public void changePaymentMethodTest() throws InterruptedException {
 		HomePage home = new HomePage(this.driver);
 		ProfilePage profile = new ProfilePage(this.driver);
