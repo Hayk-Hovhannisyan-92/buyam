@@ -1,0 +1,5 @@
+# buyam
+in this repository are located buy.am automation tests
+for run are two way
+run by command promt -- mvn test
+run by eclipse       -- right click on pom.xml -> Run as -> maven test
